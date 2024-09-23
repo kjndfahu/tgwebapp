@@ -25,6 +25,7 @@ function Beneficious({isActive, setActive}){
                 {isActiveToques && <ModalToques isActiveToques={isActiveToques} setActiveToques={setActiveToques}/>}
                 {isActive && <ModalEnergiaExtra setActive={setActive}/>}
                 {isActiveDuplicate && <DuplicateEnergy setActiveDuplicate={setActiveDuplicate}/>}
+                <div className="w-[90vw] h-[100px]"></div>
             </div>
         </div>
     )
