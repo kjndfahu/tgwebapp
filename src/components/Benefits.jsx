@@ -6,15 +6,18 @@ function Benefits({setActiveToques, setActivePasivos, setActive}) {
     const [isTab, setTab] = useState('benefits');
     console.log(isTab)
     return (
-        <div className="flex flex-col gap-5 bg-[#212121] rounded-[10px]">
-            <div className="flex flex-row items-center px-5 py-2 justify-between font-sfprosemibold text-[30px] text-[#212121]">
+        <div className="flex flex-col gap-5 rounded-[10px]">
+            <div
+                className="flex flex-row items-center px-5 py-2 justify-between font-sfprosemibold text-[30px] text-[#212121]">
                 <h2 onClick={() => setTab('benefits')}>Beneficios</h2>
                 <h2 onClick={() => setTab('aumentacion')}>Aumentacion</h2>
             </div>
 
             {isTab === 'benefits' ? (
-                <div className="flex flex-col items-center px-5 py-2 bg-[#212121] rounded-[10px] justify-between w-[90vw]">
-                    <div onClick={() => setActivePasivos(true)} className="flex items-center px-5 py-2 bg-[#212121] rounded-[10px] justify-between w-[90vw]">
+                <div
+                    className="flex flex-col items-center px-5 py-2 bg-[#212121] rounded-[10px] justify-between w-[90vw]">
+                    <div onClick={() => setActivePasivos(true)}
+                         className="flex items-center px-5 py-2 bg-[#212121] rounded-[10px] justify-between w-[90vw]">
                         <div className="flex flex-row items-center gap-5">
                             <div className="rounded-[15px] bg-[#282828] p-2">
                                 <Clock/>
@@ -27,7 +30,8 @@ function Benefits({setActiveToques, setActivePasivos, setActive}) {
                         <ChevronRight color="#b0b0b0"/>
                     </div>
 
-                    <div onClick={() => setActiveToques(true)} className="flex items-center px-5 py-2 bg-[#212121] rounded-[10px] justify-between w-[90vw]">
+                    <div onClick={() => setActiveToques(true)}
+                         className="flex items-center px-5 py-2 bg-[#212121] rounded-[10px] justify-between w-[90vw]">
                         <div className="flex flex-row items-center gap-5">
                             <div className="rounded-[15px] bg-[#282828] p-2">
                                 <Finger/>
@@ -40,7 +44,8 @@ function Benefits({setActiveToques, setActivePasivos, setActive}) {
                         <ChevronRight color="#b0b0b0"/>
                     </div>
 
-                    <div onClick={() => setActive(true)} className="flex items-center px-5 py-2 bg-[#212121] rounded-[10px] justify-between w-[90vw]">
+                    <div onClick={() => setActive(true)}
+                         className="flex items-center px-5 py-2 bg-[#212121] rounded-[10px] justify-between w-[90vw]">
                         <div className="flex flex-row items-center gap-5">
                             <div className="rounded-[15px] bg-[#282828] p-2">
                                 <Explosion/>
