@@ -3,7 +3,7 @@ import {ListingCoin} from "./ListringCoin";
 
 function ModalListing({isActiveListing, setActiveListing}) {
     return (
-        <div className="flex absolute items-center flex-col bg-[#7c43ae] h-[120%] w-[100vw]">
+        <div className="flex absolute items-center flex-col bg-[#7c43ae] w-[100vw]">
             <div
                 className="flex flex-row items-center rounded-[20px] justify-between bg-[#000000] bg-opacity-70 text-left w-[90vw]  pl-7 mt-5">
                 <div>

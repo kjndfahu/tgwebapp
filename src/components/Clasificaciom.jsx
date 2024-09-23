@@ -55,16 +55,11 @@ function Clasificaciom() {
             name: "Henry",
             value: "7.2M"
         },
-        {
-            id: 11,
-            name: "Henry",
-            value: "7.0M"
-        },
 
 
     ]
     return (
-        <div className="flex flex-col items-center bg-[url('https://i.imgur.com/IDlQwiO.png')] w-[100vw]">
+        <div className="flex flex-col items-center bg-[url('https://i.imgur.com/IDlQwiO.png')] w-[100vw] mb-[85px]">
             <div className="flex flex-col mt-10 gap-3">
                 <h2 className="font-sfprosemibold text-left text-white text-[40px]">Clasificaciom</h2>
                 <div className="flex items-center px-5 py-3 bg-[#212121] rounded-[10px] justify-between w-[90vw]">
