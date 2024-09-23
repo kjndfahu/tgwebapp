@@ -14,16 +14,18 @@ function Beneficious({isActive, setActive}){
     const [isActiveDuplicate, setActiveDuplicate] = useState(false);
 
     return(
-        <div className="flex flex-col">
+        <div className="flex flex-col mb-24">
             <MoneyCount/>
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col gap-3 ">
                 <Energia setActiveDuplicate={setActiveDuplicate}/>
                 <RefsBlock/>
-                <Benefits  setActive={setActive} setActiveToques={setActiveToques} setActivePasivos={setActivePasivos}/>
-                {isActivePasivos && <ModalPasivo isActivePasivos={isActivePasivos} setActivePasivos={setActivePasivos} /> }
-                {isActiveToques && <ModalToques isActiveToques={isActiveToques} setActiveToques={setActiveToques}/> }
-                {isActive && <ModalEnergiaExtra setActive={setActive}/> }
-                {isActiveDuplicate && <DuplicateEnergy setActiveDuplicate={setActiveDuplicate}/> }
+                <Benefits setActive={setActive} setActiveToques={setActiveToques} setActivePasivos={setActivePasivos}/>
+                {isActivePasivos &&
+                    <ModalPasivo isActivePasivos={isActivePasivos} setActivePasivos={setActivePasivos}/>}
+                {isActiveToques && <ModalToques isActiveToques={isActiveToques} setActiveToques={setActiveToques}/>}
+                {isActive && <ModalEnergiaExtra setActive={setActive}/>}
+                {isActiveDuplicate && <DuplicateEnergy setActiveDuplicate={setActiveDuplicate}/>}
+                <div className="w-[90vw] h-[200px]"></div>
             </div>
         </div>
     )

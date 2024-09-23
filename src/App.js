@@ -12,7 +12,6 @@ function App() {
     const [isActiveListing, setActiveListing] = useState(false);
     return (
         <div className="flex flex-col items-center h-[100vh] text-center gap-10">
-            <div className="mb-16">
                 {isTab === 'inicio' && (
                     <Home isActive={isActive} setActive={setActive} isActiveListing={isActiveListing} setActiveListing={setActiveListing}/>
                 )}
@@ -25,7 +24,6 @@ function App() {
                 {isTab === 'perfil' && (
                     <ProfilePage/>
                 )}
-            </div>
 
             <Navbar isTab={isTab} setTab={setTab} />
         </div>)
