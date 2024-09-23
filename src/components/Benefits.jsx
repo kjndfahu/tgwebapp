@@ -8,7 +8,7 @@ function Benefits({setActiveToques, setActivePasivos, setActive}) {
     return (
         <div className="flex flex-col gap-5 rounded-[10px]">
             <div
-                className="flex flex-row items-center px-5 py-2 justify-between font-sfprosemibold text-[30px] text-[#212121]">
+                className="flex flex-row items-center px-5 py-2 justify-between font-sfprosemibold text-[25px] text-[#212121]">
                 <h2 onClick={() => setTab('benefits')}>Beneficios</h2>
                 <h2 onClick={() => setTab('aumentacion')}>Aumentacion</h2>
             </div>
