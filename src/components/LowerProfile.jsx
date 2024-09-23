@@ -25,6 +25,7 @@ function LowerProfile() {
                     </div>
                 </div>
             </div>
+            <div className="w-[90vw] h-[200px]"></div>
         </div>
     )
 }
