@@ -2,12 +2,12 @@ import {Link} from "react-router-dom";
 
 function Header() {
     return(
-        <div className="flex items-center px-5 py-2 bg-[#212121] rounded-[10px] justify-between mt-10 w-[90vw]">
-            <div className="flex flex-row items-center gap-5">
+        <div className="flex items-center px-3 py-2 bg-[#212121] rounded-[10px] justify-between mt-3 w-[90vw]">
+            <div className="flex flex-row items-center gap-2">
                 <div className="rounded-[15px] bg-[#282828] p-2">
                     <svg
                         width={160}
-                        className="w-[40px] h-[40px]"
+                        className="w-[25px] h-[25px]"
                         height={160}
                         viewBox="0 0 160 160"
                         fill="none"
@@ -34,13 +34,13 @@ function Header() {
                     </svg>
                 </div>
                 <div className="text-left">
-                    <h2 className="font-sfpromedium text-white">57 Dias</h2>
-                    <p className="font-sfpromedium text-[#2890FF]">Antes de que<br/> comience el listing</p>
+                    <h2 className="font-sfpromedium text-[16px] text-white">57 Dias</h2>
+                    <p className="font-sfpromedium text-[12px] leading-[14px] text-[#2890FF]">Antes de que<br/> comience el listing</p>
                 </div>
             </div>
             <Link to="/listing">
                 <div
-                     className="bg-[#2890FF] rounded-[15px] text-[15px] leading-[12px] text-white font-sfpromedium px-4 py-2">Saber
+                     className="bg-[#2890FF] rounded-[15px] text-[13px] leading-[12px] text-white font-sfpromedium px-4 py-2">Saber
                     mas
                 </div>
             </Link>

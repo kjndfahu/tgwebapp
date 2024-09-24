@@ -1,8 +1,8 @@
-export const Light = () => {
+export const Light = ({className}) => {
     return (
         <svg
             width={160}
-            className="w-[30px] h-[30px]"
+            className={className}
             height={160}
             viewBox="0 0 160 160"
             fill="none"
@@ -29,11 +29,11 @@ export const Light = () => {
         </svg>
     )
 }
-export const Rocket = () => {
+export const Rocket = ({className}) => {
     return (
         <svg
             width={160}
-            className="w-[20px]"
+            className={className}
             height={160}
             viewBox="0 0 160 160"
             fill="none"
