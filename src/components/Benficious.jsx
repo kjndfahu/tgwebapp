@@ -16,7 +16,7 @@ function Beneficious({isActive, setActive}){
     return(
         <div className="flex flex-col mb-24">
             <MoneyCount/>
-            <div className="flex flex-col gap-3 ">
+            <div className="flex flex-col gap-2 ">
                 <Energia setActiveDuplicate={setActiveDuplicate}/>
                 <RefsBlock/>
                 <Benefits setActive={setActive} setActiveToques={setActiveToques} setActivePasivos={setActivePasivos}/>
@@ -25,7 +25,6 @@ function Beneficious({isActive, setActive}){
                 {isActiveToques && <ModalToques isActiveToques={isActiveToques} setActiveToques={setActiveToques}/>}
                 {isActive && <ModalEnergiaExtra setActive={setActive}/>}
                 {isActiveDuplicate && <DuplicateEnergy setActiveDuplicate={setActiveDuplicate}/>}
-                <div className="w-[90vw] h-[100px]"></div>
             </div>
         </div>
     )

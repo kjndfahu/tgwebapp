@@ -60,11 +60,11 @@ export const Rocket = () => {
         </svg>
     )
 }
-export const Shout = () => {
+export const Shout = ({className}) => {
     return (
         <svg
             width={160}
-            className="w-[45px] h-[45px]"
+            className={className}
             height={160}
             viewBox="0 0 160 160"
             fill="none"
@@ -93,12 +93,12 @@ export const Shout = () => {
 
     )
 }
-export const Clock = () => {
+export const Clock = ({className}) => {
     return (
         <svg
             width={160}
             height={160}
-            className="w-[45px] h-[45px]"
+            className={className}
             viewBox="0 0 160 160"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -124,12 +124,12 @@ export const Clock = () => {
         </svg>
     )
 }
-export const Finger = () => {
+export const Finger = ({className}) => {
     return (
         <svg
             width={160}
             height={160}
-            className="w-[45px] h-[45px]"
+            className={className}
             viewBox="0 0 160 160"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -155,12 +155,12 @@ export const Finger = () => {
         </svg>
     )
 }
-export const Explosion = () => {
+export const Explosion = ({className}) => {
     return (
         <svg
             width={160}
             height={160}
-            className="w-[45px] h-[45px]"
+            className={className}
             viewBox="0 0 160 160"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
