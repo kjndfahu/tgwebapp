@@ -4,7 +4,7 @@ import {useState} from "react";
 
 function ProgressBar({isActive, setActive}) {
     return (
-        <div className="mt-[20px]">
+        <div className="mt-[50px]">
             <div className="flex flex-row items-center justify-between text-white font-sfpromedium w-[90vw] h-[30px]">
                 <div className="flex flex-row items-center text-[13px] gap-1">
                     <Light className={"w-[20px] h-[20px]"}/>
