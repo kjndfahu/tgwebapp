@@ -187,11 +187,11 @@ export const Explosion = ({className}) => {
 
     )
 }
-export const BigRocket = () => {
+export const BigRocket = ({className}) => {
     return (
         <svg
             width={160}
-            className="w-[100px]"
+            className={className}
             height={160}
             viewBox="0 0 160 160"
             fill="none"

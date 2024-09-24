@@ -59,10 +59,10 @@ function Benefits({setActiveToques, setActivePasivos, setActive}) {
                     </div>
                 </div>
             ) : (
-                <div className="flex flex-col items-center justify-center">
-                    <BigRocket/>
-                    <h2 className="text-white font-sfprosemibold text-[36px]">Not yet</h2>
-                    <p className="text-[#b0b0b0] font-sfpromedium text-[20px]">Boosts coming soon</p>
+                <div className="flex flex-col items-center justify-center mt-5 gap-3">
+                    <BigRocket className={"w-[80px] h-[80px]"}/>
+                    <h2 className="text-white font-sfprosemibold text-[24px]">Not yet</h2>
+                    <p className="text-[#b0b0b0] font-sfpromedium text-[18px]">Boosts coming soon</p>
                 </div>
             )}
         </div>
