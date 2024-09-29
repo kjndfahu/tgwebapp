@@ -11,7 +11,7 @@ function App() {
     const [isActive, setActive] = useState(false);
     const [isActiveListing, setActiveListing] = useState(false);
     return (
-        <div className="flex flex-col items-center text-center gap-4">
+        <div className="flex flex-col items-center text-center gap-4 h-[100vh]">
                 {isTab === 'inicio' && (
                     <Home isActive={isActive} setActive={setActive} isActiveListing={isActiveListing} setActiveListing={setActiveListing}/>
                 )}
