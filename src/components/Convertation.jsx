@@ -1,14 +1,50 @@
 import coin from "../assets/coin.png";
 import {ArrowLeftRight, ArrowUp} from "lucide-react";
 import {Coin} from "./Coin";
+import {useEffect, useState} from "react";
+import axios from "axios";
 
 function Convertation() {
+    const [money, setMoney] = useState(0)
+    const [telegramId, setTelegramId] = useState(null); // ID пользователя Telegram
+    const tg = window.Telegram.WebApp;
+    const userData = tg.initDataUnsafe?.user?.id
+
+
+    // Получение данных о топ-игроках и позиции пользователя
+    const fetchTopPlayers = async () => {
+        if (!userData) {
+            alert('telegram_id отсутствует');
+            return;
+        }
+
+        try {
+            const response = await axios.post('https://khabyminero.com/get_info', {
+                telegram_id: userData
+            });
+
+            const result = response.data;
+            setMoney(result.info.balance)
+        } catch (error) {
+            alert(error);
+        }
+    };
+
+    useEffect(() => {
+        if (userData) {
+            setTelegramId(userData);
+            fetchTopPlayers();
+        } else {
+            alert('Не удалось получить данные пользователя из Telegram');
+        }
+    }, []);
+
     return (
         <div className="flex flex-col mt-10 items-center">
             <div className="flex flex-col items-center gap-2">
                 <h2 className="font-sfprosemibold text-[19px] text-white">Saldos de monedas</h2>
                 <div className="flex flex-row items-center gap-2">
-                    <h1 className="font-sfprosemibold text-[32px] leading-[35px] text-white">1,000</h1>
+                    <h1 className="font-sfprosemibold text-[32px] leading-[35px] text-white">{money}</h1>
                     {/*<img className="w-[45px] h-[45px]" src={coin} alt="coin"/>*/}
                     <Coin className={"w-[30px] h-[30px]"}/>
                 </div>
