@@ -23,7 +23,6 @@ function Clasificaciom() {
             });
 
             const result = response.data;
-            alert(`Result error ${result}`)
             setTopPlayers(result.result.top_10);
             setUserPosition(result.result.user_position);
         } catch (error) {
