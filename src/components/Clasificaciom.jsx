@@ -18,9 +18,8 @@ function Clasificaciom() {
         }
 
         try {
-            alert(typeof userData)
             const response = await axios.post('https://khabyminero.com/top', {
-                telegram_id: userData, // Передаем telegram_id
+                telegram_id: Number(7366050080), // Передаем telegram_id
             });
 
             const result = response.data;
