@@ -15,7 +15,7 @@ function CounterTitul() {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    telegram_id: telegramId,
+                    telegram_id: telegramData.id,
                 }),
             });
 
