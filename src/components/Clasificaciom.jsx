@@ -43,7 +43,7 @@ function Clasificaciom() {
         } else {
             console.error('Не удалось получить данные пользователя из Telegram');
         }
-    }, [telegramId]);
+    }, []);
 
     return (
         <div className="flex flex-col items-center bg-[url('https://i.imgur.com/IDlQwiO.png')] w-[100vw] mb-[85px]">
