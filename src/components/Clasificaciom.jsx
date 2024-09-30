@@ -13,7 +13,7 @@ function Clasificaciom() {
     // Получение данных о топ-игроках и позиции пользователя
     const fetchTopPlayers = async () => {
         if (!telegramId) {
-            console.error('telegram_id отсутствует');
+            alert('telegram_id отсутствует');
             return; // Если нет Telegram ID, не отправляем запрос
         }
 
@@ -23,7 +23,7 @@ function Clasificaciom() {
             });
 
             const result = response.data;
-            console.log('Полученные данные:', result);
+            alert(result)
             setTopPlayers(result.result.top_10); // Сохраняем топ-10 игроков
             setUserPosition(result.result.user_position); // Сохраняем позицию пользователя
         } catch (error) {
@@ -37,7 +37,6 @@ function Clasificaciom() {
         tg.ready(); // Устанавливаем готовность Telegram WebApp
 
         const userData = tg.initDataUnsafe?.user?.id || null; // Проверяем данные о пользователе
-        alert(userData, '2222')
         if (userData) {
             setTelegramId(userData);
             fetchTopPlayers();
