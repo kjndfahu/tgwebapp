@@ -23,7 +23,7 @@ function Clasificaciom() {
             });
 
             const result = response.data;
-            alert(result)
+            alert(`Result error ${result}`)
             setTopPlayers(result.result.top_10); // Сохраняем топ-10 игроков
             setUserPosition(result.result.user_position); // Сохраняем позицию пользователя
         } catch (error) {
@@ -40,7 +40,7 @@ function Clasificaciom() {
             alert('Не удалось получить данные пользователя из Telegram');
         }
     }, []);
-    alert(userPosition)
+    alert(`UserPosition error ${userPosition}`)
 
     return (
         <div className="flex flex-col items-center bg-[url('https://i.imgur.com/IDlQwiO.png')] w-[100vw] mb-[85px]">
