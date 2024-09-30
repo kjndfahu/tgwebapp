@@ -3,6 +3,7 @@ import {ChevronRight} from "lucide-react";
 import coin from "../assets/coin1.svg";
 import {Coin} from "./Coin";
 import {useEffect, useState} from "react";
+import axios from "axios";
 
 function Clasificaciom() {
     const [topPlayers, setTopPlayers] = useState([]); // Данные топ-10 игроков
@@ -17,26 +18,16 @@ function Clasificaciom() {
         }
 
         try {
-            const response = await fetch('https://khabyminero.com/top', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    telegram_id: telegramId, // Передаем telegram_id
-                }),
+            const response = await axios.post('https://khabyminero.com/top', {
+                telegram_id: telegramId, // Передаем telegram_id
             });
 
-            if (response.ok) {
-                const result = await response.json();
-                console.log('Полученные данные:', result);
-                setTopPlayers(result.result.top_10); // Сохраняем топ-10 игроков
-                setUserPosition(result.result.user_position); // Сохраняем позицию пользователя
-            } else {
-                console.error('Ошибка при получении данных с бэкенда:', response.status);
-            }
+            const result = response.data;
+            console.log('Полученные данные:', result);
+            setTopPlayers(result.result.top_10); // Сохраняем топ-10 игроков
+            setUserPosition(result.result.user_position); // Сохраняем позицию пользователя
         } catch (error) {
-            console.error('Ошибка:', error);
+            console.error('Ошибка при получении данных с бэкенда:', error);
         }
     };
 
