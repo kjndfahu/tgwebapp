@@ -34,7 +34,7 @@ function Header() {
                     </svg>
                 </div>
                 <div className="text-left">
-                    <h2 className="font-sfpromedium text-[16px] text-white">57 Dias</h2>
+                    <h2 className="font-sfpromedium text-[16px] text-white">571 Dias</h2>
                     <p className="font-sfpromedium text-[12px] leading-[14px] text-[#2890FF]">Antes de que<br/> comience el listing</p>
                 </div>
             </div>
