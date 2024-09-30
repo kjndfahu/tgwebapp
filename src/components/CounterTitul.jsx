@@ -22,8 +22,8 @@ function CounterTitul() {
 
             if (response.ok) {
                 const result = await response.json();
-                if (result && result.click_count) {
-                    setClickCount(result.click_count); // Установить текущее значение кликов из БД
+                if (result && result.balance) {
+                    setClickCount(result.balance); // Установить текущее значение кликов из БД
                 }
             } else {
                 console.error('Ошибка при получении данных с бэкенда');

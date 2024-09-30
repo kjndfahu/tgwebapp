@@ -3,6 +3,7 @@ import {ChevronRight} from "lucide-react";
 import {useState} from "react";
 
 function ProgressBar({isActive, setActive}) {
+    const [energy, setEnergy] = useState(0);
     return (
         <div >
             <div className="flex flex-row items-center justify-between text-white font-sfpromedium w-[90vw] h-[30px]">
