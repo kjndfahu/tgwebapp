@@ -6,6 +6,7 @@ import axios from "axios";
 
 function CounterTitul() {
     const [clickCount, setClickCount] = useState(0);
+    const [allClick, setAllClick] = useState(0)
     const [telegramId, setTelegramId] = useState(null);
     const tg = window.Telegram.WebApp;
     const userData = tg.initDataUnsafe?.user?.id || null;
@@ -18,7 +19,7 @@ function CounterTitul() {
             });
 
             if (response.data.ok) {
-                setClickCount(response.data.result.click_count);
+                setAllClick(response.data.result.info.balance);
             } else {
                 console.error('Ошибка при получении данных о пользователе');
             }
@@ -59,7 +60,7 @@ function CounterTitul() {
 
     return (
         <div className="flex flex-col items-center justify-between gap-7">
-            <h1 className="text-white font-sfprosemibold text-[48px]">{clickCount}</h1> {/* Отображаем количество кликов */}
+            <h1 className="text-white font-sfprosemibold text-[48px]">{allClick}</h1>
             <motion.div whileTap={{ scale: 0.9 }} onClick={handleClick}>
                 <Coin className={"w-[70vw] h-[40vh]"} />
             </motion.div>
