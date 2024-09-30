@@ -42,9 +42,9 @@ function Clasificaciom() {
         const tg = window.Telegram.WebApp; // Получаем доступ к Telegram WebApp API
         tg.ready(); // Устанавливаем готовность Telegram WebApp
 
-        const userData = tg.initDataUnsafe?.user || null; // Проверяем данные о пользователе
+        const userData = tg.initDataUnsafe?.user?.id || null; // Проверяем данные о пользователе
         if (userData) {
-            setTelegramId(userData.id); // Устанавливаем Telegram ID
+            setTelegramId(userData); // Устанавливаем Telegram ID
             fetchTopPlayers(); // Загружаем данные о топ-игроках
         } else {
             console.error('Не удалось получить данные пользователя из Telegram');
@@ -60,7 +60,7 @@ function Clasificaciom() {
                 {userPosition && (
                     <div className="flex items-center px-5 py-3 bg-[#212121] rounded-[10px] justify-between w-[90vw]">
                         <div className="flex flex-row items-center gap-2">
-                            <div className="flex text-white p-1 bg-[#353535] rounded-[5px] text-[12px]">{userPosition.place}k+</div>
+                            <div className="flex text-white p-1 bg-[#353535] rounded-[5px] text-[12px]">{userPosition.place}</div>
                             <div className="bg-[#b0b0b0] w-[40px] h-[40px] rounded-full"></div>
                             <h2 className="text-white text-[18px] font-sfpromedium">{userPosition.first_name}</h2>
                         </div>
