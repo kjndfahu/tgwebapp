@@ -1,6 +1,3 @@
-import {Clock} from "./Icons";
-import {ChevronRight} from "lucide-react";
-import coin from "../assets/coin1.svg";
 import {Coin} from "./Coin";
 import {useEffect, useState} from "react";
 import axios from "axios";
@@ -39,6 +36,7 @@ function Clasificaciom() {
         const userData = tg.initDataUnsafe?.user?.id || null; // Проверяем данные о пользователе
         if (userData) {
             setTelegramId(userData);
+            alert(telegramId, '2223')
             fetchTopPlayers();
         } else {
             console.error('Не удалось получить данные пользователя из Telegram');
