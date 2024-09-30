@@ -14,7 +14,7 @@ function Clasificaciom() {
     const fetchTopPlayers = async () => {
         if (!userData) {
             alert('telegram_id отсутствует');
-            return; // Если нет Telegram ID, не отправляем запрос
+            return;
         }
 
         try {
@@ -24,14 +24,13 @@ function Clasificaciom() {
 
             const result = response.data;
             alert(`Result error ${result}`)
-            setTopPlayers(result.result.top_10); // Сохраняем топ-10 игроков
-            setUserPosition(result.result.user_position); // Сохраняем позицию пользователя
+            setTopPlayers(result.result.top_10);
+            setUserPosition(result.result.user_position);
         } catch (error) {
-            alert('Ошибка при получении данных с бэкенда:', error);
+            alert(error);
         }
     };
 
-    // Получаем telegram_id пользователя при монтировании компонента
     useEffect(() => {
         if (userData) {
             setTelegramId(userData);
@@ -46,7 +45,6 @@ function Clasificaciom() {
             <div className="flex flex-col mt-6 gap-3">
                 <h2 className="font-sfprosemibold text-left text-white text-[27px]">Clasificaciom</h2>
 
-                {/* Отображаем позицию пользователя */}
                 {userPosition ? (
                     <div className="flex items-center px-5 py-3 bg-[#212121] rounded-[10px] justify-between w-[90vw]">
                         <div className="flex flex-row items-center gap-2">
@@ -67,7 +65,7 @@ function Clasificaciom() {
             <div className="flex flex-col mt-7 mb-[50px] gap-3">
                 <h2 className="font-sfprosemibold text-left text-white text-[27px]">Jugadores top</h2>
 
-                {/* Отображаем топ-10 игроков */}
+
                 {topPlayers.length > 0 ? (
                     topPlayers.map((item) => (
                         <div key={item.place} className="flex items-center px-5 py-3 bg-[#212121] rounded-[10px] justify-between w-[90vw]">
