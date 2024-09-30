@@ -37,14 +37,14 @@ function Clasificaciom() {
         tg.ready(); // Устанавливаем готовность Telegram WebApp
 
         const userData = tg.initDataUnsafe?.user?.id || null; // Проверяем данные о пользователе
+        alert(userData, '2222')
         if (userData) {
-            console.log('Telegram ID пользователя:', userData); // Логируем telegram_id
-            setTelegramId(userData); // Устанавливаем Telegram ID
-            fetchTopPlayers(); // Загружаем данные о топ-игроках
+            setTelegramId(userData);
+            fetchTopPlayers();
         } else {
             console.error('Не удалось получить данные пользователя из Telegram');
         }
-    }, [telegramId]); // Добавляем telegramId как зависимость для обновления
+    }, [telegramId]);
 
     return (
         <div className="flex flex-col items-center bg-[url('https://i.imgur.com/IDlQwiO.png')] w-[100vw] mb-[85px]">
