@@ -3,6 +3,8 @@ import {Explosion, Light} from "./Icons";
 import {motion} from 'framer-motion'
 
 function DuplicateEnergy({setActiveDuplicate}) {
+
+
     return (
         <motion.div
             initial={{y:"100%"}}
