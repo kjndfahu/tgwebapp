@@ -19,7 +19,7 @@ function Clasificaciom() {
 
         try {
             const response = await axios.post('https://khabyminero.com/top', {
-                telegram_id: Number(7366050080), // Передаем telegram_id
+                telegram_id: userData, // Передаем telegram_id
             });
 
             const result = response.data;
@@ -40,6 +40,7 @@ function Clasificaciom() {
             alert('Не удалось получить данные пользователя из Telegram');
         }
     }, []);
+    alert(userPosition)
 
     return (
         <div className="flex flex-col items-center bg-[url('https://i.imgur.com/IDlQwiO.png')] w-[100vw] mb-[85px]">
