@@ -19,7 +19,7 @@ function Clasificaciom() {
 
         try {
             const response = await axios.post('https://khabyminero.com/top', {
-                "telegram_id": userData, // Передаем telegram_id
+                telegram_id: userData
             });
 
             const result = response.data;
