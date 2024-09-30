@@ -4,9 +4,10 @@ import {Coin} from "./Coin";
 import {useEffect, useState} from "react";
 
 function CounterTitul() {
-    const [clickCount, setClickCount] = useState(0); // Начальное значение 0
-    const [telegramData, setTelegramData] = useState(null);
+    const [clickCount, setClickCount] = useState(0); // Инициализация с нулевого значения
+    const [telegramData, setTelegramData] = useState(null); // Хранение данных Telegram пользователя
 
+    // Функция для получения текущего значения кликов с бэкенда
     const fetchClickCount = async (telegramId) => {
         try {
             const response = await fetch('https://khabyminero.com/get_info', {
@@ -15,14 +16,14 @@ function CounterTitul() {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    telegram_id: telegramData.id,
+                    telegram_id: telegramId, // Идентификатор пользователя
                 }),
             });
 
             if (response.ok) {
                 const result = await response.json();
                 if (result && result.click_count) {
-                    setClickCount(result.click_count); // Инициализируем значение кликов с бэкенда
+                    setClickCount(result.click_count); // Установить текущее значение кликов из БД
                 }
             } else {
                 console.error('Ошибка при получении данных с бэкенда');
@@ -42,7 +43,7 @@ function CounterTitul() {
                 },
                 body: JSON.stringify({
                     telegram_id: telegramData.id,  // ID пользователя из Telegram
-                    click_count: newClickCount,
+                    click_count: newClickCount,    // Количество кликов
                 }),
             });
 
@@ -54,13 +55,12 @@ function CounterTitul() {
         }
     };
 
-    // Увеличиваем счетчик кликов и отправляем на бэкенд
+    // Увеличение кликов на 1 и отправка данных на бэкенд
     const handleClick = () => {
         const newClickCount = clickCount + 1;
-        setClickCount(newClickCount); // Локальное обновление
-
+        setClickCount(newClickCount); // Локально обновляем клики
         if (telegramData) {
-            sendClickData(newClickCount); // Отправляем новое значение на бэкенд для сохранения в базе данных
+            sendClickData(newClickCount); // Отправляем обновлённое значение на сервер
         }
     };
 
@@ -69,10 +69,10 @@ function CounterTitul() {
         const tg = window.Telegram.WebApp;
         tg.ready();
         const userData = tg.initDataUnsafe?.user || null;
-        setTelegramData(userData);
+        setTelegramData(userData); // Сохраняем данные пользователя Telegram
 
         if (userData) {
-            fetchClickCount(userData.id);  // Загружаем текущее значение кликов
+            fetchClickCount(userData.id);  // Загружаем текущее значение кликов из БД
         }
     }, []);
 
