@@ -20,11 +20,11 @@ function Clasificaciom() {
             });
 
             const result = response.data;
-            alert(result)
+            alert(result, 'result')
             setTopPlayers(result.result.top_10); // Сохраняем топ-10 игроков
             setUserPosition(result.result.user_position); // Сохраняем позицию пользователя
         } catch (error) {
-            console.error('Ошибка при получении данных с бэкенда:', error);
+            alert('Ошибка при получении данных с бэкенда:', error);
         }
     };
 
@@ -36,10 +36,9 @@ function Clasificaciom() {
         const userData = tg.initDataUnsafe?.user?.id || null; // Проверяем данные о пользователе
         if (userData) {
             setTelegramId(userData);
-            alert(telegramId, '2223')
             fetchTopPlayers();
         } else {
-            console.error('Не удалось получить данные пользователя из Telegram');
+            alert('Не удалось получить данные пользователя из Telegram');
         }
     }, []);
 
