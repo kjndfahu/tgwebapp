@@ -19,7 +19,7 @@ function LowerProfile() {
         }
 
         try {
-            const response = await axios.post('https://khabyminero.com/top', {
+            const response = await axios.post('https://khabyminero.com/get_info', {
                 telegram_id: userData
             });
 
