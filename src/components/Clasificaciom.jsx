@@ -6,6 +6,8 @@ function Clasificaciom() {
     const [topPlayers, setTopPlayers] = useState([]); // Данные топ-10 игроков
     const [userPosition, setUserPosition] = useState(null); // Позиция пользователя
     const [telegramId, setTelegramId] = useState(null); // ID пользователя Telegram
+    const tg = window.Telegram.WebApp;
+    const userData = tg.initDataUnsafe?.user?.id
 
 
     // Получение данных о топ-игроках и позиции пользователя
@@ -17,7 +19,7 @@ function Clasificaciom() {
 
         try {
             const response = await axios.post('https://khabyminero.com/top', {
-                telegram_id: telegramId, // Передаем telegram_id
+                telegram_id: userData, // Передаем telegram_id
             });
 
             const result = response.data;
@@ -31,9 +33,6 @@ function Clasificaciom() {
 
     // Получаем telegram_id пользователя при монтировании компонента
     useEffect(() => {
-        // Устанавливаем готовность Telegram WebApp
-        const tg = window.Telegram.WebApp;
-        const userData = tg.initDataUnsafe?.user?.id  // Проверяем данные о пользователе
         if (userData) {
             setTelegramId(userData);
             fetchTopPlayers();
