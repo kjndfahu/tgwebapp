@@ -10,6 +10,9 @@ function App() {
     const [isTab, setTab] = useState('inicio');
     const [isActive, setActive] = useState(false);
     const [isActiveListing, setActiveListing] = useState(false);
+    const tg = window.Telegram.WebApp; // Получаем доступ к Telegram WebApp API
+    tg.ready();
+
     return (
         <div className="flex flex-col items-center text-center gap-4 h-[100vh]">
                 {isTab === 'inicio' && (

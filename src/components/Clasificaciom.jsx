@@ -7,6 +7,7 @@ function Clasificaciom() {
     const [userPosition, setUserPosition] = useState(null); // Позиция пользователя
     const [telegramId, setTelegramId] = useState(null); // ID пользователя Telegram
 
+
     // Получение данных о топ-игроках и позиции пользователя
     const fetchTopPlayers = async () => {
         if (!telegramId) {
@@ -30,10 +31,9 @@ function Clasificaciom() {
 
     // Получаем telegram_id пользователя при монтировании компонента
     useEffect(() => {
-        const tg = window.Telegram.WebApp; // Получаем доступ к Telegram WebApp API
-        tg.ready(); // Устанавливаем готовность Telegram WebApp
-
-        const userData = tg.initDataUnsafe?.user?.id || null; // Проверяем данные о пользователе
+        // Устанавливаем готовность Telegram WebApp
+        const tg = window.Telegram.WebApp;
+        const userData = tg.initDataUnsafe?.user?.id  // Проверяем данные о пользователе
         if (userData) {
             setTelegramId(userData);
             fetchTopPlayers();
