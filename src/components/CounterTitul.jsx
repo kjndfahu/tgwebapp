@@ -19,6 +19,7 @@ function CounterTitul() {
 
             if (response.data.ok) {
                 setAllClick(response.data.result.info.balance);
+                alert(response.data.result.info.balance)
             } else {
                 console.error('Ошибка при получении данных о пользователе');
             }
