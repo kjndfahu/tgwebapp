@@ -8,7 +8,7 @@ function ProgressBar({isActive, setActive}) {
     const [energyMax, setEnergyMax] = useState(0);
     const [telegramId, setTelegramId] = useState(null); // ID пользователя Telegram
     const tg = window.Telegram.WebApp;
-    const userData = tg.initDataUnsafe?.user?.id;
+    const userData = 7366050080
 
     const fetchTopPlayers = async () => {
         if (!userData) {

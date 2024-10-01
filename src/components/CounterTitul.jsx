@@ -8,7 +8,7 @@ function CounterTitul() {
     const [allClick, setAllClick] = useState(0)
     const [telegramId, setTelegramId] = useState(null);
     const tg = window.Telegram.WebApp;
-    const userData = tg.initDataUnsafe?.user?.id || null;
+    const userData = 7366050080
 
 
     const fetchUserInfo = async () => {
@@ -30,15 +30,15 @@ function CounterTitul() {
 
     const handleClick = async () => {
         try {
-            const updatedClickCount = allClick + 1;
+            setAllClick((prev) => prev += 1)
 
             const response = await axios.post('https://khabyminero.com/clicker', {
                 telegram_id: telegramId,
-                click_count: updatedClickCount,
+                click_count: allClick,
             });
 
             if (response.data.ok) {
-                setAllClick(updatedClickCount);
+                setAllClick(allClick);
             } else {
                 console.error('Ошибка при обновлении количества кликов');
             }
@@ -55,7 +55,7 @@ function CounterTitul() {
         } else {
             console.error('Не удалось получить данные пользователя из Telegram');
         }
-    }, [telegramId]);
+    }, [allClick]);
 
     return (
         <div className="flex flex-col items-center justify-between gap-7">
