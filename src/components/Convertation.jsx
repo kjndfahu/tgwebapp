@@ -35,7 +35,7 @@ function Convertation() {
             setTelegramId(userData);
             fetchTopPlayers();
         } else {
-            alert('Не удалось получить данные пользователя из Telegram');
+            console.log('Не удалось получить данные пользователя из Telegram');
         }
     }, []);
 

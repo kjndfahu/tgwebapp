@@ -2,7 +2,7 @@ import {ChevronRight, Link2, X} from "lucide-react";
 import {Explosion, Light} from "./Icons";
 import {motion} from 'framer-motion'
 
-function DuplicateEnergy({setActiveDuplicate}) {
+function DuplicateEnergy({setActiveDuplicate, setActiveModals}) {
 
 
     return (
@@ -14,7 +14,7 @@ function DuplicateEnergy({setActiveDuplicate}) {
             <div className="flex flex-row justify-between">
                 <div className="w-[10px]"></div>
                 <div className="flex flex-row bg-[#383838] p-1 rounded-full">
-                    <X onClick={() => setActiveDuplicate(false)} width={18} height={18} color="#b0b0b0"/>
+                    <X onClick={() => {setActiveDuplicate(false);setActiveModals(false)}} width={18} height={18} color="#b0b0b0"/>
                 </div>
             </div>
             <div className="flex flex-col items-center justify-center">

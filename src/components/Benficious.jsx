@@ -8,7 +8,7 @@ import ModalToques from "./ModalToques";
 import ModalEnergiaExtra from "./ModalEnergiaExtra";
 import DuplicateEnergy from "./DuplicateEnergy";
 
-function Beneficious({isActive, setActive, setActiveDuplicate, isActiveToques, isActiveDuplicate, setActiveToques, }){
+function Beneficious({isActive, setActive, setActiveModals, setActiveDuplicate, isActiveToques, isActiveDuplicate, setActiveToques, }){
 
     return(
         <div className="flex flex-col mb-24">
@@ -16,10 +16,10 @@ function Beneficious({isActive, setActive, setActiveDuplicate, isActiveToques, i
             <div className="flex flex-col gap-2 ">
                 <Energia setActiveDuplicate={setActiveDuplicate}/>
                 <RefsBlock/>
-                <Benefits setActive={setActive} setActiveToques={setActiveToques}/>
-                {isActiveToques && <ModalToques isActiveToques={isActiveToques} setActiveToques={setActiveToques}/>}
-                {isActive && <ModalEnergiaExtra setActive={setActive}/>}
-                {isActiveDuplicate && <DuplicateEnergy setActiveDuplicate={setActiveDuplicate}/>}
+                <Benefits setActive={setActive} setActiveToques={setActiveToques} setActiveModals={setActiveModals}/>
+                {isActiveToques && <ModalToques isActiveToques={isActiveToques} setActiveToques={setActiveToques} setActiveModals={setActiveModals}/>}
+                {isActive && <ModalEnergiaExtra setActive={setActive} setActiveModals={setActiveModals}/>}
+                {isActiveDuplicate && <DuplicateEnergy setActiveDuplicate={setActiveDuplicate} setActiveModals={setActiveModals}/>}
             </div>
         </div>
     )

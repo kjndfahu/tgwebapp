@@ -3,7 +3,7 @@ import {Clock, Finger} from "./Icons";
 import coin from "../assets/coin1.svg";
 import {motion} from 'framer-motion'
 
-function ModalToques({isActiveToques, setActiveToques}) {
+function ModalToques({isActiveToques, setActiveToques, setActiveModals}) {
     return (
         <motion.div
             initial={{y:"100%"}}
@@ -13,7 +13,7 @@ function ModalToques({isActiveToques, setActiveToques}) {
             <div className="flex flex-row justify-between">
                 <div className="w-[10px]"></div>
                 <div className="flex flex-row bg-[#383838] p-1 rounded-full">
-                    <X onClick={() => setActiveToques(false)} width={18} height={18} color="#b0b0b0"/>
+                    <X onClick={() => {setActiveToques(false); setActiveModals(false);}} width={18} height={18} color="#b0b0b0"/>
                 </div>
             </div>
             <div className="flex flex-col items-center justify-center gap-3">

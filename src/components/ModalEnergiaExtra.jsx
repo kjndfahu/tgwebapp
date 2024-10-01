@@ -2,7 +2,7 @@ import {ChevronRight, Link2, X} from "lucide-react";
 import {Explosion, Light} from "./Icons";
 import {motion} from 'framer-motion'
 
-function ModalEnergiaExtra({isActive, setActive}) {
+function ModalEnergiaExtra({isActive, setActive, setActiveModals}) {
     return (
         <motion.div
             initial={{y:"100%"}}
@@ -12,7 +12,7 @@ function ModalEnergiaExtra({isActive, setActive}) {
             <div className="flex flex-row justify-between">
                 <div className="w-[10px]"></div>
                 <div className="flex flex-row bg-[#383838] p-1 rounded-full">
-                    <X onClick={() => setActive(false)} width={18} height={18} color="#b0b0b0"/>
+                    <X onClick={() => {setActive(false);setActiveModals(false)}} width={18} height={18} color="#b0b0b0"/>
                 </div>
             </div>
             <div className="flex flex-col items-center justify-center gap-5">

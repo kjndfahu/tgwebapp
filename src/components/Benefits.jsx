@@ -3,7 +3,7 @@ import {BigRocket, Clock, Explosion, Finger, Shout} from "./Icons";
 import {ChevronRight} from "lucide-react";
 import axios from "axios";
 
-function Benefits({setActiveToques, setActivePasivos, setActive}) {
+function Benefits({setActiveToques, setActiveModals, setActive}) {
     const [isTab, setTab] = useState('benefits');
     const[refs, setRefs] = useState(0)
     const [telegramId, setTelegramId] = useState(null);
@@ -35,11 +35,11 @@ function Benefits({setActiveToques, setActivePasivos, setActive}) {
             setTelegramId(userData);
             fetchTopPlayers();
         } else {
-            alert('Не удалось получить данные пользователя из Telegram');
+            console.log('Не удалось получить данные пользователя из Telegram');
         }
     }, []);
 
-    console.log(isTab)
+
     return (
         <div className="flex flex-col gap-1 rounded-[10px]">
             <div
@@ -64,7 +64,7 @@ function Benefits({setActiveToques, setActivePasivos, setActive}) {
                         <h2 className="text-[#b0b0b0]">Inactivo</h2>
                     </div>
 
-                    <div onClick={() => setActiveToques(true)}
+                    <div onClick={() => { setActiveToques(true); setActiveModals(true); }}
                          className="flex items-center px-5 py-2 bg-[#212121] rounded-[10px] justify-between w-[90vw]">
                         <div className="flex flex-row items-center gap-5">
                             <div className="rounded-[15px] bg-[#282828] p-2">
@@ -78,7 +78,7 @@ function Benefits({setActiveToques, setActivePasivos, setActive}) {
                         <ChevronRight color="#b0b0b0"/>
                     </div>
 
-                    <div onClick={() => setActive(true)}
+                    <div onClick={() => { setActive(true); setActiveModals(true); }}
                          className="flex items-center px-5 py-2 bg-[#212121] rounded-[10px] justify-between w-[90vw]">
                         <div className="flex flex-row items-center gap-5">
                             <div className="rounded-[15px] bg-[#282828] p-2">
