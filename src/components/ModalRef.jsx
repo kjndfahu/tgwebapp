@@ -11,6 +11,7 @@ function ModalRef() {
         tg.BackButton.show()
         tg.BackButton.onClick(() => {navigate('/'); tg.BackButton.hide()})
     },[])
+
     return (
         <div className="flex flex-col bg-black h-[100vh]">
             <div className="px-5 mt-7 text-left">

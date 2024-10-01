@@ -5,7 +5,6 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 
 function CounterTitul() {
-    const [clickCount, setClickCount] = useState(0);
     const [allClick, setAllClick] = useState(0)
     const [telegramId, setTelegramId] = useState(null);
     const tg = window.Telegram.WebApp;
@@ -31,7 +30,7 @@ function CounterTitul() {
 
     const handleClick = async () => {
         try {
-            const updatedClickCount = clickCount + 1;
+            const updatedClickCount = allClick + 1;
 
             const response = await axios.post('https://khabyminero.com/clicker', {
                 telegram_id: telegramId,
@@ -39,7 +38,7 @@ function CounterTitul() {
             });
 
             if (response.data.ok) {
-                setClickCount(updatedClickCount);
+                setAllClick(updatedClickCount);
             } else {
                 console.error('Ошибка при обновлении количества кликов');
             }
