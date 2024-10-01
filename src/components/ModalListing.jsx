@@ -1,7 +1,15 @@
 import coin from '../assets/listingcoin.png'
 import {ListingCoin} from "./ListringCoin";
+import {useNavigate} from "react-router-dom";
+import {useEffect} from "react";
 
 function ModalListing({isActiveListing, setActiveListing}) {
+    const tg = window.Telegram.WebApp;
+    const navigate = useNavigate()
+    useEffect(() => {
+        tg.BackButton.show()
+        tg.BackButton.onClick(() => {navigate('/'); tg.BackButton.hide()})
+    },[])
     return (
         <div className="flex absolute items-center flex-col bg-[#7c43ae] w-[100vw] h-[100vh]">
             <div
