@@ -9,7 +9,7 @@ function ModalToques({isActiveToques, setActiveToques}) {
             initial={{y:"100%"}}
             animate={{y:"0%"}}
             transition={{ease: 'easeInOut', }}
-            className="flex gap-5 absolute left-0 z-100 bottom-0 flex-col py-3 px-5 bg-[#212121] rounded-t-[20px] w-[100vw] h-[70vh]">
+            className="flex gap-5 absolute left-0 z-100 bottom-0 flex-col py-3 px-5 bg-[#212121] rounded-t-[20px] w-[100vw] h-[75vh]">
             <div className="flex flex-row justify-between">
                 <div className="w-[10px]"></div>
                 <div className="flex flex-row bg-[#383838] p-1 rounded-full">
