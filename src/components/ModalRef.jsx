@@ -9,7 +9,7 @@ function ModalRef() {
     const navigate = useNavigate()
     useEffect(() => {
         tg.BackButton.show()
-        tg.BackButton.onClick(() => navigate('/'))
+        tg.BackButton.onClick(() => {navigate('/'); tg.BackButton.hide()})
     },[])
     return (
         <div className="flex flex-col bg-black h-[100vh]">
