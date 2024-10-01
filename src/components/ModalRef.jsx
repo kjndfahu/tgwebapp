@@ -2,11 +2,14 @@ import ball from '../assets/discoball.gif'
 import {Link2} from "lucide-react";
 import {Light} from "./Icons";
 import {useEffect} from "react";
+import {useNavigate} from "react-router-dom";
 
 function ModalRef() {
     const tg = window.Telegram.WebApp;
+    const navigate = useNavigate()
     useEffect(() => {
         tg.BackButton.show()
+        tg.BackButton.onClick(() => navigate('/'))
     },[])
     return (
         <div className="flex flex-col bg-black h-[100vh]">
