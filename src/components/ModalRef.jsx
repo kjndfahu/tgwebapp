@@ -1,8 +1,13 @@
 import ball from '../assets/discoball.gif'
 import {Link2} from "lucide-react";
 import {Light} from "./Icons";
+import {useEffect} from "react";
 
 function ModalRef() {
+    const tg = window.Telegram.WebApp;
+    useEffect(() => {
+        tg.BackButton.show()
+    },[])
     return (
         <div className="flex flex-col bg-black h-[100vh]">
             <div className="px-5 mt-7 text-left">
