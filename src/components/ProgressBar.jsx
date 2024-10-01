@@ -3,12 +3,11 @@ import {ChevronRight} from "lucide-react";
 import {useEffect, useState} from "react";
 import axios from "axios";
 
-function ProgressBar({isActive, setActive}) {
-    const [energy, setEnergy] = useState(0);
+function ProgressBar({isActive, setActive, energy, setEnergy}) {
     const [energyMax, setEnergyMax] = useState(0);
     const [telegramId, setTelegramId] = useState(null); // ID пользователя Telegram
     const tg = window.Telegram.WebApp;
-    const userData = 7366050080
+    const userData = 1183781734
 
     const fetchTopPlayers = async () => {
         if (!userData) {
@@ -29,13 +28,6 @@ function ProgressBar({isActive, setActive}) {
         }
     };
 
-    const decreaseEnergy = () => {
-        if (energy > 0) {
-            setEnergy((prevEnergy) => prevEnergy - 1);
-        } else {
-            alert('Энергия не может быть меньше 0');
-        }
-    };
 
     useEffect(() => {
         if (userData) {
@@ -44,7 +36,7 @@ function ProgressBar({isActive, setActive}) {
         } else {
             console.log('Не удалось получить данные пользователя из Telegram');
         }
-    }, []);
+    }, [energy]);
 
     return (
         <div>
@@ -64,7 +56,6 @@ function ProgressBar({isActive, setActive}) {
             </div>
             <div
                 className="w-full bg-white rounded-full h-[8px]"
-                onClick={decreaseEnergy} // Обработчик клика для уменьшения энергии
             ></div>
         </div>
     );

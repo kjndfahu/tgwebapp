@@ -4,11 +4,11 @@ import {Coin} from "./Coin";
 import {useEffect, useState} from "react";
 import axios from "axios";
 
-function CounterTitul() {
+function CounterTitul({energy, setEnergy}) {
     const [allClick, setAllClick] = useState(0)
     const [telegramId, setTelegramId] = useState(null);
     const tg = window.Telegram.WebApp;
-    const userData = 7366050080
+    const userData = 1183781734
 
 
     const fetchUserInfo = async () => {
@@ -17,8 +17,9 @@ function CounterTitul() {
                 telegram_id: userData,
             });
 
+
             if (response.data.ok) {
-                setAllClick(response.data.result.info.balance);
+                setAllClick(response.data.info.balance);
             } else {
                 console.error('Ошибка при получении данных о пользователе');
             }
@@ -30,20 +31,30 @@ function CounterTitul() {
 
     const handleClick = async () => {
         try {
-            setAllClick((prev) => prev += 1)
+            const updatedClickCount = allClick + 1;
 
             const response = await axios.post('https://khabyminero.com/clicker', {
                 telegram_id: telegramId,
-                click_count: allClick,
+                click_count: 1,
             });
 
+
             if (response.data.ok) {
-                setAllClick(allClick);
+                setAllClick((prev) => prev += 1)
             } else {
                 console.error('Ошибка при обновлении количества кликов');
             }
         } catch (error) {
             console.error('Ошибка при отправке клика на сервер:', error);
+        }
+    };
+
+    const decreaseEnergy = () => {
+        if (energy > 0) {
+            setEnergy((prevEnergy) => prevEnergy - 1);
+            console.log(1)
+        } else {
+            alert('Энергия не может быть меньше 0');
         }
     };
 
@@ -60,7 +71,9 @@ function CounterTitul() {
     return (
         <div className="flex flex-col items-center justify-between gap-7">
             <h1 className="text-white font-sfprosemibold text-[48px]">{allClick}</h1>
-            <motion.div whileTap={{ scale: 0.9 }} onClick={handleClick}>
+            <motion.div whileTap={{ scale: 0.9 }} onClick={() => {
+                handleClick()
+                decreaseEnergy()}}>
                 <Coin className={"w-[70vw] h-[40vh]"} />
             </motion.div>
         </div>

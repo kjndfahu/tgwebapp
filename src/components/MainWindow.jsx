@@ -18,7 +18,7 @@ function MainWindow() {
     return (
         <>
             {isTab === 'inicio' && (
-                <Home isActive={isActive} setActive={setActive} isActiveListing={isActiveListing} setActiveListing={setActiveListing}/>
+                <Home isActive={isActive} setActiveModals={setActiveModals} setActive={setActive} isActiveListing={isActiveListing} setActiveListing={setActiveListing}/>
             )}
             {isTab === 'beneficio' && (
                 <Beneficious setActiveModals={setActiveModals} isActiveToques={isActiveToques} isActiveDuplicate={isActiveDuplicate} setActiveDuplicate={setActiveDuplicate} setActiveToques={setActiveToques} isActive={isActive} setActive={setActive}/>

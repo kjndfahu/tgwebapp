@@ -32,7 +32,7 @@ function DuplicateEnergy({setActiveDuplicate, setActiveModals}) {
     };
 
     const subscribeToChannel = () => {
-        window.open('https://t.me/Serus_dev_portfolio', '_blank'); // Переход на канал
+        window.open('https://t.me/', '_blank'); // Переход на канал
     };
 
     return (

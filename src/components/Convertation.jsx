@@ -6,12 +6,12 @@ import axios from "axios";
 
 function Convertation() {
     const [money, setMoney] = useState(0)
+    const [convert, setConvert] = useState(0)
     const [telegramId, setTelegramId] = useState(null); // ID пользователя Telegram
     const tg = window.Telegram.WebApp;
-    const userData = tg.initDataUnsafe?.user?.id
+    const userData = 1183781734
 
 
-    // Получение данных о топ-игроках и позиции пользователя
     const fetchTopPlayers = async () => {
         if (!userData) {
             alert('telegram_id отсутствует');
@@ -25,6 +25,7 @@ function Convertation() {
 
             const result = response.data;
             setMoney(result.info.balance)
+            setConvert(result.info.converted_balance)
         } catch (error) {
             alert(error);
         }
@@ -48,7 +49,7 @@ function Convertation() {
                     {/*<img className="w-[45px] h-[45px]" src={coin} alt="coin"/>*/}
                     <Coin className={"w-[30px] h-[30px]"}/>
                 </div>
-                <p className="text-[#b0b0b0] font-sfpromedium text-[12px]">≈ 0.5006250 EUR</p>
+                <p className="text-[#b0b0b0] font-sfpromedium text-[12px]">≈ {convert} EUR</p>
             </div>
         </div>
     )
