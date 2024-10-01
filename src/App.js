@@ -10,7 +10,9 @@ function App() {
     const [isTab, setTab] = useState('inicio');
     const [isActive, setActive] = useState(false);
     const [isActiveListing, setActiveListing] = useState(false);
-    const tg = window.Telegram.WebApp; // Получаем доступ к Telegram WebApp API
+    const [isActiveToques, setActiveToques] = useState(false);
+    const [isActiveDuplicate, setActiveDuplicate] = useState(false);
+    const tg = window.Telegram.WebApp;
     tg.ready();
 
     return (
@@ -19,7 +21,7 @@ function App() {
                     <Home isActive={isActive} setActive={setActive} isActiveListing={isActiveListing} setActiveListing={setActiveListing}/>
                 )}
                 {isTab === 'beneficio' && (
-                    <Beneficious isActive={isActive} setActive={setActive}/>
+                    <Beneficious isActiveToques={isActiveToques} isActiveDuplicate={isActiveDuplicate} setActiveDuplicate={setActiveDuplicate} setActiveToques={setActiveToques} isActive={isActive} setActive={setActive}/>
                 )}
                 {isTab === 'clasificaciom' && (
                     <Clasificaciom/>
@@ -28,7 +30,7 @@ function App() {
                     <ProfilePage/>
                 )}
 
-            <Navbar isTab={isTab} setTab={setTab} />
+            {isActiveToques && isActiveDuplicate ? ('') : (<Navbar isTab={isTab} setTab={setTab} />)}
         </div>)
 }
 
