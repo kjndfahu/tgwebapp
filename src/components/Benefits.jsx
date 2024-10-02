@@ -27,7 +27,7 @@ function Benefits({setActiveToques, setActiveModals, setActive, refferals}) {
 
             const result = response.data;
             setRefs(result.info.referrals)
-            setLevel(result.info.modifes.toques_lvl)
+            setLevel(result.info.modifies.toques_lvl)
         } catch (error) {
             alert(error);
         }

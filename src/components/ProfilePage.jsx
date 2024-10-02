@@ -4,6 +4,8 @@ import ConvertationBtns from "./ConvertationBtns";
 import LowerProfile from "./LowerProfile";
 
 function ProfilePage() {
+    const tg = window.Telegram.WebApp
+    tg.isVerticalSwipesEnabled = false;
     return (
         <div className="bg-black overflow-y-hidden h-[100vh]">
             <TgUser/>

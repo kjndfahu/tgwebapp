@@ -9,7 +9,7 @@ import {Route} from "react-router-dom";
 function Home({isActive, setActive, setActiveModals}) {
     const [energy, setEnergy] = useState(0);
     const tg = window.Telegram.WebApp;
-    tg.disableVerticalSwipes()
+    tg.isVerticalSwipesEnabled = false;
 
     return (
         <Suspense fallback={ <p className="text-black text-[96px]">Loading..</p> }>

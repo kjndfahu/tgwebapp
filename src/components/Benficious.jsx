@@ -11,6 +11,7 @@ import axios from "axios";
 
 function Beneficious({isActive, setActive, setActiveModals, setActiveDuplicate, isActiveToques, isActiveDuplicate, setActiveToques, }){
     const tg = window.Telegram.WebApp
+    tg.isVerticalSwipesEnabled = false;
     const userData = tg.initDataUnsafe?.user?.id;
     const [referrals, setReferrals] = useState(0);
     const fetchUserInfo = async () => {
