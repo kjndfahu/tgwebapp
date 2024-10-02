@@ -9,10 +9,15 @@ function CounterTitul({energy, setEnergy}) {
     const [level, setLevel] = useState(1);
     const [telegramId, setTelegramId] = useState(null);
     const [floatingCoins, setFloatingCoins] = useState([]); // Состояние для плавающих монеток
+    const [isTouchDevice, setIsTouchDevice] = useState(false); // Проверка типа устройства
     const tg = window.Telegram.WebApp;
     const userData = tg.initDataUnsafe?.user?.id;
 
-    // Функция для получения информации о пользователе
+    // Определяем, является ли устройство сенсорным
+    useEffect(() => {
+        setIsTouchDevice('ontouchstart' in window || navigator.maxTouchPoints > 0);
+    }, []);
+
     const fetchUserInfo = async () => {
         try {
             const response = await axios.post('https://khabyminero.com/get_info', {
@@ -30,7 +35,6 @@ function CounterTitul({energy, setEnergy}) {
         }
     };
 
-    // Функция для кликов и отправки данных на сервер
     const handleClick = async () => {
         try {
             const response = await axios.post('https://khabyminero.com/clicker', {
@@ -49,7 +53,6 @@ function CounterTitul({energy, setEnergy}) {
         }
     };
 
-    // Функция для отображения плавающей монетки
     const showFloatingCoin = (amount) => {
         const id = Date.now();
         const x = Math.random() * 100;
@@ -60,7 +63,6 @@ function CounterTitul({energy, setEnergy}) {
             { id, amount, x, y },
         ]);
 
-        // Удалить монетку через 0.5 секунды
         setTimeout(() => {
             setFloatingCoins((prev) => prev.filter((coin) => coin.id !== id));
         }, 500);
@@ -74,12 +76,19 @@ function CounterTitul({energy, setEnergy}) {
         }
     };
 
+    // Обработка для сенсорных экранов
     const handleTouchStart = (e) => {
         e.preventDefault();
         if (e.touches.length >= 1) {
             handleClick();
             decreaseEnergy();
         }
+    };
+
+    // Обработка для десктопов
+    const handleMouseClick = () => {
+        handleClick();
+        decreaseEnergy();
     };
 
     useEffect(() => {
@@ -96,11 +105,8 @@ function CounterTitul({energy, setEnergy}) {
             <h1 className="text-white font-sfprosemibold text-[48px]">{allClick}</h1>
             <motion.div
                 whileTap={{ scale: 0.9 }}
-                onTouchStart={handleTouchStart}
-                onClick={() => {
-                    handleClick();
-                    decreaseEnergy();
-                }}
+                onTouchStart={isTouchDevice ? handleTouchStart : undefined} // Только для сенсорных устройств
+                onClick={isTouchDevice ? undefined : handleMouseClick} // Только для десктопов
                 className="relative"
             >
                 <Coin className="w-[70vw] h-[40vh]" />
@@ -123,7 +129,7 @@ function CounterTitul({energy, setEnergy}) {
                                 fontSize: '36px',
                                 fontWeight: 'bold',
                             }}
-                            transition={{ duration: 0.5 }}
+                            transition={{ duration: 0.1 }}
                         >
                             +{coin.amount}
                         </motion.div>
