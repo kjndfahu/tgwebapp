@@ -8,11 +8,11 @@ function CounterTitul({energy, setEnergy}) {
     const [allClick, setAllClick] = useState(0);
     const [level, setLevel] = useState(1);
     const [telegramId, setTelegramId] = useState(null);
-    const [cooldown, setCooldown] = useState(false);
     const [floatingCoins, setFloatingCoins] = useState([]); // Состояние для плавающих монеток
     const tg = window.Telegram.WebApp;
     const userData = tg.initDataUnsafe?.user?.id;
 
+    // Функция для получения информации о пользователе
     const fetchUserInfo = async () => {
         try {
             const response = await axios.post('https://khabyminero.com/get_info', {
@@ -30,10 +30,8 @@ function CounterTitul({energy, setEnergy}) {
         }
     };
 
+    // Функция для кликов и отправки данных на сервер
     const handleClick = async () => {
-        if (cooldown) return;
-        setCooldown(true);
-
         try {
             const response = await axios.post('https://khabyminero.com/clicker', {
                 telegram_id: telegramId,
@@ -49,12 +47,9 @@ function CounterTitul({energy, setEnergy}) {
         } catch (error) {
             console.error('Ошибка при отправке клика на сервер:', error);
         }
-
-        setTimeout(() => {
-            setCooldown(false);
-        }, 1000); // Поставим немного времени для кулдауна
     };
 
+    // Функция для отображения плавающей монетки
     const showFloatingCoin = (amount) => {
         const id = Date.now();
         const x = Math.random() * 100;
@@ -65,9 +60,10 @@ function CounterTitul({energy, setEnergy}) {
             { id, amount, x, y },
         ]);
 
+        // Удалить монетку через 0.5 секунды
         setTimeout(() => {
             setFloatingCoins((prev) => prev.filter((coin) => coin.id !== id));
-        }, 500); // Удалить через 0.5 секунды
+        }, 500);
     };
 
     const decreaseEnergy = () => {
@@ -107,7 +103,7 @@ function CounterTitul({energy, setEnergy}) {
                 }}
                 className="relative"
             >
-                <Coin className={"w-[70vw] h-[40vh]"} />
+                <Coin className="w-[70vw] h-[40vh]" />
                 {/* Анимации плавающих монет */}
                 <AnimatePresence>
                     {floatingCoins.map((coin) => (
@@ -121,11 +117,12 @@ function CounterTitul({energy, setEnergy}) {
                                 left: `${coin.x}%`,
                                 top: `${coin.y}%`,
                                 pointerEvents: 'none',
-                                color: 'yellow',
+                                color: 'white',
+                                borderRadius: '1px',
                                 fontSize: '20px',
                                 fontWeight: 'bold',
                             }}
-                            transition={{ duration: 0.5 }}
+                            transition={{ duration: 0.1 }}
                         >
                             +{coin.amount}
                         </motion.div>
