@@ -7,6 +7,7 @@ function Clasificaciom() {
     const [userPosition, setUserPosition] = useState(0);
     const [telegramId, setTelegramId] = useState(null);
     const tg = window.Telegram.WebApp;
+    tg.disableVerticalSwipes()
     const userData = tg.initDataUnsafe?.user?.id;
     console.log(topPlayers);
 

@@ -13,6 +13,7 @@ function MainWindow() {
     const[isActiveModals, setActiveModals] = useState(false)
     const [isActiveDuplicate, setActiveDuplicate] = useState(false);
     const tg = window.Telegram.WebApp;
+    tg.disableVerticalSwipes()
     tg.ready();
     console.log(isActiveModals, 'modals')
     return (
