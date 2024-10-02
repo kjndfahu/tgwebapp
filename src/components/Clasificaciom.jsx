@@ -90,7 +90,16 @@ function Clasificaciom({setIsScrollEnabled}) {
 
                 {loading ? (
                     <div className="flex flex-col gap-5 items-center">
-                        <div className="flex items-center h-[50px] bg-[#212121] rounded-[10px] justify-between w-[90vw]"></div>
+                        <div className="flex items-center h-[75px] bg-[#212121] rounded-[10px] justify-between w-[90vw]"></div>
+                        <div className="flex items-center h-[75px] bg-[#212121] rounded-[10px] justify-between w-[90vw]"></div>
+                        <div className="flex items-center h-[75px] bg-[#212121] rounded-[10px] justify-between w-[90vw]"></div>
+                        <div className="flex items-center h-[75px] bg-[#212121] rounded-[10px] justify-between w-[90vw]"></div>
+                        <div className="flex items-center h-[75px] bg-[#212121] rounded-[10px] justify-between w-[90vw]"></div>
+                        <div className="flex items-center h-[75px] bg-[#212121] rounded-[10px] justify-between w-[90vw]"></div>
+                        <div className="flex items-center h-[75px] bg-[#212121] rounded-[10px] justify-between w-[90vw]"></div>
+                        <div className="flex items-center h-[75px] bg-[#212121] rounded-[10px] justify-between w-[90vw]"></div>
+                        <div className="flex items-center h-[75px] bg-[#212121] rounded-[10px] justify-between w-[90vw]"></div>
+                        <div className="flex items-center h-[75px] bg-[#212121] rounded-[10px] justify-between w-[90vw]"></div>
                     </div>
 
                 ) : (
