@@ -58,7 +58,7 @@ function Clasificaciom({setIsScrollEnabled}) {
     };
 
     return (
-        <div className="flex flex-col items-center bg-[url('https://i.imgur.com/IDlQwiO.png')] w-[100vw] h-[100vh] overflow-y-visible">
+        <div className="flex flex-col items-center bg-[url('https://i.imgur.com/IDlQwiO.png')] w-[100vw] h-[100%] overflow-y-visible">
             <div className="flex flex-col mt-6 gap-3">
                 <h2 className="font-sfprosemibold text-left text-white text-[27px]">Clasificaciom</h2>
 

@@ -22,19 +22,16 @@ function App() {
         if (!isScrollEnabled) {
             // Disable scroll when scroll is not enabled
             window.addEventListener('wheel', preventDefault, { passive: false });
-            window.addEventListener('touchmove', preventDefault, { passive: false });
             document.body.style.overflow = 'hidden'; // Disable scroll globally
         } else {
             // Enable scroll when scroll is enabled
             window.removeEventListener('wheel', preventDefault);
-            window.removeEventListener('touchmove', preventDefault);
             document.body.style.overflow = ''; // Restore default scroll behavior
         }
 
         // Clean up listeners on component unmount
         return () => {
             window.removeEventListener('wheel', preventDefault);
-            window.removeEventListener('touchmove', preventDefault);
         };
     }, [isScrollEnabled]);
 
