@@ -31,7 +31,7 @@ function DuplicateEnergy({setActiveDuplicate, setActiveModals}) {
                 toast('Вы не подписаны на канал');
             }
         } catch (error) {
-            alert('Ошибка при проверке подписки');
+            console.log('Ошибка при проверке подписки');
         }
     };
     const fetchTopPlayers = async () => {
@@ -49,7 +49,7 @@ function DuplicateEnergy({setActiveDuplicate, setActiveModals}) {
             setEnergy(result.info.energy);
             setEnergyMax(result.info.energy_max);
         } catch (error) {
-            alert(error);
+            console.log(error);
         }
     };
 

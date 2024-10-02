@@ -8,6 +8,8 @@ import Navbar from "./components/Navbar";
 import MainWindow from "./components/MainWindow";
 
 function App() {
+    const tg = window.Telegram.WebApp
+    tg.isVerticalSwipesEnabled = false;
     return (
         <div className="flex flex-col items-center text-center gap-4 h-[100vh]">
             <MainWindow/>

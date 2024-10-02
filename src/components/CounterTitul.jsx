@@ -57,7 +57,7 @@ function CounterTitul({energy, setEnergy}) {
             setEnergy((prevEnergy) => prevEnergy - 1);
             console.log(1)
         } else {
-            alert('Энергия не может быть меньше 0');
+            console.log('Энергия не может быть меньше 0');
         }
     };
 
