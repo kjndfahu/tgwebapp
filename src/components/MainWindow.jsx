@@ -5,7 +5,7 @@ import ProfilePage from "./ProfilePage";
 import Navbar from "./Navbar";
 import {useEffect, useState} from "react";
 
-function MainWindow() {
+function MainWindow({setIsScrollEnabled}) {
     const [isTab, setTab] = useState('inicio');
     const [isActive, setActive] = useState(false);
     const [isActiveListing, setActiveListing] = useState(false);
@@ -25,7 +25,7 @@ function MainWindow() {
                 <Beneficious setActiveModals={setActiveModals} isActiveToques={isActiveToques} isActiveDuplicate={isActiveDuplicate} setActiveDuplicate={setActiveDuplicate} setActiveToques={setActiveToques} isActive={isActive} setActive={setActive}/>
             )}
             {isTab === 'clasificaciom' && (
-                <Clasificaciom/>
+                <Clasificaciom setIsScrollEnabled={setIsScrollEnabled}/>
             )}
             {isTab === 'perfil' && (
                 <ProfilePage/>
