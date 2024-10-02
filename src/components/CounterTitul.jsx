@@ -124,7 +124,7 @@ function CounterTitul({energy, setEnergy}) {
                                 top: `${coin.y}%`,
                                 pointerEvents: 'none',
                                 color: 'white',
-                                borderRadius: '2px',
+                                borderRadius: '5px',
                                 borderColor: '#0704db',
                                 fontSize: '48px',
                                 fontWeight: 'bold',
