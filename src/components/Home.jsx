@@ -9,11 +9,10 @@ import {Route} from "react-router-dom";
 function Home({isActive, setActive, setActiveModals}) {
     const [energy, setEnergy] = useState(0);
     const tg = window.Telegram.WebApp;
-    tg.disableVerticalSwipes()
 
     return (
         <Suspense fallback={ <p className="text-black text-[96px]">Loading..</p> }>
-            <div className="flex flex-col gap-2 h-[85%] overflow-y-hidden justify-between ">
+            <div className="flex flex-col gap-7 h-[85%] overflow-y-hidden justify-between ">
                 <Header/>
                 <CounterTitul energy={energy} setEnergy={setEnergy}/>
                 <ProgressBar energy={energy}  setActiveModals={setActiveModals} setEnergy={setEnergy} isActive={isActive} setActive={setActive} />
