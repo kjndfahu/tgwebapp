@@ -118,6 +118,7 @@ function CounterTitul({energy, setEnergy}) {
                             initial={{ opacity: 1, y: 0 }}
                             animate={{ opacity: 0, y: -50 }}
                             exit={{ opacity: 0 }}
+                            className="border-[1px] border-black"
                             style={{
                                 position: 'absolute',
                                 left: `${coin.x}%`,
