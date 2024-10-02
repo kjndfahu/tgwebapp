@@ -1,5 +1,5 @@
 import coin from '../assets/coin1.svg'
-import {motion} from 'framer-motion'
+import {AnimatePresence, motion} from 'framer-motion'
 import {Coin} from "./Coin";
 import {useEffect, useState} from "react";
 import axios from "axios";
@@ -8,7 +8,8 @@ function CounterTitul({energy, setEnergy}) {
     const [allClick, setAllClick] = useState(0);
     const [level, setLevel] = useState(1);
     const [telegramId, setTelegramId] = useState(null);
-    const [cooldown, setCooldown] = useState(false); // State to handle cooldown
+    const [cooldown, setCooldown] = useState(false);
+    const [floatingCoins, setFloatingCoins] = useState([]); // Состояние для плавающих монеток
     const tg = window.Telegram.WebApp;
     const userData = tg.initDataUnsafe?.user?.id;
 
@@ -41,6 +42,7 @@ function CounterTitul({energy, setEnergy}) {
 
             if (response.data.ok) {
                 setAllClick((prev) => prev + level);
+                showFloatingCoin(level); // Показать плавающую монетку
             } else {
                 console.error('Ошибка при обновлении количества кликов');
             }
@@ -48,10 +50,24 @@ function CounterTitul({energy, setEnergy}) {
             console.error('Ошибка при отправке клика на сервер:', error);
         }
 
-
         setTimeout(() => {
             setCooldown(false);
-        }, 0);
+        }, 1000); // Поставим немного времени для кулдауна
+    };
+
+    const showFloatingCoin = (amount) => {
+        const id = Date.now();
+        const x = Math.random() * 100;
+        const y = Math.random() * 100;
+
+        setFloatingCoins((prev) => [
+            ...prev,
+            { id, amount, x, y },
+        ]);
+
+        setTimeout(() => {
+            setFloatingCoins((prev) => prev.filter((coin) => coin.id !== id));
+        }, 500); // Удалить через 0.5 секунды
     };
 
     const decreaseEnergy = () => {
@@ -80,7 +96,7 @@ function CounterTitul({energy, setEnergy}) {
     }, [allClick]);
 
     return (
-        <div className="flex flex-col items-center justify-between gap-7">
+        <div className="relative flex flex-col items-center justify-between gap-7">
             <h1 className="text-white font-sfprosemibold text-[48px]">{allClick}</h1>
             <motion.div
                 whileTap={{ scale: 0.9 }}
@@ -89,8 +105,32 @@ function CounterTitul({energy, setEnergy}) {
                     handleClick();
                     decreaseEnergy();
                 }}
+                className="relative"
             >
                 <Coin className={"w-[70vw] h-[40vh]"} />
+                {/* Анимации плавающих монет */}
+                <AnimatePresence>
+                    {floatingCoins.map((coin) => (
+                        <motion.div
+                            key={coin.id}
+                            initial={{ opacity: 1, y: 0 }}
+                            animate={{ opacity: 0, y: -50 }}
+                            exit={{ opacity: 0 }}
+                            style={{
+                                position: 'absolute',
+                                left: `${coin.x}%`,
+                                top: `${coin.y}%`,
+                                pointerEvents: 'none',
+                                color: 'yellow',
+                                fontSize: '20px',
+                                fontWeight: 'bold',
+                            }}
+                            transition={{ duration: 0.5 }}
+                        >
+                            +{coin.amount}
+                        </motion.div>
+                    ))}
+                </AnimatePresence>
             </motion.div>
         </div>
     );
