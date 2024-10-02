@@ -52,8 +52,8 @@ function CounterTitul({energy, setEnergy}) {
     // Функция для отображения плавающей монетки
     const showFloatingCoin = (amount) => {
         const id = Date.now();
-        const x = Math.random() * 10;
-        const y = Math.random() * 100;
+        const x = Math.random() * 100;
+        const y = Math.random() * 10;
 
         setFloatingCoins((prev) => [
             ...prev,
