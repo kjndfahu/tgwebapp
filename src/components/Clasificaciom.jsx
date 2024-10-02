@@ -70,8 +70,8 @@ function Clasificaciom({setIsScrollEnabled}) {
                 ) : (
                     <div className="flex items-center px-5 py-3 bg-[#212121] rounded-[10px] justify-between w-[90vw]">
                         <div className="flex flex-row items-center gap-2">
-                            <div className={`flex text-white py-1 px-3 rounded-[5px] text-[15px] ${getPlaceColor(userPosition.place)}`}>
-                                {userPosition.place}
+                            <div className={`flex text-white w-[10px] h-[10px] rounded-[5px] text-[15px] ${getPlaceColor(userPosition.place)}`}>
+                               1k+
                             </div>
                             <div className="bg-[#b0b0b0] w-[40px] h-[40px] rounded-full"></div>
                             <h2 className="text-white text-[18px] font-sfpromedium">{userPosition.first_name}</h2>
@@ -93,7 +93,7 @@ function Clasificaciom({setIsScrollEnabled}) {
                     topPlayers.map((item) => (
                         <div key={item.place} className="flex items-center px-5 py-3 bg-[#212121] rounded-[10px] justify-between w-[90vw]">
                             <div className="flex flex-row items-center gap-2">
-                                <div className={`flex text-white py-1 px-3 rounded-[5px] ${getPlaceColor(item.place)}`}>
+                                <div className={`flex text-white w-[10px] h-[10px] rounded-[5px] ${getPlaceColor(item.place)}`}>
                                     {item.place}
                                 </div>
                                 <div className="bg-[#b0b0b0] w-[40px] h-[40px] rounded-full"></div>
