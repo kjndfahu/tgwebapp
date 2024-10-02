@@ -55,8 +55,27 @@ function Clasificaciom() {
         }
     };
 
+    useEffect(() => {
+        // Функция для блокировки прокрутки
+        const preventDefault = (e) => {
+            e.preventDefault();
+        };
+
+        // Добавляем обработчики событий
+        window.addEventListener('wheel', preventDefault, { passive: false });
+        window.addEventListener('touchmove', preventDefault, { passive: false });
+        document.body.style.overflow = '';
+
+        // Убираем обработчики при размонтировании
+        return () => {
+            window.removeEventListener('wheel', preventDefault);
+            window.removeEventListener('touchmove', preventDefault);
+            document.body.style.overflow = ''; // Включает прокрутку обратно
+        };
+    }, []);
+
     return (
-        <div className="flex flex-col items-center bg-[url('https://i.imgur.com/IDlQwiO.png')] w-full h-[100vh] overflow-y-auto">
+        <div className="flex flex-col items-center bg-[url('https://i.imgur.com/IDlQwiO.png')] w-full h-[100vh] ">
             <div className="flex flex-col mt-6 gap-3">
                 <h2 className="font-sfprosemibold text-left text-white text-[27px]">Clasificaciom</h2>
 
