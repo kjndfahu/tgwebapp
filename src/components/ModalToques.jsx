@@ -39,7 +39,7 @@ function ModalToques({isActiveToques, setActiveToques, setActiveModals}) {
 
     const isVisibleButton = (money, level) => {
         if(money <= calculateCoins(level)) {
-            return 'bg-[#FFD700]';
+            return 'bg-[#1d5084]';
         } else {
             return 'bg-[#2890FF]'
         }
