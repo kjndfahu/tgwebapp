@@ -53,7 +53,7 @@ function Benefits({setActiveToques, setActiveModals, setActive, refferals}) {
 
             {isTab === 'benefits' ? (
                 <div
-                    className="flex flex-col items-center px-5 py-2 bg-[#212121] rounded-[10px] justify-between w-[90vw]">
+                    className="flex flex-col items-center px-2 py-2 bg-[#212121] rounded-[10px] justify-between w-[90vw]">
                     <div className="flex items-center px-5 py-2 bg-[#212121] rounded-[10px] justify-between w-[90vw]">
                         <div className="flex flex-row items-center gap-5">
                             <div className="rounded-[15px] bg-[#282828] p-2">
