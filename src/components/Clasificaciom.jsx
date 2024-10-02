@@ -1,6 +1,7 @@
 import {Coin} from "./Coin";
 import {useEffect, useState} from "react";
 import axios from "axios";
+import Skeleton from "./Skeleton";
 
 function Clasificaciom({setIsScrollEnabled}) {
     const [topPlayers, setTopPlayers] = useState([]);
@@ -57,13 +58,15 @@ function Clasificaciom({setIsScrollEnabled}) {
         }
     };
 
+    const data = [1,2,3,4,5,6,7,8,9,10]
+
     return (
         <div className="flex flex-col items-center bg-[url('https://i.imgur.com/IDlQwiO.png')] w-[100vw] h-[100%] overflow-y-visible">
             <div className="flex flex-col mt-6 gap-3">
                 <h2 className="font-sfprosemibold text-left text-white text-[27px]">Clasificaciom</h2>
 
                 {loading ? (
-                    <div className="text-white text-[20px]">Loading...</div>
+                    <Skeleton/>
                 ) : (
                     <div className="flex items-center px-5 py-3 bg-[#212121] rounded-[10px] justify-between w-[90vw]">
                         <div className="flex flex-row items-center gap-2">
@@ -85,7 +88,7 @@ function Clasificaciom({setIsScrollEnabled}) {
                 <h2 className="font-sfprosemibold text-left text-white text-[27px]">Jugadores top</h2>
 
                 {loading ? (
-                    <div className="text-white text-[20px] bg-transparent h-[500px]">Loading...</div>
+                    <Skeleton/>
                 ) : (
                     topPlayers.map((item) => (
                         <div key={item.place} className="flex items-center px-5 py-3 bg-[#212121] rounded-[10px] justify-between w-[90vw]">
