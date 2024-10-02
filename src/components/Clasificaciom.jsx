@@ -73,7 +73,7 @@ function Clasificaciom({setIsScrollEnabled}) {
                 ) : (
                     <div className="flex items-center px-5 py-3 bg-[#212121] rounded-[10px] justify-between w-[90vw]">
                         <div className="flex flex-row items-center gap-2">
-                            <div className={`flex text-white w-[40px] h-[40px] rounded-[5px] text-[15px] ${getPlaceColor(userPosition.place)}`}>
+                            <div className={`flex text-white w-[25px] h-[25px] rounded-[5px] text-[15px] bg-[#353535]`}>
                                1k+
                             </div>
                             <div className="bg-[#b0b0b0] w-[40px] h-[40px] rounded-full"></div>
@@ -91,7 +91,7 @@ function Clasificaciom({setIsScrollEnabled}) {
                 <h2 className="font-sfprosemibold text-left text-white text-[27px]">Jugadores top</h2>
 
                 {loading ? (
-                        <div className="flex flex-col items-center">
+                        <div className="flex flex-col gap-10 items-center">
                             <Skeleton/>
                             <Skeleton/>
                             <Skeleton/>
