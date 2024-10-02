@@ -55,7 +55,7 @@ function CounterTitul({energy, setEnergy}) {
 
     const showFloatingCoin = (amount) => {
         const id = Date.now();
-        const x = Math.random() * 100;
+        const x = Math.random() * 90;
         const y = Math.random() * 20;
 
         setFloatingCoins((prev) => [
@@ -124,6 +124,7 @@ function CounterTitul({energy, setEnergy}) {
                                 top: `${coin.y}%`,
                                 pointerEvents: 'none',
                                 color: 'white',
+                                borderColor: 'transparent',
                                 fontSize: '48px',
                                 fontWeight: 'bold',
                             }}
