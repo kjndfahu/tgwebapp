@@ -9,6 +9,7 @@ function ProfilePage({setIsScrollEnabled}) {
     tg.disableVerticalSwipes()
 
     useEffect(() => {
+        window.scrollTo(0, 0);
         setIsScrollEnabled(false)
     }, []);
     return (

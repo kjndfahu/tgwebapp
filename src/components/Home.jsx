@@ -11,6 +11,7 @@ function Home({isActive,setIsScrollEnabled, setActive, setActiveModals}) {
     const tg = window.Telegram.WebApp;
 
     useEffect(() => {
+        window.scrollTo(0, 0);
         setIsScrollEnabled(false)
     }, []);
 

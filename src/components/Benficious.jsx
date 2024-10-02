@@ -33,6 +33,7 @@ function Beneficious({isActive, setIsScrollEnabled, setActive, setActiveModals, 
     };
 
     useEffect(() => {
+        window.scrollTo(0, 0);
         fetchUserInfo();
         setIsScrollEnabled(false)
     }, []);
