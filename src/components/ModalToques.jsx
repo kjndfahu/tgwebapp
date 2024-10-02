@@ -49,14 +49,9 @@ function ModalToques({isActiveToques, setActiveToques, setActiveModals}) {
         try {
             const response = await axios.post('https://khabyminero.com/buy_toques', {
                 telegram_id: userData,
-                level: level
+                level: level+1
             });
-
-            if (response.data.success) {
-                    console.log(1)
-            } else {
-                toast('Не достаточно средств')
-            }
+             console.log(response)
         } catch (error) {
             toast('Не достаточно средств')
         }
