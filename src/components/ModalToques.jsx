@@ -53,7 +53,7 @@ function ModalToques({isActiveToques, setActiveToques, setActiveModals}) {
             });
              console.log(response)
         } catch (error) {
-            toast('Не достаточно средств')
+            toast('Fondos insuficientes')
         }
     };
 
