@@ -51,7 +51,7 @@ function CounterTitul({energy, setEnergy}) {
 
         setTimeout(() => {
             setCooldown(false);
-        }, 300);
+        }, 0);
     };
 
     const decreaseEnergy = () => {
@@ -77,7 +77,7 @@ function CounterTitul({energy, setEnergy}) {
         } else {
             console.error('Не удалось получить данные пользователя из Telegram');
         }
-    }, [userData]);
+    }, [allClick]);
 
     return (
         <div className="flex flex-col items-center justify-between gap-7">
