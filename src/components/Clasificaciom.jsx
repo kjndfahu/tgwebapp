@@ -86,7 +86,7 @@ function Clasificaciom({setIsScrollEnabled}) {
                 <h2 className="font-sfprosemibold text-left text-white text-[27px]">Jugadores top</h2>
 
                 {loading ? (
-                    <div className="text-white text-[20px] bg-[#212121] h-[500px]">Loading...</div>
+                    <div className="text-white text-[20px] bg-transparent h-[500px]">Loading...</div>
                 ) : (
                     topPlayers.map((item) => (
                         <div key={item.place} className="flex items-center px-5 py-3 bg-[#212121] rounded-[10px] justify-between w-[90vw]">
