@@ -23,19 +23,29 @@ function MainWindow({isActiveModals, setActiveModals, setTab, isTab}) {
             e.preventDefault();
         };
 
+        const adjustScrollHeight = () => {
+            const totalHeight = document.documentElement.scrollHeight; // Полная высота страницы
+            const limitedHeight = totalHeight - 100; // Ограничиваем на 100px меньше
+            document.body.style.maxHeight = `${limitedHeight}px`; // Устанавливаем максимальную высоту
+            document.documentElement.style.maxHeight = `${limitedHeight}px`; // Устанавливаем для html
+        };
+
         if (!isScrollEnabled) {
-            // Disable scroll when scroll is not enabled
+            // Отключаем скролл
             window.addEventListener('wheel', preventDefault, { passive: false });
             window.addEventListener('touchmove', preventDefault, { passive: false });
-            document.body.style.overflow = 'hidden'; // Disable scroll globally
+            document.body.style.overflow = 'hidden'; // Отключаем прокрутку
+            adjustScrollHeight(); // Ограничиваем высоту скролла
         } else {
-            // Enable scroll when scroll is enabled
+            // Восстанавливаем поведение скролла
             window.removeEventListener('wheel', preventDefault);
             window.removeEventListener('touchmove', preventDefault);
-            document.body.style.overflow = 'visible'; // Restore default scroll behavior
+            document.body.style.overflow = 'visible'; // Разрешаем прокрутку
+            document.body.style.maxHeight = ''; // Убираем ограничение по высоте
+            document.documentElement.style.maxHeight = ''; // Убираем ограничение по высоте для html
         }
 
-        // Clean up listeners on component unmount
+        // Очищаем слушатели при размонтировании компонента
         return () => {
             window.removeEventListener('wheel', preventDefault);
             window.removeEventListener('touchmove', preventDefault);
