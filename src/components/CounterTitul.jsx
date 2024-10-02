@@ -125,8 +125,8 @@ function CounterTitul({energy, setEnergy}) {
                                 pointerEvents: 'none',
                                 color: 'white',
                                 borderRadius: '2px',
-                                borderColor: 'black',
-                                fontSize: '36px',
+                                borderColor: '#0704db',
+                                fontSize: '48px',
                                 fontWeight: 'bold',
                             }}
                             transition={{ duration: 0.5 }}
