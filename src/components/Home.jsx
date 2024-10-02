@@ -13,7 +13,7 @@ function Home({isActive, setActive, setActiveModals}) {
 
     return (
         <Suspense fallback={ <p className="text-black text-[96px]">Loading..</p> }>
-            <div className="flex flex-col h-[90%] w-[100vw] justify-between">
+            <div className="flex flex-col gap-16 h-[90%] justify-between ">
                 <Header/>
                 <CounterTitul energy={energy} setEnergy={setEnergy}/>
                 <ProgressBar energy={energy}  setActiveModals={setActiveModals} setEnergy={setEnergy} isActive={isActive} setActive={setActive} />

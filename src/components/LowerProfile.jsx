@@ -41,7 +41,7 @@ function LowerProfile() {
     }, []);
 
     return (
-        <div className="flex flex-col ml-5 mt-5 mb-10">
+        <div className="flex flex-col w-[95vw] ml-5 mt-5 mb-10">
             <h2 className="text-white text-left font-sfprosemibold text-[22px]">Estadisticas</h2>
             <StatisticEnergia/>
             <div className="flex flex-row gap-2 w-[90vw] mt-2">
