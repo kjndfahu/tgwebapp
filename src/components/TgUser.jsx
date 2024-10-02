@@ -10,10 +10,6 @@ function TgUser() {
     const userData = tg.initDataUnsafe?.user?.id;
     console.log(photo)
 
-
-
-
-    // Получение данных о топ-игроках и позиции пользователя
     const fetchTopPlayers = async () => {
         if (!userData) {
             alert('telegram_id отсутствует');
