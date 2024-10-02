@@ -14,7 +14,7 @@ function App() {
 
 
     return (
-        <div className="flex flex-col overflow-x-hidden overflow-y-hidden items-center text-center gap-4 h-[100vh]">
+        <div className="flex flex-col overflow-x-hidden overflow-y-hidden items-center text-center gap-4 ">
             <MainWindow/>
         </div>)
 }
