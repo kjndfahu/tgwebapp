@@ -5,7 +5,7 @@ import LowerProfile from "./LowerProfile";
 
 function ProfilePage() {
     const tg = window.Telegram.WebApp
-    tg.isVerticalSwipesEnabled = false;
+    tg.disableVerticalSwipes = true;
     return (
         <div className="bg-black overflow-y-hidden overflow-x-hidden h-[100vh]">
             <TgUser/>
