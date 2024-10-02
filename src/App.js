@@ -21,7 +21,6 @@ function App() {
 
         // Отключаем прокрутку, если она не включена
         if (!isScrollEnabled) {
-            window.addEventListener('wheel', preventDefault, { passive: false });
             window.addEventListener('touchmove', preventDefault, { passive: false });
             document.body.style.overflow = 'hidden'; // Отключает прокрутку
         } else {
@@ -30,7 +29,6 @@ function App() {
 
         // Убираем обработчики при размонтировании
         return () => {
-            window.removeEventListener('wheel', preventDefault);
             window.removeEventListener('touchmove', preventDefault);
         };
     }, [isScrollEnabled]);
