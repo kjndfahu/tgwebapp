@@ -11,6 +11,8 @@ function TgUser() {
     console.log(photo)
 
 
+
+
     // Получение данных о топ-игроках и позиции пользователя
     const fetchTopPlayers = async () => {
         if (!userData) {

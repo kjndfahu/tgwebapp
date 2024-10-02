@@ -8,6 +8,8 @@ import Navbar from "./components/Navbar";
 import MainWindow from "./components/MainWindow";
 
 function App() {
+    const[isActiveModals, setActiveModals] = useState(false)
+    const [isTab, setTab] = useState('inicio');
     window.Telegram.WebApp.ready();
     window.Telegram.WebApp.expand();
     window.Telegram.WebApp.disableVerticalSwipes()
@@ -40,7 +42,8 @@ function App() {
 
     return (
         <div className="flex flex-col overflow-x-hidden overflow-y-hidden items-center text-center gap-4 ">
-            <MainWindow setIsScrollEnabled={setIsScrollEnabled} />
+            <MainWindow isActiveModals={isActiveModals} setActiveModals={setActiveModals} isTab={isTab} setTab={setTab} setIsScrollEnabled={setIsScrollEnabled} />
+            {isActiveModals === false && (<Navbar isTab={isTab} setTab={setTab} />)}
         </div>)
 }
 

@@ -6,12 +6,10 @@ import Navbar from "./Navbar";
 import {useEffect, useState} from "react";
 import {motion} from 'framer-motion'
 
-function MainWindow({setIsScrollEnabled}) {
-    const [isTab, setTab] = useState('inicio');
+function MainWindow({isActiveModals, setActiveModals, setTab, isTab, setIsScrollEnabled}) {
     const [isActive, setActive] = useState(false);
     const [isActiveListing, setActiveListing] = useState(false);
     const [isActiveToques, setActiveToques] = useState(false);
-    const[isActiveModals, setActiveModals] = useState(false)
     const [isActiveDuplicate, setActiveDuplicate] = useState(false);
     const tg = window.Telegram.WebApp;
     window.Telegram.WebApp.disableVerticalSwipes()
@@ -40,7 +38,6 @@ function MainWindow({setIsScrollEnabled}) {
                 )}
             </motion.div>
 
-            {isActiveModals === false && (<Navbar isTab={isTab} setTab={setTab} />)}
         </>
     )
 }
