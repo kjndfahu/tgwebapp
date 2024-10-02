@@ -41,7 +41,7 @@ function ProgressBar({isActive, setActive, setActiveModals, energy, setEnergy}) 
     return (
         <div>
             <div className="flex flex-row items-center justify-between text-white font-sfpromedium w-[90vw] h-[30px]">
-                <div className="flex flex-row items-center text-[13px] gap-1">
+                <div className="flex flex-row items-center text-[13px] gap-1 select-none">
                     <Light className={"w-[20px] h-[20px]"} />
                     {energy}/{energyMax}
                 </div>

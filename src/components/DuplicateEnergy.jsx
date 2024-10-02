@@ -29,7 +29,7 @@ function DuplicateEnergy({setActiveDuplicate, setActiveModals}) {
             if (result.subscribed) {
                 setSubscribe(true)
             } else {
-                toast('Вы не подписаны на канал');
+                toast('No estás suscrito al canal');
             }
         } catch (error) {
             console.log('Ошибка при проверке подписки');
