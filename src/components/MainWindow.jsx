@@ -25,7 +25,7 @@ function MainWindow({isActiveModals, setActiveModals, setTab, isTab}) {
 
         const adjustScrollHeight = () => {
             const totalHeight = document.documentElement.scrollHeight; // Полная высота страницы
-            const limitedHeight = totalHeight - 100; // Ограничиваем на 100px меньше
+            const limitedHeight = totalHeight - 300; // Ограничиваем на 100px меньше
             document.body.style.maxHeight = `${limitedHeight}px`; // Устанавливаем максимальную высоту
             document.documentElement.style.maxHeight = `${limitedHeight}px`; // Устанавливаем для html
         };
