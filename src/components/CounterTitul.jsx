@@ -129,7 +129,7 @@ function CounterTitul({energy, setEnergy}) {
                                 fontSize: '36px',
                                 fontWeight: 'bold',
                             }}
-                            transition={{ duration: 0.1 }}
+                            transition={{ duration: 0.5 }}
                         >
                             +{coin.amount}
                         </motion.div>
