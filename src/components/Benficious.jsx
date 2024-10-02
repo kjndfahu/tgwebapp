@@ -9,7 +9,7 @@ import ModalEnergiaExtra from "./ModalEnergiaExtra";
 import DuplicateEnergy from "./DuplicateEnergy";
 import axios from "axios";
 
-function Beneficious({isActive, setActive, setActiveModals, setActiveDuplicate, isActiveToques, isActiveDuplicate, setActiveToques, }){
+function Beneficious({isActive, setIsScrollEnabled, setActive, setActiveModals, setActiveDuplicate, isActiveToques, isActiveDuplicate, setActiveToques, }){
     const tg = window.Telegram.WebApp
     tg.disableVerticalSwipes()
     const userData = tg.initDataUnsafe?.user?.id;
@@ -34,6 +34,7 @@ function Beneficious({isActive, setActive, setActiveModals, setActiveDuplicate, 
 
     useEffect(() => {
         fetchUserInfo();
+        setIsScrollEnabled(false)
     }, []);
     return(
         <div className="flex flex-col overflow-y-hidden items-center mb-24">

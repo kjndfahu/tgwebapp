@@ -19,16 +19,16 @@ function MainWindow({setIsScrollEnabled}) {
     return (
         <>
             {isTab === 'inicio' && (
-                <Home isActive={isActive} setActiveModals={setActiveModals} setActive={setActive} isActiveListing={isActiveListing} setActiveListing={setActiveListing}/>
+                <Home setIsScrollEnabled={setIsScrollEnabled} isActive={isActive} setActiveModals={setActiveModals} setActive={setActive} isActiveListing={isActiveListing} setActiveListing={setActiveListing}/>
             )}
             {isTab === 'beneficio' && (
-                <Beneficious setActiveModals={setActiveModals} isActiveToques={isActiveToques} isActiveDuplicate={isActiveDuplicate} setActiveDuplicate={setActiveDuplicate} setActiveToques={setActiveToques} isActive={isActive} setActive={setActive}/>
+                <Beneficious setIsScrollEnabled={setIsScrollEnabled} setActiveModals={setActiveModals} isActiveToques={isActiveToques} isActiveDuplicate={isActiveDuplicate} setActiveDuplicate={setActiveDuplicate} setActiveToques={setActiveToques} isActive={isActive} setActive={setActive}/>
             )}
             {isTab === 'clasificaciom' && (
                 <Clasificaciom setIsScrollEnabled={setIsScrollEnabled}/>
             )}
             {isTab === 'perfil' && (
-                <ProfilePage/>
+                <ProfilePage setIsScrollEnabled={setIsScrollEnabled}/>
             )}
 
             {isActiveModals===false && (<Navbar isTab={isTab} setTab={setTab} />) }
