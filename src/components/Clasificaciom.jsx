@@ -85,7 +85,7 @@ function Clasificaciom({setIsScrollEnabled}) {
                 )}
             </div>
 
-            <div className="flex flex-col mt-7 mb-[50px] gap-3">
+            <div className="flex flex-col mt-7 gap-3">
                 <h2 className="font-sfprosemibold text-left text-white text-[27px]">Jugadores top</h2>
 
                 {loading ? (
