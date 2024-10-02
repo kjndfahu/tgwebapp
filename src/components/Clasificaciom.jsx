@@ -53,14 +53,14 @@ function Clasificaciom() {
     };
 
     return (
-        <div className="flex flex-col items-center bg-[url('https://i.imgur.com/IDlQwiO.png')] w-[100vw] mb-[85px]">
+        <div className="flex flex-col items-center bg-[url('https://i.imgur.com/IDlQwiO.png')] w-[100vw]">
             <div className="flex flex-col mt-6 gap-3">
                 <h2 className="font-sfprosemibold text-left text-white text-[27px]">Clasificaciom</h2>
 
 
                     <div className="flex items-center px-5 py-3 bg-[#212121] rounded-[10px] justify-between w-[90vw]">
                         <div className="flex flex-row items-center gap-2">
-                            <div className="flex text-white p-1 bg-[#353535] rounded-[5px] text-[12px]">{userPosition.place}</div>
+                            <div className={`flex text-white py-1 px-3 rounded-[5px] text-[15px] ${getPlaceColor(userPosition.place)}`}>{userPosition.place}</div>
                             <div className="bg-[#b0b0b0] w-[40px] h-[40px] rounded-full"></div>
                             <h2 className="text-white text-[18px] font-sfpromedium">{userPosition.first_name}</h2>
                         </div>

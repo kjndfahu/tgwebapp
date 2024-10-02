@@ -1,7 +1,8 @@
 import {useEffect, useState} from "react";
-import {BigRocket, Clock, Explosion, Finger, Shout} from "./Icons";
+import {BigRocket, Clock, Explosion, Finger, Light, Shout} from "./Icons";
 import {ChevronRight} from "lucide-react";
 import axios from "axios";
+import {Coin} from "./Coin";
 
 function Benefits({setActiveToques, setActiveModals, setActive, refferals}) {
     const[level, setLevel] = useState(1);
@@ -73,7 +74,10 @@ function Benefits({setActiveToques, setActiveModals, setActive, refferals}) {
                             </div>
                             <div className="text-left">
                                 <h2 className="font-sfpromedium text-white text-[16px]">Toques</h2>
-                                <p className="font-sfpromedium text-[13px] text-[#b0b0b0]">{level} / tocar</p>
+                                <div className="flex flex-row gap-2">
+                                    <Coin className={"w-[18px] h-[18px]"}/>
+                                    <p className="font-sfpromedium text-[13px] text-[#b0b0b0]">{level} / tocar</p>
+                                </div>
                             </div>
                         </div>
                         <ChevronRight color="#b0b0b0"/>
@@ -87,7 +91,10 @@ function Benefits({setActiveToques, setActiveModals, setActive, refferals}) {
                             </div>
                             <div className="text-left">
                                 <h2 className="font-sfpromedium text-white text-[16px]">Energia extra</h2>
-                                <p className="font-sfpromedium text-[13px] text-[#b0b0b0]">100 / Amigo</p>
+                                <div className="flex flex-row gap-1">
+                                    <Light className={"w-[18px] h-[18px]"}/>
+                                    <p className="font-sfpromedium text-[13px] text-[#b0b0b0]">100 / Amigo</p>
+                                </div>
                             </div>
                         </div>
                         <ChevronRight color="#b0b0b0"/>

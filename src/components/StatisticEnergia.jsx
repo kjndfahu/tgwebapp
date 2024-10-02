@@ -11,8 +11,10 @@ function StatisticEnergia() {
                         <Explosion className={"w-[30px] h-[30px]"}/>
                         <div className="flex flex-col text-left gap-1">
                             <h2 className="font-sfpromedium text-white text-[16px] leading-[18px]">Energia</h2>
-                            <p className="font-sfpromedium text-[#b0b0b0] text-[12px]"><span
-                                className="font-sfprobold text-[17px] text-white">100</span> / Amigo</p>
+                            <div className="flex flex-row gap-1">
+                                <Light className={"w-[18px] h-[18px]"}/>
+                                <p className="font-sfpromedium text-[13px] text-[#b0b0b0]">100 / Amigo</p>
+                            </div>
                         </div>
                     </div>
 

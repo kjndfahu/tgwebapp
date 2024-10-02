@@ -35,7 +35,7 @@ function Beneficious({isActive, setActive, setActiveModals, setActiveDuplicate, 
         fetchUserInfo();
     }, []);
     return(
-        <div className="flex flex-col mb-24">
+        <div className="flex flex-col w-[100vw] items-center mb-24">
             <MoneyCount/>
             <div className="flex flex-col gap-2 ">
                 <Energia setActiveModals={setActiveModals} setActiveDuplicate={setActiveDuplicate}/>

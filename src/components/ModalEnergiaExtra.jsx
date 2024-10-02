@@ -50,7 +50,7 @@ function ModalEnergiaExtra({isActive, setActive, setActiveModals}) {
             initial={{y:"100%"}}
             animate={{y:"0%"}}
             transition={{ease: 'easeInOut', }}
-            className="flex absolute gap-5 left-0 z-100 bottom-0 py-3 px-5 flex-col bg-[#212121] rounded-t-[20px] w-[100vw] h-[75vh]">
+            className="flex absolute gap-5 left-0 z-100 bottom-0 py-3 px-5 flex-col bg-[#212121] rounded-t-[20px] w-[100vw] h-[60vh]">
             <div className="flex flex-row justify-between">
                 <div className="w-[10px]"></div>
                 <div className="flex flex-row bg-[#383838] p-1 rounded-full">

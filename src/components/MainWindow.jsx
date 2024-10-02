@@ -16,7 +16,7 @@ function MainWindow() {
     tg.ready();
     console.log(isActiveModals, 'modals')
     return (
-        <>
+        <div className="flex  justify-between">
             {isTab === 'inicio' && (
                 <Home isActive={isActive} setActiveModals={setActiveModals} setActive={setActive} isActiveListing={isActiveListing} setActiveListing={setActiveListing}/>
             )}
@@ -31,7 +31,7 @@ function MainWindow() {
             )}
 
             {isActiveModals===false && (<Navbar isTab={isTab} setTab={setTab} />) }
-        </>
+        </div>
     )
 }
 
