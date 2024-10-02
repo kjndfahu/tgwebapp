@@ -5,6 +5,7 @@ import {motion} from 'framer-motion'
 import axios from "axios";
 import {useEffect, useState} from "react";
 import toast, {Toaster} from "react-hot-toast";
+import {Coin} from "./Coin";
 
 function ModalToques({isActiveToques, setActiveToques, setActiveModals}) {
     const[level, setLevel] = useState(1);
@@ -99,14 +100,14 @@ function ModalToques({isActiveToques, setActiveToques, setActiveModals}) {
             <div className="flex flex-row items-center justify-center gap-2">
                 <div
                     className="flex flex-row items-center bg-[#383838] rounded-[7px] gap-2 py-1 px-4 text-white text-[15px] font-sfpromedium">
-                    <img className="w-[25px] h-[25px]" src={coin} alt=""/>
+                    <Coin className={"w-[25px] h-[25px]"}/>
                     <h4>{level}</h4>
                     <p className="text-[14px] text-[#b0b0b0] font-sfpromedium">/tocar</p>
                 </div>
                 <ChevronRight width={25} height={25} color="#ffffff"/>
                 <div
                     className="flex flex-row bg-[#383838] rounded-[7px] gap-1 py-1 px-4 text-white text-[15px] font-sfpromedium">
-                    <img className="w-[25px] h-[25px]" src={coin} alt=""/>
+                    <Coin className={"w-[25px] h-[25px]"}/>
                     <h4>{level+1}</h4>
                     <p className="text-[14px] text-[#b0b0b0] font-sfpromedium">/tocar</p>
                 </div>
@@ -116,7 +117,7 @@ function ModalToques({isActiveToques, setActiveToques, setActiveModals}) {
                 <div
                     className="flex flex-row gap-3 items-center justify-center bg-[#383838] rounded-[10px] py-3 w-[25vw]">
                     <h4>{calculateCoins(level)}</h4>
-                    <img className="w-[20x] h-[20px]" src={coin} alt=""/>
+                    <Coin className={"w-[25px] h-[25px]"}/>
                 </div>
                 <div onClick={buyToques} className={`flex flex-row items-center ${isVisibleButton(money, level)} justify-center bg-[#2890FF] rounded-[10px] py-3 w-[65vw]`}>
                     Hecho
