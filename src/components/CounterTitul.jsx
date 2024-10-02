@@ -120,7 +120,7 @@ function CounterTitul({energy, setEnergy}) {
                                 color: 'white',
                                 borderRadius: '2px',
                                 borderColor: 'black',
-                                fontSize: '28px',
+                                fontSize: '36px',
                                 fontWeight: 'bold',
                             }}
                             transition={{ duration: 0.5 }}
