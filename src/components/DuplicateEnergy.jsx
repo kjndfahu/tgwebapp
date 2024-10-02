@@ -3,13 +3,15 @@ import {Explosion, Light} from "./Icons";
 import {motion} from 'framer-motion'
 import axios from "axios";
 import {useEffect, useState} from "react";
-import toast from "react-hot-toast";
+import toast, {Toaster} from "react-hot-toast";
 
 function DuplicateEnergy({setActiveDuplicate, setActiveModals}) {
     const [energyMax, setEnergyMax] = useState(0);
+    const [energy, setEnergy] = useState(0);
+    const [isSubscribed, setSubscribe] = useState(false)
     const [telegramId, setTelegramId] = useState(null); // ID пользователя Telegram
     const tg = window.Telegram.WebApp;
-    const userData = 7366050080
+    const userData = 1183781734
 
     const checkSubscription = async () => {
         if (!userData) {
@@ -23,8 +25,8 @@ function DuplicateEnergy({setActiveDuplicate, setActiveModals}) {
             });
 
             const result = response.data;
-            if (result.is_subscribed) {
-                alert('Вы подписаны на канал');
+            if (result.subscribed) {
+                setSubscribe(true)
             } else {
                 toast('Вы не подписаны на канал');
             }
@@ -44,6 +46,7 @@ function DuplicateEnergy({setActiveDuplicate, setActiveModals}) {
             });
 
             const result = response.data;
+            setEnergy(result.info.energy);
             setEnergyMax(result.info.energy_max);
         } catch (error) {
             alert(error);
@@ -60,10 +63,11 @@ function DuplicateEnergy({setActiveDuplicate, setActiveModals}) {
         if (userData) {
             setTelegramId(userData);
             fetchTopPlayers();
+            checkSubscription()
         } else {
             console.log('Не удалось получить данные пользователя из Telegram');
         }
-    }, [energyMax]);
+    }, [isSubscribed]);
 
     return (
         <motion.div
@@ -78,39 +82,72 @@ function DuplicateEnergy({setActiveDuplicate, setActiveModals}) {
                     <X onClick={() => { setActiveDuplicate(false); setActiveModals(false); }} width={18} height={18} color="#b0b0b0" />
                 </div>
             </div>
-            <div className="flex flex-col items-center justify-center">
+            <div className="flex flex-col gap-4 items-center justify-center">
                 <div className="bg-[#383838] w-[90px] h-[90px] rounded-[20px]" />
                 <h2 className="text-white font-sfprosemibold text-[24px]">Rio del dinero</h2>
-                <p className="text-[#b0b0b0] font-sfpromedium text-[14px] leading-[15px]">Subscribete y obten una<br />
-                    recompensa por tu suscripcion</p>
+                {isSubscribed ? (
+                    <p className="text-[#b0b0b0] font-sfpromedium text-[14px] leading-[15px]">Ye te has suscrito al canal y has recibido el<br/> doble de energia </p>
+                ) : (
+                    <p className="text-[#b0b0b0] font-sfpromedium text-[14px] leading-[15px]">Subscribete y obten
+                        una<br/>
+                        recompensa por tu suscripcion</p>
+                )}
             </div>
-            <div className="flex flex-row items-center justify-center gap-2">
-                <div
-                    className="flex flex-row bg-[#383838] rounded-[7px] gap-1 py-1 px-4 text-white text-[15px] font-sfpromedium">
-                    <Light className={"w-[20px] h-[20px]"} />
-                    <h4>{energyMax}</h4>
+            {isSubscribed ? (
+                <div className="flex flex-col items-center justify-center gap-10">
+                    <div
+                        className="flex flex-row items-center bg-[#383838] w-[100px] rounded-[7px] gap-1 py-1 px-4 text-white text-[15px] font-sfpromedium">
+                        <Light className={"w-[20px] h-[20px]"}/>
+                        <h4>{energyMax}</h4>
+                    </div>
+                    <div
+                        onClick={subscribeToChannel} // Обработчик для подписки
+                        className="flex flex-row rounded-[12px] w-full py-3 items-center justify-center gap-2 w-[43vw] bg-[#2890FF] text-[15px] font-sfpromedium text-white"
+                    >
+                        <h2>Ir al canal</h2>
+                    </div>
                 </div>
-                <ChevronRight width={20} height={20} color="#ffffff" />
-                <div
-                    className="flex flex-row bg-[#383838] rounded-[7px] gap-1 py-1 px-4 text-white text-[15px] font-sfpromedium">
-                    <Light className={"w-[20px] h-[20px]"} />
-                    <h4>{energyMax*2}</h4>
+            ) : (
+                <div className="flex flex-col gap-7">
+                    <div className="flex flex-row items-center justify-center gap-2">
+                        <div
+                            className="flex flex-row bg-[#383838] rounded-[7px] gap-1 py-1 px-4 text-white text-[15px] font-sfpromedium">
+                            <Light className={"w-[20px] h-[20px]"}/>
+                            <h4>{energyMax}</h4>
+                        </div>
+                        <ChevronRight width={20} height={20} color="#ffffff"/>
+                        <div
+                            className="flex flex-row bg-[#383838] rounded-[7px] gap-1 py-1 px-4 text-white text-[15px] font-sfpromedium">
+                            <Light className={"w-[20px] h-[20px]"}/>
+                            <h4>{energyMax +1000}</h4>
+                        </div>
+                    </div>
+                    <div className="flex flex-row gap-3">
+                        <div
+                            onClick={subscribeToChannel} // Обработчик для подписки
+                            className="flex flex-row rounded-[12px] py-3 items-center justify-center gap-2 w-[43vw] bg-[#2890FF] text-[15px] font-sfpromedium text-white"
+                        >
+                            <h2>Suscribirse</h2>
+                        </div>
+                        <div
+                            onClick={checkSubscription} // Обработчик для проверки подписки
+                            className="flex flex-row rounded-[12px] py-3 items-center justify-center gap-2 w-[43vw] bg-[#18212A] text-[15px] font-sfpromedium text-[#2890FF]"
+                        >
+                            <h2>Verificaciom</h2>
+                            <Toaster toastOptions={{
+                                className: '',
+                                style: {
+                                    border: '1px solid #713200',
+                                    padding: '16px',
+                                    color: '#c5c5c5',
+                                    background: '#000000'
+                                },
+                            }}/>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div className="flex flex-row gap-3">
-                <div
-                    onClick={subscribeToChannel} // Обработчик для подписки
-                    className="flex flex-row rounded-[12px] py-3 items-center justify-center gap-2 w-[43vw] bg-[#2890FF] text-[15px] font-sfpromedium text-white"
-                >
-                    <h2>Suscribirse</h2>
-                </div>
-                <div
-                    onClick={checkSubscription} // Обработчик для проверки подписки
-                    className="flex flex-row rounded-[12px] py-3 items-center justify-center gap-2 w-[43vw] bg-[#18212A] text-[15px] font-sfpromedium text-[#2890FF]"
-                >
-                    <h2>Verificaciom</h2>
-                </div>
-            </div>
+            )}
+
         </motion.div>
     );
 };

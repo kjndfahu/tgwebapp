@@ -4,14 +4,12 @@ import coin from "../assets/coin1.svg";
 import {motion} from 'framer-motion'
 import axios from "axios";
 import {useEffect, useState} from "react";
+import toast, {Toaster} from "react-hot-toast";
 
 function ModalToques({isActiveToques, setActiveToques, setActiveModals}) {
     const[level, setLevel] = useState(1);
-    const money = 1000
     const tg = window.Telegram.WebApp
-    const userData = 1183781734
-
-
+    const userData = 7366050080
 
     const fetchUserInfo = async () => {
         if (!userData) {
@@ -24,13 +22,36 @@ function ModalToques({isActiveToques, setActiveToques, setActiveModals}) {
                 telegram_id: userData
             });
 
+
             const result = response.data;
-            setLevel(result.info.modifes.toques_lvl)
+            setLevel(result.info.modifies.toques_lvl)
 
         } catch (error) {
             console.error('Ошибка при получении информации о пользователе:', error);
         }
     };
+
+    const calculateCoins = (level) => {
+        return Math.floor(1000 * Math.pow(1.5, level - 1));
+    };
+
+    const buyToques = async () => {
+        try {
+            const response = await axios.post('https://khabyminero.com/buy_toques', {
+                telegram_id: userData,
+                level: level
+            });
+
+            if (response.data.success) {
+                    console.log(1)
+            } else {
+                toast('Не достаточно средств')
+            }
+        } catch (error) {
+            toast('Не достаточно средств')
+        }
+    };
+
 
     useEffect(() => {
         fetchUserInfo();
@@ -76,11 +97,20 @@ function ModalToques({isActiveToques, setActiveToques, setActiveModals}) {
                 className="flex flex-row rounded-2xl py-4 items-center justify-center gap-2 w-[90vw] text-[15px] font-sfpromedium text-white">
                 <div
                     className="flex flex-row gap-3 items-center justify-center bg-[#383838] rounded-[10px] py-3 w-[25vw]">
-                    <h4>100</h4>
+                    <h4>{calculateCoins(level)}</h4>
                     <img className="w-[20x] h-[20px]" src={coin} alt=""/>
                 </div>
-                <div className="flex flex-row  items-center justify-center bg-[#2890FF] rounded-[10px] py-3 w-[65vw]">
+                <div onClick={buyToques} className="flex flex-row items-center justify-center bg-[#2890FF] rounded-[10px] py-3 w-[65vw]">
                     Hecho
+                    <Toaster toastOptions={{
+                        className: '',
+                        style: {
+                            border: '1px solid #713200',
+                            padding: '16px',
+                            color: '#c5c5c5',
+                            background: '#000000'
+                        },
+                    }}/>
                 </div>
             </div>
         </motion.div>

@@ -6,9 +6,11 @@ import axios from "axios";
 
 function CounterTitul({energy, setEnergy}) {
     const [allClick, setAllClick] = useState(0)
+    const [level, setLevel] = useState(1)
     const [telegramId, setTelegramId] = useState(null);
     const tg = window.Telegram.WebApp;
-    const userData = 1183781734
+    const userData = 7366050080
+    console.log(level, 'lvl')
 
 
     const fetchUserInfo = async () => {
@@ -20,6 +22,7 @@ function CounterTitul({energy, setEnergy}) {
 
             if (response.data.ok) {
                 setAllClick(response.data.info.balance);
+                setLevel(response.data.info.modifies.toques_lvl);
             } else {
                 console.error('Ошибка при получении данных о пользователе');
             }
@@ -40,7 +43,7 @@ function CounterTitul({energy, setEnergy}) {
 
 
             if (response.data.ok) {
-                setAllClick((prev) => prev += 1)
+                setAllClick((prev) => prev += level)
             } else {
                 console.error('Ошибка при обновлении количества кликов');
             }

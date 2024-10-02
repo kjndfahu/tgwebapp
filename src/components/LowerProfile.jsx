@@ -5,7 +5,7 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 
 function LowerProfile() {
-    const [tocar, setTocar] = useState(0)
+    const [level, setLevel] = useState(1)
     const [telegramId, setTelegramId] = useState(null);
     const tg = window.Telegram.WebApp;
     const userData = tg.initDataUnsafe?.user?.id
@@ -24,7 +24,7 @@ function LowerProfile() {
             });
 
             const result = response.data;
-            setTocar(result.info.modifies.toques_lvl)
+            setLevel(result.info.modifes.toques_lvl)
         } catch (error) {
             alert(error);
         }
@@ -49,7 +49,7 @@ function LowerProfile() {
                     <div className="flex flex-col text-left">
                         <h2 className="font-sfpromedium text-white text-[16px] leading-[17px]">Toques</h2>
                         <p className="font-sfpromedium text-[#b0b0b0] text-[12px]"><span
-                            className="font-sfprobold text-[14px] text-white">{tocar}</span> / tocar</p>
+                            className="font-sfprobold text-[14px] text-white">{level}</span> / tocar</p>
                     </div>
                 </div>
                 <div className="flex items-center px-5 py-3 bg-[#212121] rounded-[17px] gap-2 h-[60px] w-[45vw]">
