@@ -16,9 +16,6 @@ function MainWindow() {
     tg.disableVerticalSwipes()
     tg.ready();
     console.log(isActiveModals, 'modals')
-    useEffect(() => {
-        window.Telegram.WebApp.setScrollLock(true);
-    }, []);
     return (
         <>
             {isTab === 'inicio' && (
