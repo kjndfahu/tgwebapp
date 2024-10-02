@@ -11,7 +11,7 @@ function ModalEnergiaExtra({isActive, setActive, setActiveModals}) {
     const [isClicked, setIsClicked] = useState(false);
     const tg = window.Telegram.WebApp;
     const navigate = useNavigate();
-    const userData = 1183781734
+    const userData = tg.initDataUnsafe?.user?.id;
 
     const fetchUserInfo = async () => {
         if (!userData) {

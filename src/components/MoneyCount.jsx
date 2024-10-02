@@ -8,7 +8,7 @@ function MoneyCount() {
     const [allMoney, setAllMoney] = useState(0)
     const [telegramId, setTelegramId] = useState(null); // ID пользователя Telegram
     const tg = window.Telegram.WebApp;
-    const userData = 7366050080
+    const userData = tg.initDataUnsafe?.user?.id;
 
 
     // Получение данных о топ-игроках и позиции пользователя

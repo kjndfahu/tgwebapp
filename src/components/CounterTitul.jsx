@@ -9,7 +9,7 @@ function CounterTitul({energy, setEnergy}) {
     const [level, setLevel] = useState(1)
     const [telegramId, setTelegramId] = useState(null);
     const tg = window.Telegram.WebApp;
-    const userData = 7366050080
+    const userData = tg.initDataUnsafe?.user?.id;
     console.log(level, 'lvl')
 
 

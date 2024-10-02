@@ -10,7 +10,7 @@ function ModalRef() {
     const [referralCode, setReferralCode] = useState('');
     const tg = window.Telegram.WebApp;
     const navigate = useNavigate();
-    const userData = 1183781734
+    const userData = tg.initDataUnsafe?.user?.id;
 
     const fetchUserInfo = async () => {
         if (!userData) {

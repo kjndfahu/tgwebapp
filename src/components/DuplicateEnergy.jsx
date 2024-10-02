@@ -11,7 +11,7 @@ function DuplicateEnergy({setActiveDuplicate, setActiveModals}) {
     const [isSubscribed, setSubscribe] = useState(false)
     const [telegramId, setTelegramId] = useState(null); // ID пользователя Telegram
     const tg = window.Telegram.WebApp;
-    const userData = 1183781734
+    const userData = tg.initDataUnsafe?.user?.id;
 
     const checkSubscription = async () => {
         if (!userData) {

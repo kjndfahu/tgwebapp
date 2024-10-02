@@ -7,7 +7,7 @@ function Clasificaciom() {
     const [userPosition, setUserPosition] = useState(0);
     const [telegramId, setTelegramId] = useState(null);
     const tg = window.Telegram.WebApp;
-    const userData = 1183781734;
+    const userData = tg.initDataUnsafe?.user?.id;
     console.log(topPlayers);
 
     // Получение данных о топ-игроках и позиции пользователя

@@ -9,7 +9,7 @@ function Convertation() {
     const [convert, setConvert] = useState(0)
     const [telegramId, setTelegramId] = useState(null); // ID пользователя Telegram
     const tg = window.Telegram.WebApp;
-    const userData = 1183781734
+    const userData = tg.initDataUnsafe?.user?.id;
 
 
     const fetchTopPlayers = async () => {

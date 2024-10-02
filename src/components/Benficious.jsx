@@ -11,7 +11,7 @@ import axios from "axios";
 
 function Beneficious({isActive, setActive, setActiveModals, setActiveDuplicate, isActiveToques, isActiveDuplicate, setActiveToques, }){
     const tg = window.Telegram.WebApp
-    const userData = 1183781734
+    const userData = tg.initDataUnsafe?.user?.id;
     const [referrals, setReferrals] = useState(0);
     const fetchUserInfo = async () => {
         if (!userData) {
@@ -35,7 +35,7 @@ function Beneficious({isActive, setActive, setActiveModals, setActiveDuplicate, 
         fetchUserInfo();
     }, []);
     return(
-        <div className="flex flex-col items-center mb-24">
+        <div className="flex flex-col overflow-y-hidden items-center mb-24">
             <MoneyCount/>
             <div className="flex flex-col gap-2 ">
                 <Energia setActiveModals={setActiveModals} setActiveDuplicate={setActiveDuplicate}/>

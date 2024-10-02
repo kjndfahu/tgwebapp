@@ -5,7 +5,7 @@ import LowerProfile from "./LowerProfile";
 
 function ProfilePage() {
     return (
-        <div className="bg-black h-[100vh]">
+        <div className="bg-black overflow-y-hidden h-[100vh]">
             <TgUser/>
             <Convertation/>
             <ConvertationBtns/>

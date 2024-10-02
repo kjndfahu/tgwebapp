@@ -10,7 +10,7 @@ function ModalToques({isActiveToques, setActiveToques, setActiveModals}) {
     const[level, setLevel] = useState(1);
     const[money, setMoney] = useState(0);
     const tg = window.Telegram.WebApp
-    const userData = 7366050080
+    const userData = tg.initDataUnsafe?.user?.id;
 
     const fetchUserInfo = async () => {
         if (!userData) {
