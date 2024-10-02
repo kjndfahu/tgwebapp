@@ -62,16 +62,29 @@ function ModalToques({isActiveToques, setActiveToques, setActiveModals}) {
         fetchUserInfo();
     }, []);
 
+    const [isVisible, setIsVisible] = useState(true); // Состояние видимости
+
+    const handleClose = () => {
+        setIsVisible(false); // Устанавливаем состояние, чтобы скрыть компонент
+    };
+
     return (
         <motion.div
-            initial={{y:"100%"}}
-            animate={{y:"0%"}}
-            transition={{ease: 'easeInOut', }}
-            className="flex gap-5 absolute left-0 z-100 bottom-0 flex-col py-3 px-5 bg-[#212121] rounded-t-[20px] w-[100vw] h-[65vh]">
+            initial={{ y: "100%" }}
+            animate={{ y: isVisible ? "0%" : "100%" }}
+            exit={{ y: "100%", opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="flex gap-5 absolute left-0 z-100 bottom-0 flex-col py-3 px-5 bg-[#212121] rounded-t-[20px] w-[100vw] h-[65vh]"
+            onAnimationComplete={() => {
+                if (!isVisible) {
+                    setActiveToques(false)
+                    setActiveModals(false);
+                }
+            }}>
             <div className="flex flex-row justify-between">
                 <div className="w-[10px]"></div>
-                <div className="flex flex-row bg-[#383838] p-1 rounded-full">
-                    <X onClick={() => {setActiveToques(false); setActiveModals(false);}} width={18} height={18} color="#b0b0b0"/>
+                <div onClick={handleClose} className="flex flex-row bg-[#383838] p-1 rounded-full">
+                    <X  width={18} height={18} color="#b0b0b0"/>
                 </div>
             </div>
             <div className="flex flex-col items-center justify-center gap-3">
