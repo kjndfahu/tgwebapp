@@ -4,6 +4,7 @@ import {motion} from 'framer-motion'
 import axios from "axios";
 import {useEffect, useState} from "react";
 import toast, {Toaster} from "react-hot-toast";
+import logo from '../assets/logo.jpg'
 
 function DuplicateEnergy({setActiveDuplicate, setActiveModals}) {
     const [energyMax, setEnergyMax] = useState(0);
@@ -83,8 +84,8 @@ function DuplicateEnergy({setActiveDuplicate, setActiveModals}) {
                 </div>
             </div>
             <div className="flex flex-col gap-4 items-center justify-center">
-                <div className="bg-[#383838] w-[90px] h-[90px] rounded-[20px]" />
-                <h2 className="text-white font-sfprosemibold text-[24px]">Rio del dinero</h2>
+                <img className="w-[90px] h-[90px]" src={logo} alt="logo"/>
+                <h2 className="text-white font-sfprosemibold text-[24px]">Cripto Es el Futuro</h2>
                 {isSubscribed ? (
                     <p className="text-[#b0b0b0] font-sfpromedium text-[14px] leading-[15px]">Ye te has suscrito al canal y has recibido el<br/> doble de energia </p>
                 ) : (
