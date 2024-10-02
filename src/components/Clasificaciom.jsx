@@ -66,9 +66,7 @@ function Clasificaciom({setIsScrollEnabled}) {
                 <h2 className="font-sfprosemibold text-left text-white text-[27px]">Clasificaciom</h2>
 
                 {loading ? (
-                    <div className="flex flex-col items-center">
-                        <Skeleton/>
-                    </div>
+                    <div className="flex items-center h-[100px] bg-[#212121] rounded-[10px] justify-between w-[90vw]"></div>
 
                 ) : (
                     <div className="flex items-center px-5 py-3 bg-[#212121] rounded-[10px] justify-between w-[90vw]">
