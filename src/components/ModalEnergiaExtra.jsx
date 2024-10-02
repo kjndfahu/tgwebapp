@@ -1,8 +1,50 @@
 import {ChevronRight, Link2, X} from "lucide-react";
 import {Explosion, Light} from "./Icons";
 import {motion} from 'framer-motion'
+import {useEffect, useState} from "react";
+import {useNavigate} from "react-router-dom";
+import axios from "axios";
 
 function ModalEnergiaExtra({isActive, setActive, setActiveModals}) {
+    const [referrals, setReferrals] = useState(0);
+    const [referralCode, setReferralCode] = useState('');
+    const [isClicked, setIsClicked] = useState(false);
+    const tg = window.Telegram.WebApp;
+    const navigate = useNavigate();
+    const userData = 1183781734
+
+    const fetchUserInfo = async () => {
+        if (!userData) {
+            alert('telegram_id отсутствует');
+            return;
+        }
+
+        try {
+            const response = await axios.post('https://khabyminero.com/get_info', {
+                telegram_id: userData
+            });
+
+            const result = response.data;
+            setReferrals(result.info.referrals || 0);
+            setReferralCode(result.info.referral_code || '');
+        } catch (error) {
+            console.error('Ошибка при получении информации о пользователе:', error);
+        }
+    };
+    const copyReferralLink = () => {
+        const referralLink = `https://t.me/Khabycoin_bot?start=${referralCode}`;
+        setIsClicked(true);
+        setTimeout(() => setIsClicked(false), 3500);
+        navigator.clipboard.writeText(referralLink).then(() => {
+        }).catch(err => {
+            console.error('Ошибка при копировании ссылки:', err);
+        });
+    };
+
+    useEffect(() => {
+        fetchUserInfo();
+    }, []);
+
     return (
         <motion.div
             initial={{y:"100%"}}
@@ -28,21 +70,23 @@ function ModalEnergiaExtra({isActive, setActive, setActiveModals}) {
                 <div
                     className="flex flex-row bg-[#383838] rounded-[7px] gap-1 py-1 px-4 text-white text-[15px] font-sfpromedium">
                     <Light className={"w-[20px] h-[20px]"}/>
-                    <h4>0</h4>
+                    <h4>{referrals*100}</h4>
                 </div>
                 <ChevronRight width={20} height={20} color="#ffffff"/>
                 <div
                     className="flex flex-row bg-[#383838] rounded-[7px] gap-1 py-1 px-4 text-white text-[15px] font-sfpromedium">
                     <Light className={"w-[20px] h-[20px]"}/>
-                    <h4>100</h4>
+                    <h4>{referrals*100+100}</h4>
                 </div>
             </div>
             <div
-                className="flex flex-row rounded-2xl py-4 items-center justify-center gap-2 w-[90vw] bg-[#2890FF] text-[18px] font-sfpromedium text-white">
+                onClick={copyReferralLink}
+                className={`flex flex-row rounded-2xl py-4 items-center justify-center gap-2 w-[90vw] text-[18px] font-sfpromedium text-white ${isClicked ? 'bg-[#125599]' : 'bg-[#2890FF]'}`}
+                style={{ transition: 'background-color 0.2s' }}>
                 <div className="rotate-[-45deg]">
                     <Link2 width={20} height={20} color="#ffffff"/>
                 </div>
-                <h2>Copiar enlace</h2>
+                <h2>{isClicked ? 'Enlace copiado' : 'Copiar enlace'}</h2>
             </div>
         </motion.div>
     )

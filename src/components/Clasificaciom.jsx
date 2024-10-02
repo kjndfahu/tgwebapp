@@ -3,12 +3,12 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 
 function Clasificaciom() {
-    const [topPlayers, setTopPlayers] = useState([]); // Данные топ-10 игроков
-    const [userPosition, setUserPosition] = useState(null); // Позиция пользователя
-    const [telegramId, setTelegramId] = useState(null); // ID пользователя Telegram
+    const [topPlayers, setTopPlayers] = useState([]);
+    const [userPosition, setUserPosition] = useState(0);
+    const [telegramId, setTelegramId] = useState(null);
     const tg = window.Telegram.WebApp;
-    const userData = tg.initDataUnsafe?.user?.id
-
+    const userData = 1183781734;
+    console.log(topPlayers);
 
     // Получение данных о топ-игроках и позиции пользователя
     const fetchTopPlayers = async () => {
@@ -39,12 +39,25 @@ function Clasificaciom() {
         }
     }, []);
 
+    const getPlaceColor = (place) => {
+        switch (place) {
+            case 1:
+                return 'bg-[#FFD700]'; // Золотой цвет
+            case 2:
+                return 'bg-[#C0C0C0]'; // Серебряный цвет
+            case 3:
+                return 'bg-[#CD7F32]'; // Бронзовый цвет
+            default:
+                return 'bg-[#353535]'; // Обычный цвет
+        }
+    };
+
     return (
         <div className="flex flex-col items-center bg-[url('https://i.imgur.com/IDlQwiO.png')] w-[100vw] mb-[85px]">
             <div className="flex flex-col mt-6 gap-3">
                 <h2 className="font-sfprosemibold text-left text-white text-[27px]">Clasificaciom</h2>
 
-                {userPosition ? (
+
                     <div className="flex items-center px-5 py-3 bg-[#212121] rounded-[10px] justify-between w-[90vw]">
                         <div className="flex flex-row items-center gap-2">
                             <div className="flex text-white p-1 bg-[#353535] rounded-[5px] text-[12px]">{userPosition.place}</div>
@@ -56,32 +69,28 @@ function Clasificaciom() {
                             <Coin className={"w-[25px] h-[25px]"} />
                         </div>
                     </div>
-                ) : (
-                    <p className="text-white">Загрузка позиции пользователя...</p>
-                )}
+
+
             </div>
 
             <div className="flex flex-col mt-7 mb-[50px] gap-3">
                 <h2 className="font-sfprosemibold text-left text-white text-[27px]">Jugadores top</h2>
 
-
-                {topPlayers.length > 0 ? (
-                    topPlayers.map((item) => (
-                        <div key={item.place} className="flex items-center px-5 py-3 bg-[#212121] rounded-[10px] justify-between w-[90vw]">
-                            <div className="flex flex-row items-center gap-2">
-                                <div className={`flex text-white py-1 px-3 rounded-[5px] text-[12px]`}>{item.place}</div>
-                                <div className="bg-[#b0b0b0] w-[40px] h-[40px] rounded-full"></div>
-                                <h2 className="text-white text-[18px] font-sfpromedium">{item.first_name}</h2>
+                {topPlayers.map((item) => (
+                    <div key={item.place} className="flex items-center px-5 py-3 bg-[#212121] rounded-[10px] justify-between w-[90vw]">
+                        <div className="flex flex-row items-center gap-2">
+                            <div className={`flex text-white py-1 px-3 rounded-[5px] ${getPlaceColor(item.place)}`}>
+                                {item.place}
                             </div>
-                            <div className="flex flex-row gap-2 items-center">
-                                <h2 className="text-white text-[17px] font-sfpromedium">{item.balance}</h2>
-                                <Coin className={"w-[25px] h-[25px]"} />
-                            </div>
+                            <div className="bg-[#b0b0b0] w-[40px] h-[40px] rounded-full"></div>
+                            <h2 className="text-white text-[18px] font-sfpromedium">{item.first_name}</h2>
                         </div>
-                    ))
-                ) : (
-                    <p className="text-white">Загрузка топ-игроков...</p>
-                )}
+                        <div className="flex flex-row gap-2 items-center">
+                            <h2 className="text-white text-[17px] font-sfpromedium">{item.balance}</h2>
+                            <Coin className={"w-[25px] h-[25px]"} />
+                        </div>
+                    </div>
+                ))}
             </div>
 
             <div className="mt-5" />

@@ -56,8 +56,6 @@ function LowerProfile() {
                     <Clock className={"w-[20px] h-[20px]"}/>
                     <div className="flex flex-col text-left">
                         <h2 className="font-sfpromedium text-white text-[16px] leading-[17px]">Pasivo</h2>
-                        <p className="font-sfpromedium text-[#b0b0b0] text-[12px]"><span
-                            className="font-sfprobold text-[14px] text-white">60</span> / hora</p>
                     </div>
                 </div>
             </div>

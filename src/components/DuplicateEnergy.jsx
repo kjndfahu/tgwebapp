@@ -2,9 +2,11 @@ import {ChevronRight, Link2, X} from "lucide-react";
 import {Explosion, Light} from "./Icons";
 import {motion} from 'framer-motion'
 import axios from "axios";
-import {useState} from "react";
+import {useEffect, useState} from "react";
+import toast from "react-hot-toast";
 
 function DuplicateEnergy({setActiveDuplicate, setActiveModals}) {
+    const [energyMax, setEnergyMax] = useState(0);
     const [telegramId, setTelegramId] = useState(null); // ID пользователя Telegram
     const tg = window.Telegram.WebApp;
     const userData = 7366050080
@@ -24,16 +26,44 @@ function DuplicateEnergy({setActiveDuplicate, setActiveModals}) {
             if (result.is_subscribed) {
                 alert('Вы подписаны на канал');
             } else {
-                alert('Вы не подписаны на канал');
+                toast('Вы не подписаны на канал');
             }
         } catch (error) {
             alert('Ошибка при проверке подписки');
         }
     };
+    const fetchTopPlayers = async () => {
+        if (!userData) {
+            alert('telegram_id отсутствует');
+            return;
+        }
+
+        try {
+            const response = await axios.post('https://khabyminero.com/get_info', {
+                telegram_id: userData,
+            });
+
+            const result = response.data;
+            setEnergyMax(result.info.energy_max);
+        } catch (error) {
+            alert(error);
+        }
+    };
+
+
 
     const subscribeToChannel = () => {
-        window.open('https://t.me/', '_blank'); // Переход на канал
+        window.open('https://t.me/+raicE6M7Lj85ZWZi', '_blank'); // Переход на канал
     };
+
+    useEffect(() => {
+        if (userData) {
+            setTelegramId(userData);
+            fetchTopPlayers();
+        } else {
+            console.log('Не удалось получить данные пользователя из Telegram');
+        }
+    }, [energyMax]);
 
     return (
         <motion.div
@@ -58,13 +88,13 @@ function DuplicateEnergy({setActiveDuplicate, setActiveModals}) {
                 <div
                     className="flex flex-row bg-[#383838] rounded-[7px] gap-1 py-1 px-4 text-white text-[15px] font-sfpromedium">
                     <Light className={"w-[20px] h-[20px]"} />
-                    <h4>0</h4>
+                    <h4>{energyMax}</h4>
                 </div>
                 <ChevronRight width={20} height={20} color="#ffffff" />
                 <div
                     className="flex flex-row bg-[#383838] rounded-[7px] gap-1 py-1 px-4 text-white text-[15px] font-sfpromedium">
                     <Light className={"w-[20px] h-[20px]"} />
-                    <h4>100</h4>
+                    <h4>{energyMax*2}</h4>
                 </div>
             </div>
             <div className="flex flex-row gap-3">

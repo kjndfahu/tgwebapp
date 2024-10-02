@@ -2,8 +2,40 @@ import {ChevronRight, X} from "lucide-react";
 import {Clock, Finger} from "./Icons";
 import coin from "../assets/coin1.svg";
 import {motion} from 'framer-motion'
+import axios from "axios";
+import {useEffect, useState} from "react";
 
 function ModalToques({isActiveToques, setActiveToques, setActiveModals}) {
+    const[level, setLevel] = useState(1);
+    const money = 1000
+    const tg = window.Telegram.WebApp
+    const userData = 1183781734
+
+
+
+    const fetchUserInfo = async () => {
+        if (!userData) {
+            alert('telegram_id отсутствует');
+            return;
+        }
+
+        try {
+            const response = await axios.post('https://khabyminero.com/get_info', {
+                telegram_id: userData
+            });
+
+            const result = response.data;
+            setLevel(result.info.modifes.toques_lvl)
+
+        } catch (error) {
+            console.error('Ошибка при получении информации о пользователе:', error);
+        }
+    };
+
+    useEffect(() => {
+        fetchUserInfo();
+    }, []);
+
     return (
         <motion.div
             initial={{y:"100%"}}
@@ -29,14 +61,14 @@ function ModalToques({isActiveToques, setActiveToques, setActiveModals}) {
                 <div
                     className="flex flex-row items-center bg-[#383838] rounded-[7px] gap-2 py-1 px-4 text-white text-[15px] font-sfpromedium">
                     <img className="w-[25px] h-[25px]" src={coin} alt=""/>
-                    <h4>0</h4>
+                    <h4>{level}</h4>
                     <p className="text-[14px] text-[#b0b0b0] font-sfpromedium">/tocar</p>
                 </div>
                 <ChevronRight width={25} height={25} color="#ffffff"/>
                 <div
                     className="flex flex-row bg-[#383838] rounded-[7px] gap-1 py-1 px-4 text-white text-[15px] font-sfpromedium">
                     <img className="w-[25px] h-[25px]" src={coin} alt=""/>
-                    <h4>100</h4>
+                    <h4>{level+1}</h4>
                     <p className="text-[14px] text-[#b0b0b0] font-sfpromedium">/tocar</p>
                 </div>
             </div>

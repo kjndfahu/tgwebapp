@@ -2,7 +2,7 @@ import {Light, Shout} from "./Icons";
 import {ChevronRight} from "lucide-react";
 import {Link} from "react-router-dom";
 
-function RefsBlock( ){
+function RefsBlock({refferals}){
     return (
         <Link to="/references">
             <div className="flex items-center px-5 py-2 bg-[#212121] rounded-[10px] justify-between w-[90vw]">
@@ -13,7 +13,7 @@ function RefsBlock( ){
                     <div className="text-left">
                         <h2 className="font-sfpromedium text-white text-[16px] leading-[17px]">Invita a tus
                             amigos.<br/> Aumentar la energía</h2>
-                        <p className="font-sfpromedium text-[13px] text-[#b0b0b0]">0 Amigo</p>
+                        <p className="font-sfpromedium text-[13px] text-[#b0b0b0]">{refferals} Amigo</p>
                     </div>
                 </div>
                 <ChevronRight color="#b0b0b0"/>

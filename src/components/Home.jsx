@@ -16,7 +16,7 @@ function Home({isActive, setActive, setActiveModals}) {
             <div className="flex flex-col h-[90%] justify-between">
                 <Header/>
                 <CounterTitul energy={energy} setEnergy={setEnergy}/>
-                <ProgressBar energy={energy} setEnergy={setEnergy} isActive={isActive} setActive={setActive} />
+                <ProgressBar energy={energy}  setActiveModals={setActiveModals} setEnergy={setEnergy} isActive={isActive} setActive={setActive} />
                 {isActive && <ModalEnergiaExtra isActive={isActive} setActiveModals={setActiveModals} setActive={setActive} /> }
             </div>
         </Suspense>

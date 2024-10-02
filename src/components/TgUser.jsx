@@ -6,7 +6,7 @@ function TgUser() {
     const [data, setData] = useState('')
     const [telegramId, setTelegramId] = useState(null); // ID пользователя Telegram
     const tg = window.Telegram.WebApp;
-    const userData = tg.initDataUnsafe?.user?.id
+    const userData = 1183781734
 
 
     // Получение данных о топ-игроках и позиции пользователя

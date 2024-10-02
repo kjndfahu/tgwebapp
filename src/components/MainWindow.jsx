@@ -14,7 +14,7 @@ function MainWindow() {
     const [isActiveDuplicate, setActiveDuplicate] = useState(false);
     const tg = window.Telegram.WebApp;
     tg.ready();
-    console.log(isActiveModals)
+    console.log(isActiveModals, 'modals')
     return (
         <>
             {isTab === 'inicio' && (

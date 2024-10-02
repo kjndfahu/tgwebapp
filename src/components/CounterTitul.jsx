@@ -66,7 +66,7 @@ function CounterTitul({energy, setEnergy}) {
         } else {
             console.error('Не удалось получить данные пользователя из Telegram');
         }
-    }, [allClick]);
+    }, []);
 
     return (
         <div className="flex flex-col items-center justify-between gap-7">

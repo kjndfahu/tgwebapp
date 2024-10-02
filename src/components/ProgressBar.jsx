@@ -3,7 +3,7 @@ import {ChevronRight} from "lucide-react";
 import {useEffect, useState} from "react";
 import axios from "axios";
 
-function ProgressBar({isActive, setActive, energy, setEnergy}) {
+function ProgressBar({isActive, setActive, setActiveModals, energy, setEnergy}) {
     const [energyMax, setEnergyMax] = useState(0);
     const [telegramId, setTelegramId] = useState(null); // ID пользователя Telegram
     const tg = window.Telegram.WebApp;
@@ -36,7 +36,7 @@ function ProgressBar({isActive, setActive, energy, setEnergy}) {
         } else {
             console.log('Не удалось получить данные пользователя из Telegram');
         }
-    }, [energy]);
+    }, []);
 
     return (
         <div>
@@ -46,7 +46,7 @@ function ProgressBar({isActive, setActive, energy, setEnergy}) {
                     {energy}/{energyMax}
                 </div>
                 <div
-                    onClick={() => setActive(true)}
+                    onClick={() => {setActive(true);setActiveModals(true)}}
                     className="flex flex-row items-center text-[13px] gap-1"
                 >
                     <Rocket className={"w-[18px] h-[18px]"} />

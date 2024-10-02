@@ -3,7 +3,7 @@ import {BigRocket, Clock, Explosion, Finger, Shout} from "./Icons";
 import {ChevronRight} from "lucide-react";
 import axios from "axios";
 
-function Benefits({setActiveToques, setActiveModals, setActive}) {
+function Benefits({setActiveToques, setActiveModals, setActive, refferals}) {
     const [isTab, setTab] = useState('benefits');
     const[refs, setRefs] = useState(0)
     const [telegramId, setTelegramId] = useState(null);
@@ -58,7 +58,6 @@ function Benefits({setActiveToques, setActiveModals, setActive}) {
                             </div>
                             <div className="text-left">
                                 <h2 className="font-sfpromedium text-white text-[16px]">Pasivo</h2>
-                                <p className="font-sfpromedium text-[13px] text-[#b0b0b0]">0 Amigo</p>
                             </div>
                         </div>
                         <h2 className="text-[#b0b0b0]">Inactivo</h2>
@@ -72,7 +71,7 @@ function Benefits({setActiveToques, setActiveModals, setActive}) {
                             </div>
                             <div className="text-left">
                                 <h2 className="font-sfpromedium text-white text-[16px]">Toques</h2>
-                                <p className="font-sfpromedium text-[13px] text-[#b0b0b0]">{refs} Amigo</p>
+                                <p className="font-sfpromedium text-[13px] text-[#b0b0b0]">{refferals} Amigo</p>
                             </div>
                         </div>
                         <ChevronRight color="#b0b0b0"/>
@@ -86,7 +85,7 @@ function Benefits({setActiveToques, setActiveModals, setActive}) {
                             </div>
                             <div className="text-left">
                                 <h2 className="font-sfpromedium text-white text-[16px]">Energia extra</h2>
-                                <p className="font-sfpromedium text-[13px] text-[#b0b0b0]">{refs} Amigo</p>
+                                <p className="font-sfpromedium text-[13px] text-[#b0b0b0]">{refferals} Amigo</p>
                             </div>
                         </div>
                         <ChevronRight color="#b0b0b0"/>
