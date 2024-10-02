@@ -8,7 +8,6 @@ function Clasificaciom({setIsScrollEnabled}) {
     const [telegramId, setTelegramId] = useState(null);
     const [loading, setLoading] = useState(true);
     const tg = window.Telegram.WebApp;
-    tg.disableVerticalSwipes();
     const userData = tg.initDataUnsafe?.user?.id;
 
 
