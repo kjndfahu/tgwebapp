@@ -66,11 +66,14 @@ function Clasificaciom({setIsScrollEnabled}) {
                 <h2 className="font-sfprosemibold text-left text-white text-[27px]">Clasificaciom</h2>
 
                 {loading ? (
-                    <Skeleton/>
+                    <div className="flex items-center">
+                        <Skeleton/>
+                    </div>
+
                 ) : (
                     <div className="flex items-center px-5 py-3 bg-[#212121] rounded-[10px] justify-between w-[90vw]">
                         <div className="flex flex-row items-center gap-2">
-                            <div className={`flex text-white w-[10px] h-[10px] rounded-[5px] text-[15px] ${getPlaceColor(userPosition.place)}`}>
+                            <div className={`flex text-white w-[40px] h-[40px] rounded-[5px] text-[15px] ${getPlaceColor(userPosition.place)}`}>
                                1k+
                             </div>
                             <div className="bg-[#b0b0b0] w-[40px] h-[40px] rounded-full"></div>
@@ -88,12 +91,24 @@ function Clasificaciom({setIsScrollEnabled}) {
                 <h2 className="font-sfprosemibold text-left text-white text-[27px]">Jugadores top</h2>
 
                 {loading ? (
-                    <Skeleton/>
+                        <div className="flex items-center">
+                            <Skeleton/>
+                            <Skeleton/>
+                            <Skeleton/>
+                            <Skeleton/>
+                            <Skeleton/>
+                            <Skeleton/>
+                            <Skeleton/>
+                            <Skeleton/>
+                            <Skeleton/>
+                            <Skeleton/>
+                        </div>
+
                 ) : (
                     topPlayers.map((item) => (
                         <div key={item.place} className="flex items-center px-5 py-3 bg-[#212121] rounded-[10px] justify-between w-[90vw]">
                             <div className="flex flex-row items-center gap-2">
-                                <div className={`flex text-white w-[10px] h-[10px] rounded-[5px] ${getPlaceColor(item.place)}`}>
+                                <div className={`flex text-white w-[40px] h-[40px] rounded-[5px] ${getPlaceColor(item.place)}`}>
                                     {item.place}
                                 </div>
                                 <div className="bg-[#b0b0b0] w-[40px] h-[40px] rounded-full"></div>
