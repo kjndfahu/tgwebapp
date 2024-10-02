@@ -17,7 +17,7 @@ function App() {
 
     return (
         <div className="flex flex-col overflow-x-hidden overflow-y-hidden items-center text-center gap-4 ">
-            <MainWindow isActiveModals={isActiveModals} setActiveModals={setActiveModals} isTab={isTab} setTab={setTab} setIsScrollEnabled={setIsScrollEnabled} />
+            <MainWindow isActiveModals={isActiveModals} setActiveModals={setActiveModals} isTab={isTab} setTab={setTab} />
             {isActiveModals === false && (<Navbar isTab={isTab} setTab={setTab} />)}
         </div>)
 }
