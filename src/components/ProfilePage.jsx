@@ -7,7 +7,7 @@ function ProfilePage() {
     const tg = window.Telegram.WebApp
     tg.isVerticalSwipesEnabled = false;
     return (
-        <div className="bg-black h-[100vh]">
+        <div className="bg-black h-[100vh] w-[100vw]">
             <TgUser/>
             <Convertation/>
             <ConvertationBtns/>
