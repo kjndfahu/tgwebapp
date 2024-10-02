@@ -47,7 +47,7 @@ function ProgressBar({isActive, setActive, setActiveModals, energy, setEnergy}) 
                 </div>
                 <div
                     onClick={() => {setActive(true);setActiveModals(true)}}
-                    className="flex flex-row items-center text-[13px] gap-1"
+                    className="flex flex-row items-center text-[13px] gap-1 select-none"
                 >
                     <Rocket className={"w-[18px] h-[18px]"} />
                     Aumentar
