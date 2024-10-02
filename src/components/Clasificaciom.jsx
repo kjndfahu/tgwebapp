@@ -11,6 +11,8 @@ function Clasificaciom() {
     const userData = tg.initDataUnsafe?.user?.id;
     console.log(topPlayers);
 
+
+
     // Получение данных о топ-игроках и позиции пользователя
     const fetchTopPlayers = async () => {
         if (!userData) {
@@ -54,7 +56,7 @@ function Clasificaciom() {
     };
 
     return (
-        <div className="flex flex-col items-center bg-[url('https://i.imgur.com/IDlQwiO.png')] w-full h-[100vh] overflow-y-visible">
+        <div className="flex flex-col items-center bg-[url('https://i.imgur.com/IDlQwiO.png')] w-full h-[100vh] overflow-y-auto">
             <div className="flex flex-col mt-6 gap-3">
                 <h2 className="font-sfprosemibold text-left text-white text-[27px]">Clasificaciom</h2>
 
