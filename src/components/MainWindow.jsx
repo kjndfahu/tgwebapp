@@ -6,7 +6,7 @@ import Navbar from "./Navbar";
 import {useEffect, useState} from "react";
 import {motion} from 'framer-motion'
 
-function MainWindow({isActiveModals, setActiveModals, setTab, isTab, setIsScrollEnabled}) {
+function MainWindow({isActiveModals, setActiveModals, setTab, isTab}) {
     const [isActive, setActive] = useState(false);
     const [isActiveListing, setActiveListing] = useState(false);
     const [isActiveToques, setActiveToques] = useState(false);
@@ -15,6 +15,32 @@ function MainWindow({isActiveModals, setActiveModals, setTab, isTab, setIsScroll
     window.Telegram.WebApp.disableVerticalSwipes()
     tg.ready();
     console.log(isActiveModals, 'modals')
+
+    const [isScrollEnabled, setIsScrollEnabled] = useState(false);
+
+    useEffect(() => {
+        const preventDefault = (e) => {
+            e.preventDefault();
+        };
+
+        if (!isScrollEnabled) {
+            // Disable scroll when scroll is not enabled
+            window.addEventListener('wheel', preventDefault, { passive: false });
+            window.addEventListener('touchmove', preventDefault, { passive: false });
+            document.body.style.overflow = 'hidden'; // Disable scroll globally
+        } else {
+            // Enable scroll when scroll is enabled
+            window.removeEventListener('wheel', preventDefault);
+            window.removeEventListener('touchmove', preventDefault);
+            document.body.style.overflow = 'visible'; // Restore default scroll behavior
+        }
+
+        // Clean up listeners on component unmount
+        return () => {
+            window.removeEventListener('wheel', preventDefault);
+            window.removeEventListener('touchmove', preventDefault);
+        };
+    }, [isScrollEnabled]);
     return (
         <>
             <motion.div
