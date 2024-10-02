@@ -66,12 +66,12 @@ function Clasificaciom({setIsScrollEnabled}) {
                 <h2 className="font-sfprosemibold text-left text-white text-[27px]">Clasificaciom</h2>
 
                 {loading ? (
-                    <div className="flex items-center h-[50px] bg-[#212121] rounded-[10px] justify-between w-[90vw]"></div>
+                    <div className="flex items-center h-[60px] bg-[#212121] rounded-[10px] justify-between w-[90vw]"></div>
 
                 ) : (
                     <div className="flex items-center px-5 py-3 bg-[#212121] rounded-[10px] justify-between w-[90vw]">
                         <div className="flex flex-row items-center gap-2">
-                            <div className={`flex text-white w-[25px] h-[25px] rounded-[5px] text-[15px] bg-[#353535]`}>
+                            <div className={`flex items-center justify-center text-white w-[25px] h-[25px] rounded-[5px] text-[15px] bg-[#353535]`}>
                                1k+
                             </div>
                             <div className="bg-[#b0b0b0] w-[40px] h-[40px] rounded-full"></div>
@@ -90,16 +90,16 @@ function Clasificaciom({setIsScrollEnabled}) {
 
                 {loading ? (
                     <div className="flex flex-col gap-5 items-center">
-                        <div className="flex items-center h-[75px] bg-[#212121] rounded-[10px] justify-between w-[90vw]"></div>
-                        <div className="flex items-center h-[75px] bg-[#212121] rounded-[10px] justify-between w-[90vw]"></div>
-                        <div className="flex items-center h-[75px] bg-[#212121] rounded-[10px] justify-between w-[90vw]"></div>
-                        <div className="flex items-center h-[75px] bg-[#212121] rounded-[10px] justify-between w-[90vw]"></div>
-                        <div className="flex items-center h-[75px] bg-[#212121] rounded-[10px] justify-between w-[90vw]"></div>
-                        <div className="flex items-center h-[75px] bg-[#212121] rounded-[10px] justify-between w-[90vw]"></div>
-                        <div className="flex items-center h-[75px] bg-[#212121] rounded-[10px] justify-between w-[90vw]"></div>
-                        <div className="flex items-center h-[75px] bg-[#212121] rounded-[10px] justify-between w-[90vw]"></div>
-                        <div className="flex items-center h-[75px] bg-[#212121] rounded-[10px] justify-between w-[90vw]"></div>
-                        <div className="flex items-center h-[75px] bg-[#212121] rounded-[10px] justify-between w-[90vw]"></div>
+                        <div className="flex items-center h-[60px] bg-[#212121] rounded-[10px] justify-between w-[90vw]"></div>
+                        <div className="flex items-center h-[60px] bg-[#212121] rounded-[10px] justify-between w-[90vw]"></div>
+                        <div className="flex items-center h-[60px] bg-[#212121] rounded-[10px] justify-between w-[90vw]"></div>
+                        <div className="flex items-center h-[60px] bg-[#212121] rounded-[10px] justify-between w-[90vw]"></div>
+                        <div className="flex items-center h-[60px] bg-[#212121] rounded-[10px] justify-between w-[90vw]"></div>
+                        <div className="flex items-center h-[60px] bg-[#212121] rounded-[10px] justify-between w-[90vw]"></div>
+                        <div className="flex items-center h-[60px] bg-[#212121] rounded-[10px] justify-between w-[90vw]"></div>
+                        <div className="flex items-center h-[60px] bg-[#212121] rounded-[10px] justify-between w-[90vw]"></div>
+                        <div className="flex items-center h-[60px] bg-[#212121] rounded-[10px] justify-between w-[90vw]"></div>
+                        <div className="flex items-center h-[60px] bg-[#212121] rounded-[10px] justify-between w-[90vw]"></div>
                     </div>
 
                 ) : (
