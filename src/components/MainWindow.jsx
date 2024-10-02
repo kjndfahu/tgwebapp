@@ -3,7 +3,7 @@ import Beneficious from "./Benficious";
 import Clasificaciom from "./Clasificaciom";
 import ProfilePage from "./ProfilePage";
 import Navbar from "./Navbar";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 function MainWindow() {
     const [isTab, setTab] = useState('inicio');
@@ -16,6 +16,9 @@ function MainWindow() {
     tg.disableVerticalSwipes()
     tg.ready();
     console.log(isActiveModals, 'modals')
+    useEffect(() => {
+        window.Telegram.WebApp.setScrollLock(true);
+    }, []);
     return (
         <>
             {isTab === 'inicio' && (
