@@ -9,11 +9,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url("https://i.imgur.com/IDlQwiO.png") ;
+  background-image: url("https://i.imgur.com/IDlQwiO.png");
+  background-size: 100%;
   background-repeat: no-repeat;
-  background-size: cover;
   overflow-y: hidden;
-
 }
 
 code {
