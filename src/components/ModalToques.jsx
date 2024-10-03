@@ -64,7 +64,7 @@ function ModalToques({isActiveToques, setActiveToques, setActiveModals}) {
         if (isActiveToques) {
             window.Telegram.WebApp.impactOccurred('soft')  // 200ms vibration
         }
-    }, [isActiveToques]);
+    }, []);
 
     const [isVisible, setIsVisible] = useState(true); // Состояние видимости
 
