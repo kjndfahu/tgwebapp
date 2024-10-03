@@ -154,5 +154,3 @@ function CounterTitul({energy, setEnergy}) {
 }
 
 export default CounterTitul;
-
-export default CounterTitul;
