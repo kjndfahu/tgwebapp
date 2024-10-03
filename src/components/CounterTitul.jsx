@@ -13,7 +13,7 @@ function CounterTitul({energy, setEnergy}) {
     const [isTouchDevice, setIsTouchDevice] = useState(false); // Check for touch device
     const tg = window.Telegram.WebApp;
     const userData = tg.initDataUnsafe?.user?.id;
-    let clickTimeout = null; // To hold the timeout reference
+    const [clickTimeout, setClickTimeout] = useState(null); // Timer to send clicks
 
     // Check if device is touch-enabled
     useEffect(() => {
@@ -38,20 +38,20 @@ function CounterTitul({energy, setEnergy}) {
     };
 
     const handleClick = () => {
-        // Increment the click count
-        setClickCount((prevCount) => prevCount + 1);
         setAllClick((prev) => prev + level);
+        setClickCount((prevCount) => prevCount + 1); // Increment click count
         showFloatingCoin(level); // Show floating coin
 
-        // Clear existing timeout and set a new one
+        // Clear previous timeout if it exists
         if (clickTimeout) {
             clearTimeout(clickTimeout);
         }
 
-        // Send click data after 1 second of inactivity
-        clickTimeout = setTimeout(() => {
-            sendClicksToServer();
+        // Set a new timeout to send clicks after 1 second
+        const timeout = setTimeout(() => {
+            sendClicksToServer(); // Send accumulated clicks to the server
         }, 1000);
+        setClickTimeout(timeout); // Store the timeout ID
     };
 
     const sendClicksToServer = async () => {
@@ -62,8 +62,7 @@ function CounterTitul({energy, setEnergy}) {
             });
 
             if (response.data.ok) {
-                // Reset click count after sending
-                setClickCount(0);
+                setClickCount(0); // Reset click count after sending
             } else {
                 console.error('Ошибка при обновлении количества кликов');
             }
