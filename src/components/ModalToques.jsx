@@ -61,7 +61,10 @@ function ModalToques({isActiveToques, setActiveToques, setActiveModals}) {
 
     useEffect(() => {
         fetchUserInfo();
-    }, []);
+        if (isActiveToques && 'vibrate' in navigator) {
+            navigator.vibrate(200); // 200ms vibration
+        }
+    }, [isActiveToques]);
 
     const [isVisible, setIsVisible] = useState(true); // Состояние видимости
 
