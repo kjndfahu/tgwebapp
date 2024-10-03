@@ -1,9 +1,8 @@
 import {House, ShoppingBasket, TrendingUp, UserRound} from "lucide-react";
 
 function Navbar({isTab, setTab}) {
-
     return (
-        <div className="flex z-50 flex-row fixed bottom-0 items-center justify-between w-full px-5 py-4 bg-[#212121] text-black">
+        <div className="flex z-50 flex-row fixed bottom-0 items-center justify-evenly w-full py-4 bg-[#212121] text-black">
             <div onClick={() => setTab('inicio')} className="flex flex-col text-[13px] gap-1 items-center justify-center font-sfpromedium text-[#b0b0b0]">
                 {isTab === 'inicio' ? (
                     <House width={20} height={20} color="#2890FF"/>
