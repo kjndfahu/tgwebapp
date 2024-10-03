@@ -61,10 +61,21 @@ function ModalToques({isActiveToques, setActiveToques, setActiveModals}) {
 
     useEffect(() => {
         fetchUserInfo();
-        if (isActiveToques) {
-            window.Telegram.WebApp.impactOccurred('soft')  // 200ms vibration
-        }
     }, []);
+
+    useEffect(() => {
+        if (isActiveToques && window.Telegram.WebApp) {
+            const tg = window.Telegram.WebApp;
+
+            // Check if HapticFeedback is available
+            if (tg.HapticFeedback) {
+                tg.HapticFeedback.impactOccurred('medium'); // Use 'light', 'medium', or 'heavy'
+                console.log("Haptic feedback triggered");
+            } else {
+                console.log("Haptic feedback is not available on this platform.");
+            }
+        }
+    }, [isActiveToques]);
 
     const [isVisible, setIsVisible] = useState(true); // Состояние видимости
 
