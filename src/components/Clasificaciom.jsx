@@ -9,7 +9,7 @@ function Clasificaciom({setIsScrollEnabled}) {
     const [telegramId, setTelegramId] = useState(null);
     const [loading, setLoading] = useState(true);
     const tg = window.Telegram.WebApp;
-    const userData = 7366050080
+    const userData = tg.initDataUnsafe?.user?.id;
 
 
     const fetchTopPlayers = async () => {
