@@ -106,7 +106,7 @@ function Clasificaciom({setIsScrollEnabled}) {
                     topPlayers.map((item) => (
                         <div key={item.place} className="flex items-center px-5 py-3 bg-[#212121] rounded-[10px] justify-between w-[90vw]">
                             <div className="flex flex-row items-center gap-2">
-                                <div className={`flex items-center justify-center text-white w-[25px] h-[25px] rounded-[5px] ${getPlaceColor(item.place)}`}>
+                                <div className={`flex items-center justify-center text-white w-[30px] h-[30px] rounded-[5px] ${getPlaceColor(item.place)}`}>
                                     {item.place}
                                 </div>
                                 <div className="bg-[#b0b0b0] w-[40px] h-[40px] rounded-full"></div>

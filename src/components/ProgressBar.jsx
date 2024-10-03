@@ -3,8 +3,9 @@ import {ChevronRight} from "lucide-react";
 import {useEffect, useState} from "react";
 import axios from "axios";
 
-function ProgressBar({isActive, setActive, setActiveModals, energy, setEnergy}) {
+function ProgressBar({isActive, setActive, setActiveModals}) {
     const [energyMax, setEnergyMax] = useState(0);
+    const [energy, setEnergy] = useState(0); // Добавим стейт для текущей энергии
     const [telegramId, setTelegramId] = useState(null); // ID пользователя Telegram
     const tg = window.Telegram.WebApp;
     const userData = tg.initDataUnsafe?.user?.id;
@@ -28,7 +29,6 @@ function ProgressBar({isActive, setActive, setActiveModals, energy, setEnergy}) 
         }
     };
 
-
     useEffect(() => {
         if (userData) {
             setTelegramId(userData);
@@ -42,24 +42,31 @@ function ProgressBar({isActive, setActive, setActiveModals, energy, setEnergy}) 
         <div>
             <div className="flex flex-row items-center justify-between text-white font-sfpromedium w-[90vw] h-[30px]">
                 <div className="flex flex-row items-center text-[13px] gap-1 select-none">
-                    <Light className={"w-[20px] h-[20px]"} />
+                    <Light className={"w-[20px] h-[20px]"}/>
                     {energy}/{energyMax}
                 </div>
                 <div
-                    onClick={() => {setActive(true);setActiveModals(true)}}
+                    onClick={() => {
+                        setActive(true);
+                        setActiveModals(true)
+                    }}
                     className="flex flex-row items-center text-[13px] gap-1 select-none"
                 >
-                    <Rocket className={"w-[18px] h-[18px]"} />
+                    <Rocket className={"w-[18px] h-[18px]"}/>
                     Aumentar
-                    <ChevronRight width={15} height={15} color="#ffffff" />
+                    <ChevronRight width={15} height={15} color="#ffffff"/>
                 </div>
             </div>
-            <div
-                className="w-full bg-white rounded-full h-[8px]"
-            ></div>
+
+            {/* Прогресс-бар */}
+            <div className="w-full bg-gray-300 rounded-full h-[8px]">
+                <div
+                    className="bg-green-500 h-full rounded-full transition-all duration-300"
+                    style={{width: `${(energy / energyMax) * 100}%`}}
+                ></div>
+            </div>
         </div>
     );
-};
 
-
+}
 export default ProgressBar;
