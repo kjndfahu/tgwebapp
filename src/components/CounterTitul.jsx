@@ -54,7 +54,7 @@ function CounterTitul({energy, setEnergy}) {
 
         const timeout = setTimeout(() => {
             sendClicksToServer();
-        }, 1000);
+        }, 500);
         setClickTimeout(timeout);
     };
 
