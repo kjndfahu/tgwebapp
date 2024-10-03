@@ -61,8 +61,8 @@ function ModalToques({isActiveToques, setActiveToques, setActiveModals}) {
 
     useEffect(() => {
         fetchUserInfo();
-        if (isActiveToques && 'vibrate' in navigator) {
-            navigator.vibrate(200); // 200ms vibration
+        if (isActiveToques) {
+            tg.HapticFeedback.impactOccurred('light');  // 200ms vibration
         }
     }, [isActiveToques]);
 
