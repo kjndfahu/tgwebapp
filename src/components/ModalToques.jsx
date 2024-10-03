@@ -62,7 +62,7 @@ function ModalToques({isActiveToques, setActiveToques, setActiveModals}) {
     useEffect(() => {
         fetchUserInfo();
         if (isActiveToques) {
-            tg.HapticFeedback.impactOccurred('light');  // 200ms vibration
+            window.Telegram.WebApp.impactOccurred('soft')  // 200ms vibration
         }
     }, [isActiveToques]);
 
