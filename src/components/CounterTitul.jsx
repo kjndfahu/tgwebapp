@@ -1,7 +1,7 @@
 import coin from '../assets/coin1.svg'
 import {AnimatePresence, motion} from 'framer-motion'
 import {Coin} from "./Coin";
-import {useEffect, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import axios from "axios";
 
 function CounterTitul({energy, setEnergy}) {
@@ -37,7 +37,7 @@ function CounterTitul({energy, setEnergy}) {
     };
 
     const handleClick = () => {
-        setClickCount((prev) => prev + 1);
+        setClickCount((prev) => prev + level);
         setAllClick((prev) => prev + level);
         showFloatingCoin(level);
         decreaseEnergy();
