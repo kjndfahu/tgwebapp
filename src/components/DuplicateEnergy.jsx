@@ -8,6 +8,7 @@ import logo from '../assets/logo.jpg'
 
 function DuplicateEnergy({setActiveDuplicate, setActiveModals}) {
     const [energyMax, setEnergyMax] = useState(0);
+    const [isClicked, setIsClicked] = useState(false);
     const [energy, setEnergy] = useState(0);
     const [isSubscribed, setSubscribe] = useState(false);
     const [telegramId, setTelegramId] = useState(null); // ID пользователя Telegram
@@ -58,6 +59,8 @@ function DuplicateEnergy({setActiveDuplicate, setActiveModals}) {
     };
 
     const subscribeToChannel = () => {
+        setIsClicked(true)
+        setTimeout(() => setIsClicked(false), 100);
         window.open('https://t.me/+raicE6M7Lj85ZWZi', '_blank'); // Переход на канал
     };
 
@@ -135,7 +138,7 @@ function DuplicateEnergy({setActiveDuplicate, setActiveModals}) {
                     <div className="flex flex-row gap-3">
                         <div
                             onClick={subscribeToChannel} // Обработчик для подписки
-                            className="flex flex-row rounded-[12px] py-3 items-center justify-center gap-2 w-[43vw] bg-[#2890FF] text-[15px] font-sfpromedium text-white"
+                            className={`flex flex-row rounded-[12px] py-3 items-center justify-center gap-2 w-[43vw] ${isClicked ? 'bg-[#125599]' : 'bg-[#2890FF]'} text-[15px] font-sfpromedium text-white`}
                         >
                             <h2>Suscribirse</h2>
                         </div>

@@ -36,7 +36,6 @@ function Clasificaciom({setIsScrollEnabled}) {
 
     useEffect(() => {
         if (userData) {
-            setTelegramId(userData);
             setIsScrollEnabled(true);
             fetchTopPlayers();
         } else {
