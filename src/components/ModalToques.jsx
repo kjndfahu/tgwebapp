@@ -67,7 +67,6 @@ function ModalToques({isActiveToques, setActiveToques, setActiveModals}) {
         if (isActiveToques && window.Telegram.WebApp) {
             const tg = window.Telegram.WebApp;
 
-            // Check if HapticFeedback is available
             if (tg.HapticFeedback) {
                 tg.HapticFeedback.impactOccurred('medium'); // Use 'light', 'medium', or 'heavy'
                 console.log("Haptic feedback triggered");

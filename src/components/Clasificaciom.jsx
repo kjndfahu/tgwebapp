@@ -9,7 +9,7 @@ function Clasificaciom({setIsScrollEnabled}) {
     const [telegramId, setTelegramId] = useState(null);
     const [loading, setLoading] = useState(true);
     const tg = window.Telegram.WebApp;
-    const userData = tg.initDataUnsafe?.user?.id;
+    const userData = 7366050080
 
 
     const fetchTopPlayers = async () => {
@@ -43,7 +43,7 @@ function Clasificaciom({setIsScrollEnabled}) {
             alert('Не удалось получить данные пользователя из Telegram');
             setLoading(false);
         }
-    }, [userData, setIsScrollEnabled]);
+    }, []);
 
     const getPlaceColor = (place) => {
         switch (place) {
@@ -58,7 +58,6 @@ function Clasificaciom({setIsScrollEnabled}) {
         }
     };
 
-    const data = [1,2,3,4,5,6,7,8,9,10]
 
     return (
         <div className="flex flex-col items-center bg-[url('https://i.imgur.com/IDlQwiO.png')] w-[100vw] h-[95%]">
