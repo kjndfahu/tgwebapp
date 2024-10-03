@@ -8,14 +8,14 @@ function CounterTitul({energy, setEnergy}) {
     const [allClick, setAllClick] = useState(0);
     const [level, setLevel] = useState(1);
     const [telegramId, setTelegramId] = useState(null);
-    const [clickCount, setClickCount] = useState(0); // State to accumulate clicks
-    const [floatingCoins, setFloatingCoins] = useState([]); // State for floating coins
-    const [isTouchDevice, setIsTouchDevice] = useState(false); // Check for touch device
+    const [clickCount, setClickCount] = useState(0);
+    const [floatingCoins, setFloatingCoins] = useState([]);
+    const [isTouchDevice, setIsTouchDevice] = useState(false);
     const tg = window.Telegram.WebApp;
     const userData = tg.initDataUnsafe?.user?.id;
-    const [clickTimeout, setClickTimeout] = useState(null); // Timer for sending clicks
+    const [clickTimeout, setClickTimeout] = useState(null);
 
-    // Check if device is touch-enabled
+
     useEffect(() => {
         setIsTouchDevice('ontouchstart' in window || navigator.maxTouchPoints > 0);
     }, []);
@@ -38,24 +38,24 @@ function CounterTitul({energy, setEnergy}) {
     };
 
     const handleClick = () => {
-        // Increment local click count and total clicks
+
         setClickCount((prev) => prev + 1);
         setAllClick((prev) => prev + level);
-        showFloatingCoin(level); // Show floating coin
+        showFloatingCoin(level);
 
-        // Decrease energy if it's above 0
+
         decreaseEnergy();
 
-        // Clear previous timeout if it exists
+
         if (clickTimeout) {
             clearTimeout(clickTimeout);
         }
 
-        // Set a new timeout to send clicks after 1 second
+
         const timeout = setTimeout(() => {
-            sendClicksToServer(); // Send accumulated clicks to the server
+            sendClicksToServer();
         }, 1000);
-        setClickTimeout(timeout); // Store the timeout ID
+        setClickTimeout(timeout);
     };
 
     const sendClicksToServer = async () => {
@@ -63,11 +63,11 @@ function CounterTitul({energy, setEnergy}) {
             try {
                 const response = await axios.post('https://khabyminero.com/clicker', {
                     telegram_id: telegramId,
-                    click_count: clickCount, // Send accumulated clicks
+                    click_count: clickCount,
                 });
 
                 if (response.data.ok) {
-                    setClickCount(0); // Reset click count after sending
+                    setClickCount(0);
                 } else {
                     console.error('Ошибка при обновлении количества кликов');
                 }
@@ -100,7 +100,7 @@ function CounterTitul({energy, setEnergy}) {
         }
     };
 
-    // Handle touch devices
+
     const handleTouchStart = (e) => {
         e.preventDefault();
         if (e.touches.length >= 1) {
@@ -108,7 +108,6 @@ function CounterTitul({energy, setEnergy}) {
         }
     };
 
-    // Handle desktop clicks
     const handleMouseClick = () => {
         handleClick();
     };
@@ -127,12 +126,11 @@ function CounterTitul({energy, setEnergy}) {
             <h1 className="text-white font-sfprosemibold text-[48px]">{allClick}</h1>
             <motion.div
                 whileTap={{ scale: 0.9 }}
-                onTouchStart={isTouchDevice ? handleTouchStart : undefined} // Only for touch devices
-                onClick={isTouchDevice ? undefined : handleMouseClick} // Only for desktops
+                onTouchStart={isTouchDevice ? handleTouchStart : undefined}
+                onClick={isTouchDevice ? undefined : handleMouseClick}
                 className="relative"
             >
                 <Coin className="w-[70vw] cursor-pointer h-[40vh]" />
-                {/* Floating coins animation */}
                 <AnimatePresence>
                     {floatingCoins.map((coin) => (
                         <motion.div
