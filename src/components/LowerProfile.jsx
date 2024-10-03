@@ -45,7 +45,7 @@ function LowerProfile() {
             <h2 className="text-white text-left font-sfprosemibold text-[22px]">Estadisticas</h2>
             <StatisticEnergia/>
             <div className="flex flex-row gap-2 w-[90vw] mt-2">
-                <div className="flex items-center px-5 py-3 bg-[#212121] gap-2 rounded-[12px] h-[60px] w-[45vw]">
+                <div className="flex cursor-pointer items-center px-5 py-3 bg-[#212121] gap-2 rounded-[12px] h-[60px] w-[45vw]">
                     <Finger className={"w-[20px] h-[20px]"}/>
                     <div className="flex flex-col gap-1 text-left">
                         <h2 className="font-sfpromedium text-white text-[16px] leading-[17px]">Toques</h2>

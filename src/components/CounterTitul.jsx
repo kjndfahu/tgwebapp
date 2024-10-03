@@ -109,7 +109,7 @@ function CounterTitul({energy, setEnergy}) {
                 onClick={isTouchDevice ? undefined : handleMouseClick} // Только для десктопов
                 className="relative"
             >
-                <Coin className="w-[70vw] h-[40vh]" />
+                <Coin className="w-[70vw] cursor-pointer h-[40vh]" />
                 {/* Анимации плавающих монет */}
                 <AnimatePresence>
                     {floatingCoins.map((coin) => (

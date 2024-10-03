@@ -3,7 +3,7 @@ import {ChevronRight} from "lucide-react";
 
 function Energia({setActiveDuplicate, setActiveModals}) {
     return (
-        <div onClick={() => {setActiveDuplicate(true);setActiveModals(true)}} className="flex items-center px-5 py-2 bg-[#212121] rounded-[10px] justify-between mt-3 w-[90vw]">
+        <div onClick={() => {setActiveDuplicate(true);setActiveModals(true)}} className="flex cursor-pointer items-center px-5 py-2 bg-[#212121] rounded-[10px] justify-between mt-3 w-[90vw]">
             <div className = "flex flex-row items-center gap-5" >
                 <div className="rounded-[15px] bg-[#282828] p-2">
                     <Light className={"w-[30px] h-[30px]"}/>

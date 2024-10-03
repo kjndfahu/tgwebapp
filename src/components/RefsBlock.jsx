@@ -5,7 +5,7 @@ import {Link} from "react-router-dom";
 function RefsBlock({refferals}){
     return (
         <Link to="/references">
-            <div className="flex items-center px-5 py-2 bg-[#212121] rounded-[10px] justify-between w-[90vw]">
+            <div className="flex cursor-pointer items-center px-5 py-2 bg-[#212121] rounded-[10px] justify-between w-[90vw]">
                 <div className="flex flex-row items-center gap-5">
                     <div className="rounded-[15px] bg-[#282828] p-2">
                         <Shout className={"w-[30px] h-[30px]"}/>

@@ -46,14 +46,14 @@ function Benefits({setActiveToques, setActiveModals, setActive, refferals}) {
     return (
         <div className="flex flex-col gap-1 rounded-[10px]">
             <div
-                className="flex flex-row items-center px-5 py-2 justify-between font-sfprosemibold text-[21px] text-[#212121]">
+                className="flex flex-row items-center cursor-pointer px-5 py-2 justify-between font-sfprosemibold text-[21px] text-[#212121]">
                 <h2 onClick={() => setTab('benefits')}>Beneficios</h2>
                 <h2 onClick={() => setTab('aumentacion')}>Aumentacion</h2>
             </div>
 
             {isTab === 'benefits' ? (
                 <div
-                    className="flex flex-col items-center px-2 py-2 bg-[#212121] rounded-[10px] justify-between w-[90vw]">
+                    className="flex cursor-pointer flex-col items-center px-2 py-2 bg-[#212121] rounded-[10px] justify-between w-[90vw]">
                     <div className="flex items-center px-5 py-2 bg-[#212121] rounded-[10px] justify-between w-[90vw]">
                         <div className="flex flex-row items-center gap-5">
                             <div className="rounded-[15px] bg-[#282828] p-2">
@@ -67,7 +67,7 @@ function Benefits({setActiveToques, setActiveModals, setActive, refferals}) {
                     </div>
 
                     <div onClick={() => { setActiveToques(true); setActiveModals(true); }}
-                         className="flex items-center px-5 py-2 bg-[#212121] rounded-[10px] justify-between w-[90vw]">
+                         className="flex cursor-pointer items-center px-5 py-2 bg-[#212121] rounded-[10px] justify-between w-[90vw]">
                         <div className="flex flex-row items-center gap-5">
                             <div className="rounded-[15px] bg-[#282828] p-2">
                                 <Finger className={"w-[30px] h-[30px]"}/>
@@ -84,7 +84,7 @@ function Benefits({setActiveToques, setActiveModals, setActive, refferals}) {
                     </div>
 
                     <div onClick={() => { setActive(true); setActiveModals(true); }}
-                         className="flex items-center px-5 py-2 bg-[#212121] rounded-[10px] justify-between w-[90vw]">
+                         className="flex cursor-pointer items-center px-5 py-2 bg-[#212121] rounded-[10px] justify-between w-[90vw]">
                         <div className="flex flex-row items-center gap-5">
                             <div className="rounded-[15px] bg-[#282828] p-2">
                                 <Explosion className={"w-[30px] h-[30px]"}/>
