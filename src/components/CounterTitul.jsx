@@ -13,8 +13,7 @@ function CounterTitul({energy, setEnergy}) {
     const [isTouchDevice, setIsTouchDevice] = useState(false);
     const tg = window.Telegram.WebApp;
     const userData = tg.initDataUnsafe?.user?.id;
-    const [clickTimeout, setClickTimeout] = useState(null);
-
+    const clickTimeoutRef = useRef(null); // Use a ref for the timeout
 
     useEffect(() => {
         setIsTouchDevice('ontouchstart' in window || navigator.maxTouchPoints > 0);
@@ -38,24 +37,20 @@ function CounterTitul({energy, setEnergy}) {
     };
 
     const handleClick = () => {
-
         setClickCount((prev) => prev + 1);
         setAllClick((prev) => prev + level);
         showFloatingCoin(level);
-
-
         decreaseEnergy();
 
-
-        if (clickTimeout) {
-            clearTimeout(clickTimeout);
+        // Clear the previous timeout
+        if (clickTimeoutRef.current) {
+            clearTimeout(clickTimeoutRef.current);
         }
 
-
-        const timeout = setTimeout(() => {
+        // Set a new timeout to send clicks after 1 second
+        clickTimeoutRef.current = setTimeout(() => {
             sendClicksToServer();
-        }, 500);
-        setClickTimeout(timeout);
+        }, 1000); // You can increase this if needed
     };
 
     const sendClicksToServer = async () => {
@@ -99,7 +94,6 @@ function CounterTitul({energy, setEnergy}) {
             console.log('Энергия не может быть меньше 0');
         }
     };
-
 
     const handleTouchStart = (e) => {
         e.preventDefault();
@@ -158,5 +152,7 @@ function CounterTitul({energy, setEnergy}) {
         </div>
     );
 }
+
+export default CounterTitul;
 
 export default CounterTitul;
