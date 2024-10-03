@@ -13,7 +13,7 @@ function CounterTitul({energy, setEnergy}) {
     const [isTouchDevice, setIsTouchDevice] = useState(false); // Check for touch device
     const tg = window.Telegram.WebApp;
     const userData = tg.initDataUnsafe?.user?.id;
-    const [clickTimeout, setClickTimeout] = useState(null); // Timer to send clicks
+    const [clickTimeout, setClickTimeout] = useState(null); // Timer for sending clicks
 
     // Check if device is touch-enabled
     useEffect(() => {
@@ -38,9 +38,13 @@ function CounterTitul({energy, setEnergy}) {
     };
 
     const handleClick = () => {
+        // Increment local click count and total clicks
+        setClickCount((prev) => prev + 1);
         setAllClick((prev) => prev + level);
-        setClickCount((prevCount) => prevCount + 1); // Increment click count
         showFloatingCoin(level); // Show floating coin
+
+        // Decrease energy if it's above 0
+        decreaseEnergy();
 
         // Clear previous timeout if it exists
         if (clickTimeout) {
@@ -55,19 +59,21 @@ function CounterTitul({energy, setEnergy}) {
     };
 
     const sendClicksToServer = async () => {
-        try {
-            const response = await axios.post('https://khabyminero.com/clicker', {
-                telegram_id: telegramId,
-                click_count: clickCount, // Send accumulated clicks
-            });
+        if (clickCount > 0) {
+            try {
+                const response = await axios.post('https://khabyminero.com/clicker', {
+                    telegram_id: telegramId,
+                    click_count: clickCount, // Send accumulated clicks
+                });
 
-            if (response.data.ok) {
-                setClickCount(0); // Reset click count after sending
-            } else {
-                console.error('Ошибка при обновлении количества кликов');
+                if (response.data.ok) {
+                    setClickCount(0); // Reset click count after sending
+                } else {
+                    console.error('Ошибка при обновлении количества кликов');
+                }
+            } catch (error) {
+                console.error('Ошибка при отправке клика на сервер:', error);
             }
-        } catch (error) {
-            console.error('Ошибка при отправке клика на сервер:', error);
         }
     };
 
@@ -84,6 +90,14 @@ function CounterTitul({energy, setEnergy}) {
         setTimeout(() => {
             setFloatingCoins((prev) => prev.filter((coin) => coin.id !== id));
         }, 500);
+    };
+
+    const decreaseEnergy = () => {
+        if (energy > 0) {
+            setEnergy((prevEnergy) => prevEnergy - 1);
+        } else {
+            console.log('Энергия не может быть меньше 0');
+        }
     };
 
     // Handle touch devices
@@ -145,6 +159,6 @@ function CounterTitul({energy, setEnergy}) {
             </motion.div>
         </div>
     );
-};
+}
 
 export default CounterTitul;
