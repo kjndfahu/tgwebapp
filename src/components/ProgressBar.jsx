@@ -55,9 +55,9 @@ function ProgressBar({isActive, setActive, setActiveModals, energy, setEnergy}) 
             </div>
 
             {/* Прогресс-бар */}
-            <div className="w-full bg-gray-300 rounded-full h-[8px] mt-2">
+            <div className="w-full bg-gray-600  rounded-full h-[8px] mt-2">
                 <div
-                    className="bg-green-500 h-full rounded-full transition-all duration-300"
+                    className="bg-gray-300 h-full rounded-full transition-all duration-300"
                     style={{ width: `${(energy / energyMax) * 100}%` }}
                 ></div>
             </div>
