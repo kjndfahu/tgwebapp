@@ -41,7 +41,7 @@ function Convertation() {
     }, []);
 
     return (
-        <div className="flex flex-col mt-10 items-center">
+        <div className="flex flex-col mt-5 items-center">
             <div className="flex flex-col items-center gap-2">
                 <h2 className="font-sfprosemibold text-[19px] text-white">Saldos de monedas</h2>
                 <div className="flex flex-row items-center gap-2">

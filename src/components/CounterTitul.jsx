@@ -8,12 +8,14 @@ function CounterTitul({energy, setEnergy}) {
     const [allClick, setAllClick] = useState(0);
     const [level, setLevel] = useState(1);
     const [telegramId, setTelegramId] = useState(null);
-    const [floatingCoins, setFloatingCoins] = useState([]); // Состояние для плавающих монеток
-    const [isTouchDevice, setIsTouchDevice] = useState(false); // Проверка типа устройства
+    const [clickCount, setClickCount] = useState(0); // State to accumulate clicks
+    const [floatingCoins, setFloatingCoins] = useState([]); // State for floating coins
+    const [isTouchDevice, setIsTouchDevice] = useState(false); // Check for touch device
     const tg = window.Telegram.WebApp;
     const userData = tg.initDataUnsafe?.user?.id;
+    let clickTimeout = null; // To hold the timeout reference
 
-    // Определяем, является ли устройство сенсорным
+    // Check if device is touch-enabled
     useEffect(() => {
         setIsTouchDevice('ontouchstart' in window || navigator.maxTouchPoints > 0);
     }, []);
@@ -35,16 +37,33 @@ function CounterTitul({energy, setEnergy}) {
         }
     };
 
-    const handleClick = async () => {
+    const handleClick = () => {
+        // Increment the click count
+        setClickCount((prevCount) => prevCount + 1);
+        setAllClick((prev) => prev + level);
+        showFloatingCoin(level); // Show floating coin
+
+        // Clear existing timeout and set a new one
+        if (clickTimeout) {
+            clearTimeout(clickTimeout);
+        }
+
+        // Send click data after 1 second of inactivity
+        clickTimeout = setTimeout(() => {
+            sendClicksToServer();
+        }, 1000);
+    };
+
+    const sendClicksToServer = async () => {
         try {
             const response = await axios.post('https://khabyminero.com/clicker', {
                 telegram_id: telegramId,
-                click_count: 1,
+                click_count: clickCount, // Send accumulated clicks
             });
 
             if (response.data.ok) {
-                setAllClick((prev) => prev + level);
-                showFloatingCoin(level); // Показать плавающую монетку
+                // Reset click count after sending
+                setClickCount(0);
             } else {
                 console.error('Ошибка при обновлении количества кликов');
             }
@@ -68,27 +87,17 @@ function CounterTitul({energy, setEnergy}) {
         }, 500);
     };
 
-    const decreaseEnergy = () => {
-        if (energy > 0) {
-            setEnergy((prevEnergy) => prevEnergy - 1);
-        } else {
-            console.log('Энергия не может быть меньше 0');
-        }
-    };
-
-    // Обработка для сенсорных экранов
+    // Handle touch devices
     const handleTouchStart = (e) => {
         e.preventDefault();
         if (e.touches.length >= 1) {
             handleClick();
-            decreaseEnergy();
         }
     };
 
-    // Обработка для десктопов
+    // Handle desktop clicks
     const handleMouseClick = () => {
         handleClick();
-        decreaseEnergy();
     };
 
     useEffect(() => {
@@ -98,19 +107,19 @@ function CounterTitul({energy, setEnergy}) {
         } else {
             console.error('Не удалось получить данные пользователя из Telegram');
         }
-    }, [allClick]);
+    }, [userData]);
 
     return (
         <div className="relative flex flex-col items-center justify-between gap-7">
             <h1 className="text-white font-sfprosemibold text-[48px]">{allClick}</h1>
             <motion.div
                 whileTap={{ scale: 0.9 }}
-                onTouchStart={isTouchDevice ? handleTouchStart : undefined} // Только для сенсорных устройств
-                onClick={isTouchDevice ? undefined : handleMouseClick} // Только для десктопов
+                onTouchStart={isTouchDevice ? handleTouchStart : undefined} // Only for touch devices
+                onClick={isTouchDevice ? undefined : handleMouseClick} // Only for desktops
                 className="relative"
             >
                 <Coin className="w-[70vw] cursor-pointer h-[40vh]" />
-                {/* Анимации плавающих монет */}
+                {/* Floating coins animation */}
                 <AnimatePresence>
                     {floatingCoins.map((coin) => (
                         <motion.div
