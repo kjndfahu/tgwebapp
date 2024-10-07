@@ -3,6 +3,8 @@ import {ArrowLeftRight, ArrowUp} from "lucide-react";
 import {Coin} from "./Coin";
 import {useEffect, useState} from "react";
 import axios from "axios";
+import axiosWithCache from '../utils/axiosWithCache';
+
 
 function Convertation() {
     const [money, setMoney] = useState(0)
@@ -19,7 +21,10 @@ function Convertation() {
         }
 
         try {
-            const response = await axios.post('https://khabyminero.com/get_info', {
+            /*const response = await axios.post('https://khabyminero.com/get_info', {
+                telegram_id: userData
+            });*/
+            const response = await axiosWithCache('post', 'https://khabyminero.com/get_info', {
                 telegram_id: userData
             });
 

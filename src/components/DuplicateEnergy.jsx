@@ -4,6 +4,7 @@ import {motion} from 'framer-motion'
 import axios from "axios";
 import {useEffect, useState} from "react";
 import toast, {Toaster} from "react-hot-toast";
+import axiosWithCache from '../utils/axiosWithCache';
 import logo from '../assets/logo.jpg'
 
 function DuplicateEnergy({setActiveDuplicate, setActiveModals}) {
@@ -11,6 +12,7 @@ function DuplicateEnergy({setActiveDuplicate, setActiveModals}) {
     const [isClicked, setIsClicked] = useState(false);
     const [energy, setEnergy] = useState(0);
     const [isSubscribed, setSubscribe] = useState(false);
+    const [isDuplicateBonusClaimed, setBonusState] = useState(false);
     const [telegramId, setTelegramId] = useState(null); // ID пользователя Telegram
     const [isVisible, setIsVisible] = useState(true); // Состояние видимости
     const tg = window.Telegram.WebApp;
@@ -27,6 +29,10 @@ function DuplicateEnergy({setActiveDuplicate, setActiveModals}) {
             const response = await axios.post('https://khabyminero.com/check_subscription', {
                 telegram_id: userData,
             });
+
+            /*const response = await axiosWithCache('post', 'https://khabyminero.com/check_subscription', {
+                telegram_id: userData
+            });*/
 
             const result = response.data;
             if (result.subscribed) {
@@ -46,11 +52,21 @@ function DuplicateEnergy({setActiveDuplicate, setActiveModals}) {
         }
 
         try {
-            const response = await axios.post('https://khabyminero.com/get_info', {
+            /*const response = await axios.post('https://khabyminero.com/get_info', {
                 telegram_id: userData,
+            });*/
+
+            const response = await axiosWithCache('post', 'https://khabyminero.com/get_info', {
+                telegram_id: userData
             });
 
             const result = response.data;
+
+
+            if(result.info.modifies.subscribe_bonus) {
+                setBonusState(true)
+            }
+
             setEnergy(result.info.energy);
             setEnergyMax(result.info.energy_max);
         } catch (error) {
@@ -103,13 +119,13 @@ function DuplicateEnergy({setActiveDuplicate, setActiveModals}) {
             <div className="flex flex-col gap-4 items-center justify-center">
                 <img className="w-[90px] h-[90px] rounded-[20px]" src={logo} alt="logo" />
                 <h2 className="text-white font-sfprosemibold text-[24px]">Cripto Es el Futuro</h2>
-                {isSubscribed ? (
+                {{/*isSubscribed*/isDuplicateBonusClaimed} ? (
                     <p className="text-[#b0b0b0] font-sfpromedium text-[14px] leading-[15px]">Ya te has suscrito al canal y has recibido el<br /> doble de energía</p>
                 ) : (
                     <p className="text-[#b0b0b0] font-sfpromedium text-[14px] leading-[15px]">Suscríbete y obtén una<br /> recompensa por tu suscripción</p>
                 )}
             </div>
-            {isSubscribed ? (
+            {{/*isSubscribed*/isDuplicateBonusClaimed} ? (
                 <div className="flex flex-col items-center justify-center gap-10">
                     <div className="flex flex-row items-center bg-[#383838] w-[100px] rounded-[7px] gap-1 py-1 px-4 text-white text-[15px] font-sfpromedium">
                         <Light className={"w-[20px] h-[20px]"} />

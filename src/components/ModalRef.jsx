@@ -4,6 +4,7 @@ import {Light} from "./Icons";
 import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import axios from "axios";
+import axiosWithCache from '../utils/axiosWithCache';
 
 function ModalRef() {
     const [referrals, setReferrals] = useState(0);
@@ -19,7 +20,10 @@ function ModalRef() {
         }
 
         try {
-            const response = await axios.post('https://khabyminero.com/get_info', {
+            /*const response = await axios.post('https://khabyminero.com/get_info', {
+                telegram_id: userData
+            });*/
+            const response = await axiosWithCache('post', 'https://khabyminero.com/get_info', {
                 telegram_id: userData
             });
 

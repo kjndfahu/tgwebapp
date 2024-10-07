@@ -21,5 +21,4 @@ function App() {
             {isActiveModals === false && (<Navbar isTab={isTab} setTab={setTab} />)}
         </div>)
 }
-
 export default App;

@@ -3,6 +3,8 @@ import {AnimatePresence, motion} from 'framer-motion'
 import {Coin} from "./Coin";
 import {useEffect, useRef, useState} from "react";
 import axios from "axios";
+import axiosWithCache from '../utils/axiosWithCache';
+
 
 function CounterTitul({energy, setEnergy}) {
     const [allClick, setAllClick] = useState(0);
@@ -24,6 +26,9 @@ function CounterTitul({energy, setEnergy}) {
             const response = await axios.post('https://khabyminero.com/get_info', {
                 telegram_id: userData,
             });
+           /* const response = await axiosWithCache('post', 'https://khabyminero.com/get_info', {
+                telegram_id: userData
+            });*/
 
             if (response.data.ok) {
                 setAllClick(response.data.info.balance);
@@ -37,6 +42,10 @@ function CounterTitul({energy, setEnergy}) {
     };
 
     const handleClick = () => {
+        console.log('level: ' + level);
+        if (energy < level) { // если энергии меньше, чем нужно для клика
+            return false;
+        }
         setClickCount((prev) => prev + level);
         setAllClick((prev) => prev + level);
         showFloatingCoin(level);
@@ -60,6 +69,9 @@ function CounterTitul({energy, setEnergy}) {
                     telegram_id: telegramId,
                     click_count: clickCount,
                 });
+                /*const response = await axiosWithCache('post', 'https://khabyminero.com/clicker', {
+                    telegram_id: userData
+                });*/
 
                 if (response.data.ok) {
                     setClickCount(0);
@@ -89,7 +101,8 @@ function CounterTitul({energy, setEnergy}) {
 
     const decreaseEnergy = () => {
         if (energy > 0) {
-            setEnergy((prevEnergy) => prevEnergy - 1);
+            //setEnergy((prevEnergy) => prevEnergy - 1);
+            setEnergy((prevEnergy) => prevEnergy - level);
         } else {
             console.log('Энергия не может быть меньше 0');
         }
