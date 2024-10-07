@@ -3,6 +3,7 @@ import {BigRocket, Clock, Explosion, Finger, Light, Shout} from "./Icons";
 import {ChevronRight} from "lucide-react";
 import axios from "axios";
 import {Coin} from "./Coin";
+import axiosWithCache from '../utils/axiosWithCache';
 
 function Benefits({setActiveToques, setActiveModals, setActive, refferals}) {
     const[level, setLevel] = useState(1);
@@ -21,7 +22,11 @@ function Benefits({setActiveToques, setActiveModals, setActive, refferals}) {
         }
 
         try {
-            const response = await axios.post('https://khabyminero.com/get_info', {
+            /*const response = await axios.post('https://khabyminero.com/get_info', {
+                telegram_id: userData
+            });*/
+
+            const response = await axiosWithCache('post', 'https://khabyminero.com/get_info', {
                 telegram_id: userData
             });
 

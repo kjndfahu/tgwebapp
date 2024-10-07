@@ -6,6 +6,7 @@ import axios from "axios";
 import {useEffect, useState} from "react";
 import toast, {Toaster} from "react-hot-toast";
 import {Coin} from "./Coin";
+import axiosWithCache from '../utils/axiosWithCache';
 
 function ModalToques({isActiveToques, setActiveToques, setActiveModals}) {
     const[level, setLevel] = useState(1);
@@ -20,9 +21,13 @@ function ModalToques({isActiveToques, setActiveToques, setActiveModals}) {
         }
 
         try {
-            const response = await axios.post('https://khabyminero.com/get_info', {
+            /*const response = await axios.post('https://khabyminero.com/get_info', {
+                telegram_id: userData
+            });*/
+            const response = await axiosWithCache('post', 'https://khabyminero.com/get_info', {
                 telegram_id: userData
             });
+
 
 
             const result = response.data;
@@ -52,6 +57,9 @@ function ModalToques({isActiveToques, setActiveToques, setActiveModals}) {
                 telegram_id: userData,
                 level: level+1
             });
+            /*const response = await axiosWithCache('post', 'https://khabyminero.com/buy_toques', {
+                telegram_id: userData
+            });*/
              console.log(response)
         } catch (error) {
             toast('Fondos insuficientes')

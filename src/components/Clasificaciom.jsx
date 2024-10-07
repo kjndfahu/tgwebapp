@@ -2,6 +2,7 @@ import {Coin} from "./Coin";
 import {useEffect, useState} from "react";
 import axios from "axios";
 import Skeleton from "./Skeleton";
+import axiosWithCache from '../utils/axiosWithCache';
 
 function Clasificaciom({setIsScrollEnabled}) {
     const [topPlayers, setTopPlayers] = useState([]);
@@ -20,9 +21,12 @@ function Clasificaciom({setIsScrollEnabled}) {
         }
 
         try {
-            const response = await axios.post('https://khabyminero.com/top', {
+            /*const response = await axios.post('https://khabyminero.com/top', {
                 telegram_id: userData,
-            });
+            });*/
+            const response = await axiosWithCache('post', 'https://khabyminero.com/top', {
+                telegram_id: userData
+            }, {}, 15 * 60 * 1000);
 
             const result = response.data;
             setTopPlayers(result.result.top_10);

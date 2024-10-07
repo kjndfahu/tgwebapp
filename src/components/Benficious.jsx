@@ -8,6 +8,7 @@ import ModalToques from "./ModalToques";
 import ModalEnergiaExtra from "./ModalEnergiaExtra";
 import DuplicateEnergy from "./DuplicateEnergy";
 import axios from "axios";
+import axiosWithCache from '../utils/axiosWithCache';
 
 function Beneficious({isActive, setIsScrollEnabled, setActive, setActiveModals, setActiveDuplicate, isActiveToques, isActiveDuplicate, setActiveToques, }){
     const tg = window.Telegram.WebApp
@@ -21,7 +22,10 @@ function Beneficious({isActive, setIsScrollEnabled, setActive, setActiveModals, 
         }
 
         try {
-            const response = await axios.post('https://khabyminero.com/get_info', {
+            /*const response = await axios.post('https://khabyminero.com/get_info', {
+                telegram_id: userData
+            });*/
+            const response = await axiosWithCache('post', 'https://khabyminero.com/get_info', {
                 telegram_id: userData
             });
 

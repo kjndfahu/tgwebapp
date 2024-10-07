@@ -2,6 +2,7 @@ import {Light, Rocket} from "./Icons";
 import {ChevronRight} from "lucide-react";
 import {useEffect, useState} from "react";
 import axios from "axios";
+import axiosWithCache from '../utils/axiosWithCache';
 
 function ProgressBar({isActive, setActive, setActiveModals, energy, setEnergy}) {
     const [energyMax, setEnergyMax] = useState(0);
@@ -16,8 +17,11 @@ function ProgressBar({isActive, setActive, setActiveModals, energy, setEnergy}) 
         }
 
         try {
-            const response = await axios.post('https://khabyminero.com/get_info', {
+            /*const response = await axios.post('https://khabyminero.com/get_info', {
                 telegram_id: userData,
+            });*/
+            const response = await axiosWithCache('post', 'https://khabyminero.com/get_info', {
+                telegram_id: userData
             });
 
             const result = response.data;

@@ -2,6 +2,7 @@ import coin from "../assets/coin1.svg";
 import {Coin} from "./Coin";
 import {useEffect, useState} from "react";
 import axios from "axios";
+import axiosWithCache from '../utils/axiosWithCache';
 
 
 function MoneyCount() {
@@ -19,7 +20,10 @@ function MoneyCount() {
         }
 
         try {
-            const response = await axios.post('https://khabyminero.com/get_info', {
+           /* const response = await axios.post('https://khabyminero.com/get_info', {
+                telegram_id: userData
+            });*/
+            const response = await axiosWithCache('post', 'https://khabyminero.com/get_info', {
                 telegram_id: userData
             });
 
